@@ -6,12 +6,13 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCFeedDescriptor, FCFeedViewport, FCFeedViewportDiff;
+@class FCCloudContext, FCFeedDescriptor, FCFeedViewport, FCFeedViewportDiff;
 @protocol FCCoreConfiguration;
 
 @interface FCFeedViewportRefreshOperation : FCOperation
 {
     id <FCCoreConfiguration> _configuration;
+    FCCloudContext *_context;
     FCFeedViewport *_viewport;
     FCFeedDescriptor *_feedDescriptor;
     CDUnknownBlockType _refreshCompletionHandler;
@@ -19,14 +20,16 @@
     FCFeedViewportDiff *_resultDiff;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) FCFeedViewportDiff *resultDiff; // @synthesize resultDiff=_resultDiff;
 @property(retain, nonatomic) FCFeedViewport *resultViewport; // @synthesize resultViewport=_resultViewport;
 @property(copy, nonatomic) CDUnknownBlockType refreshCompletionHandler; // @synthesize refreshCompletionHandler=_refreshCompletionHandler;
 @property(retain, nonatomic) FCFeedDescriptor *feedDescriptor; // @synthesize feedDescriptor=_feedDescriptor;
 @property(retain, nonatomic) FCFeedViewport *viewport; // @synthesize viewport=_viewport;
+@property(retain, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property(copy, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
 - (void)operationWillFinishWithError:(id)arg1;
+- (void)_continueWithRefreshDate:(id)arg1 forYouConfig:(id)arg2;
 - (void)performOperation;
 - (_Bool)validateOperation;
 

@@ -7,16 +7,19 @@
 #import <TVPlayback/TVPBaseMediaItem.h>
 
 #import <VideosUI/TVPContentKeyLoading-Protocol.h>
+#import <VideosUI/TVPMediaItemReporting-Protocol.h>
+#import <VideosUI/TVPMediaItemReportingDelegate-Protocol.h>
 #import <VideosUI/VUIStoreFPSKeyLoaderDelegate-Protocol.h>
 
 @class NSDictionary, NSError, NSNumber, NSObject, NSString, NSURL, TVPPlayer, VUIMutableBookmark, VUIStoreFPSKeyLoader, VUIVideoManagedObject;
 
-@interface VUIStoreAuxMediaItem : TVPBaseMediaItem <VUIStoreFPSKeyLoaderDelegate, TVPContentKeyLoading>
+@interface VUIStoreAuxMediaItem : TVPBaseMediaItem <VUIStoreFPSKeyLoaderDelegate, TVPContentKeyLoading, TVPMediaItemReporting, TVPMediaItemReportingDelegate>
 {
     _Bool _isAudioOnly;
     _Bool _disableResumeMenu;
     _Bool _disableScrubbing;
     _Bool _sharedPurchase;
+    _Bool _ignoreExistingOfflineKeyData;
     _Bool _isHLS;
     _Bool _isForStartingDownload;
     NSURL *_fpsCertificateURL;
@@ -35,6 +38,7 @@
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isForStartingDownload; // @synthesize isForStartingDownload=_isForStartingDownload;
 @property(retain, nonatomic) VUIVideoManagedObject *videoManagedObject; // @synthesize videoManagedObject=_videoManagedObject;
 @property(nonatomic) _Bool isHLS; // @synthesize isHLS=_isHLS;
@@ -45,6 +49,7 @@
 @property(retain, nonatomic) TVPPlayer *scrubPlayer; // @synthesize scrubPlayer=_scrubPlayer;
 @property(retain, nonatomic) VUIMutableBookmark *bookmark; // @synthesize bookmark=_bookmark;
 @property(copy, nonatomic) NSURL *url; // @synthesize url=_url;
+@property(nonatomic) _Bool ignoreExistingOfflineKeyData; // @synthesize ignoreExistingOfflineKeyData=_ignoreExistingOfflineKeyData;
 @property(nonatomic) _Bool sharedPurchase; // @synthesize sharedPurchase=_sharedPurchase;
 @property(nonatomic) _Bool disableScrubbing; // @synthesize disableScrubbing=_disableScrubbing;
 @property(nonatomic) _Bool disableResumeMenu; // @synthesize disableResumeMenu=_disableResumeMenu;
@@ -54,8 +59,6 @@
 @property(copy, nonatomic) NSDictionary *fpsAdditionalServerParams; // @synthesize fpsAdditionalServerParams=_fpsAdditionalServerParams;
 @property(copy, nonatomic) NSURL *fpsKeyServerURL; // @synthesize fpsKeyServerURL=_fpsKeyServerURL;
 @property(copy, nonatomic) NSURL *fpsCertificateURL; // @synthesize fpsCertificateURL=_fpsCertificateURL;
-- (void).cxx_destruct;
-- (void)_userPlaybackSettingsDidChange:(id)arg1;
 - (id)_offlineKeyDataForKeyRequest:(id)arg1;
 - (void)_scrubPlayerItemDidLoad:(id)arg1;
 - (void)_keepKeyLoaderAlive:(id)arg1;
@@ -64,6 +67,9 @@
 - (void)updateOfflineKeyWithIdentifier:(id)arg1 updatedOfflineKeyData:(id)arg2;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1;
+- (void)mediaItem:(id)arg1 didChangeFromPlaybackState:(id)arg2 toPlaybackState:(id)arg3 updatedRate:(double)arg4 player:(id)arg5;
+- (void)mediaItem:(id)arg1 errorDidOccur:(id)arg2 player:(id)arg3;
+- (id)reportingDelegate;
 - (void)cleanUpMediaItem;
 - (void)updateBookmarkWithSuggestedTime:(double)arg1 forElapsedTime:(double)arg2 duration:(double)arg3 playbackOfMediaItemIsEnding:(_Bool)arg4;
 - (id)_replacementErrorForSharedPurchasePlaybackError:(id)arg1;

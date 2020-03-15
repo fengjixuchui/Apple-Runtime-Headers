@@ -15,15 +15,17 @@ __attribute__((visibility("hidden")))
 {
     BOOL _shouldHideTabContent;
     long long _dialogType;
+    CDUnknownBlockType _presentationBlock;
     NSURL *_url;
     STLockoutViewController *_lockoutViewController;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) STLockoutViewController *lockoutViewController; // @synthesize lockoutViewController=_lockoutViewController;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
+@property(readonly, nonatomic) CDUnknownBlockType presentationBlock; // @synthesize presentationBlock=_presentationBlock;
 @property(readonly, nonatomic) BOOL shouldHideTabContent; // @synthesize shouldHideTabContent=_shouldHideTabContent;
 @property(readonly, nonatomic) long long dialogType; // @synthesize dialogType=_dialogType;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *host;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithURL:(id)arg1 lockoutViewController:(id)arg2;

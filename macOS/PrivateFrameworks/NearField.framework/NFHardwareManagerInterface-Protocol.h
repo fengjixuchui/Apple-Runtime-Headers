@@ -22,6 +22,8 @@
 - (oneway void)getHostCardEmulationLog:(void (^)(NSArray *, NSError *))arg1;
 - (oneway void)toggleGPIO:(unsigned short)arg1 callback:(void (^)(NSError *))arg2;
 - (oneway void)triggerDelayedWake:(unsigned char)arg1 callback:(void (^)(NSError *))arg2;
+- (oneway void)cancelSinglePollExpressModeAssertion:(void (^)(NSError *))arg1;
+- (oneway void)openSinglePollExpressModeAssertion:(double)arg1 callback:(void (^)(NSError *))arg2;
 - (oneway void)getPowerCounters:(void (^)(NSError *, NSDictionary *))arg1;
 - (oneway void)getUniqueFDRKeyXPC:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)getDieID:(void (^)(NSData *, NSError *))arg1;

@@ -6,23 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class AMSAuthenticateRequest, AMSFinanceDialogResponse;
+#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
+
+@class AMSAuthenticateRequest, AMSFinanceDialogResponse, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceAuthenticateResponse : NSObject
+@interface AMSFinanceAuthenticateResponse : NSObject <AMSFinancePerformable>
 {
     AMSAuthenticateRequest *_authenticateRequest;
+    NSDictionary *_dialogDictionary;
     AMSFinanceDialogResponse *_dialogResponse;
 }
 
-+ (id)_createRequestFromDictionary:(id)arg1 dialogRequest:(id)arg2 taskInfo:(id)arg3;
-@property(readonly, nonatomic) AMSFinanceDialogResponse *dialogResponse; // @synthesize dialogResponse=_dialogResponse;
-@property(readonly, nonatomic) AMSAuthenticateRequest *authenticateRequest; // @synthesize authenticateRequest=_authenticateRequest;
++ (id)_performAuthRequest:(id)arg1 redirectURL:(id)arg2 taskInfo:(id)arg3;
++ (id)_handleAuthenticateResult:(id)arg1 redirectURL:(id)arg2 error:(id)arg3;
++ (id)_authenticateRequestWithAuthType:(unsigned int)arg1 taskInfo:(id)arg2 dialogResponse:(id)arg3;
++ (id)performAuthForTypesFromResponse:(id)arg1 taskInfo:(id)arg2;
 - (void).cxx_destruct;
-- (id)_handleAuthenticateResult:(id)arg1 error:(id)arg2;
-- (id)_findActionableButton;
+@property(readonly, nonatomic) AMSFinanceDialogResponse *dialogResponse; // @synthesize dialogResponse=_dialogResponse;
+@property(retain, nonatomic) NSDictionary *dialogDictionary; // @synthesize dialogDictionary=_dialogDictionary;
+@property(readonly, nonatomic) AMSAuthenticateRequest *authenticateRequest; // @synthesize authenticateRequest=_authenticateRequest;
+- (id)_locateActionableButtonUsingDialogResponse:(id)arg1;
 - (id)performWithTaskInfo:(id)arg1;
 - (id)initWithDialogDictionary:(id)arg1 taskInfo:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned int hash;
+@property(readonly) Class superclass;
 
 @end
 

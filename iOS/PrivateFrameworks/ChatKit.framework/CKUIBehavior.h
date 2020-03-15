@@ -25,6 +25,7 @@
 + (id)fontWithStyle:(id)arg1 adjustedForMaxSizeCategory:(id)arg2;
 + (id)orderedContentSizeCategories;
 + (id)sharedBehaviors;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double waveformMaxWidth; // @synthesize waveformMaxWidth=_waveformMaxWidth;
 @property(readonly, nonatomic) UIImage *dismissButtonImage; // @synthesize dismissButtonImage=_dismissButtonImage;
 @property(readonly, nonatomic) UIImage *orbShareLocationImage; // @synthesize orbShareLocationImage=_orbShareLocationImage;
@@ -35,7 +36,6 @@
 @property(readonly, nonatomic) UIImage *unDNDActionImage; // @synthesize unDNDActionImage=_unDNDActionImage;
 @property(readonly, nonatomic) UIImage *dndActionImage; // @synthesize dndActionImage=_dndActionImage;
 @property(nonatomic) long long HUDStyle; // @synthesize HUDStyle=_HUDStyle;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) UIImage *carplayComposeButtonImage;
 @property(readonly, nonatomic) UIImage *carplayChevronImage;
 @property(readonly, nonatomic) UIFont *searchIndexingSubtitleFont;
@@ -102,6 +102,7 @@
 - (id)messageAcknowledgmentPollingImageNameForAcknowledgmentType:(long long)arg1;
 - (id)messageAcknowledgmentImageNameForType:(long long)arg1;
 @property(readonly, nonatomic) NSArray *messageAcknowledgmentPickerBarAcknowledgmentOrder;
+@property(readonly, nonatomic) double messageAcknowledgementVotingViewHeight;
 @property(readonly, nonatomic) UIFont *messageAcknowledgmentVoteCountFont;
 @property(readonly, nonatomic) struct CGSize aggregateAcknowledgmentTranscriptBalloonSize;
 @property(readonly, nonatomic) struct CGSize messageAcknowledgmentPickerBarOffsetFromBalloon;
@@ -524,6 +525,9 @@
 @property(readonly, nonatomic) Class navigationBarClass;
 @property(readonly, nonatomic) Class conversationListNavigationControllerClass;
 @property(readonly, nonatomic) Class conversationListTableViewClass;
+@property(readonly, nonatomic) UIFont *filterCellTitleFont;
+- (void)setupNavBarAppearanceWithNavigationController:(id)arg1 withBackgroundColor:(id)arg2;
+- (void)setupNavBarAppearanceWithNavigationController:(id)arg1;
 @property(readonly, nonatomic) NSArray *acceptableUTIs;
 @property(readonly, nonatomic) UIImage *chevronImage;
 @property(readonly, nonatomic) UIFont *navbarDefaultLabelFont;

@@ -5,10 +5,11 @@
 //
 
 #import <NewsUI2/NFCopying-Protocol.h>
+#import <NewsUI2/NSObject-Protocol.h>
 
-@class FCForYouGroupsConfiguration, FCNotificationsConfiguration, FCPaidBundleConfiguration, FCPersonalizationTreatment, FCTopStoriesConfiguration, FCVideoGroupsConfig, NSArray, NSDictionary, NSNumber, NSString, NTPBTodayConfig;
+@class FCForYouGroupsConfiguration, FCNotificationsConfiguration, FCPaidBundleConfiguration, FCPersonalizationTreatment, FCTopStoriesConfiguration, FCVideoGroupsConfig, NSArray, NSDictionary, NSNumber, NSString, NSURL, NTPBTodayConfig;
 
-@protocol FCCoreConfiguration <NFCopying>
+@protocol FCCoreConfiguration <NSObject, NFCopying>
 - (NSDictionary *)analyticsEnvelopeContentTypeConfigsForEnvironment:(unsigned long long)arg1;
 - (NTPBTodayConfig *)todayConfigWithQueueConfigs:(NSArray *)arg1 maxSlotCount:(unsigned long long)arg2;
 - (FCPersonalizationTreatment *)personalizationTreatmentForFeldsparID:(NSString *)arg1;
@@ -64,6 +65,8 @@
 @property(nonatomic, readonly) long long appConfigRefreshRate;
 
 @optional
+@property(nonatomic, readonly) NSString *todayFeedKnobs;
+@property(nonatomic, readonly) NSArray *aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
 @property(nonatomic, readonly) double feedLineHeightMultiplier;
 @property(nonatomic, readonly) NSString *spotlightChannelID;
 @property(nonatomic, readonly) long long entitlementsCacheRecoveryAttemptDurationInSeconds;
@@ -79,6 +82,7 @@
 @property(nonatomic, readonly) long long singleTopicFeedMinFeedItemsPerRequest;
 @property(nonatomic, readonly) BOOL shouldShowAlternateHeadlines;
 - (FCPersonalizationTreatment *)personalizationTreatment;
+- (NSURL *)appAnalyticsEndpointUrlForEnvironment:(unsigned long long)arg1;
 
 // Remaining properties
 @property(nonatomic, readonly) BOOL orderFeedEndpointEnabled;

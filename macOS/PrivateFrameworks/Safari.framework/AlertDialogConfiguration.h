@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL shouldHideTabContent;
     BOOL _hasPromptField;
     long long _dialogType;
+    CDUnknownBlockType _presentationBlock;
     NSString *_title;
     NSString *_message;
     NSArray *_buttonLabels;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSNumber *_customWidth;
 }
 
++ (id)authenticatorDialogConfigurationForPanel:(id)arg1 type:(long long)arg2 withPresentationBlock:(CDUnknownBlockType)arg3;
 + (id)storageQuotaIncreasePromptConfigurationWithURL:(id)arg1 originDisplayName:(id)arg2 newQuota:(unsigned long long)arg3;
 + (id)plugInPromptConfigurationWithTitle:(id)arg1 message:(id)arg2 confirmButtonLabel:(id)arg3;
 + (id)openApplicationPromptConfigurationWithApplicationName:(id)arg1 originStringForAccessibility:(id)arg2;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 + (id)javaScriptPromptDialogConfigurationWithMessage:(id)arg1 defaultResponse:(id)arg2 originStringForAccessibility:(id)arg3;
 + (id)javaScriptConfirmDialogConfigurationWithMessage:(id)arg1 originStringForAccessibility:(id)arg2;
 + (id)javaScriptAlertDialogConfigurationWithMessage:(id)arg1 originStringForAccessibility:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSNumber *customWidth; // @synthesize customWidth=_customWidth;
 @property(readonly, copy, nonatomic) NSString *promptFieldDefaultResponse; // @synthesize promptFieldDefaultResponse=_promptFieldDefaultResponse;
 @property(readonly, nonatomic) BOOL hasPromptField; // @synthesize hasPromptField=_hasPromptField;
@@ -43,10 +46,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *buttonLabels; // @synthesize buttonLabels=_buttonLabels;
 @property(readonly, copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(readonly, nonatomic) CDUnknownBlockType presentationBlock; // @synthesize presentationBlock=_presentationBlock;
 @property(readonly, nonatomic) BOOL shouldHideTabContent; // @synthesize shouldHideTabContent;
 @property(readonly, nonatomic) long long dialogType; // @synthesize dialogType=_dialogType;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_initWithTitle:(id)arg1 message:(id)arg2 buttonLabels:(id)arg3 originStringForAccessibility:(id)arg4 hasPromptField:(BOOL)arg5 promptFieldDefaultResponse:(id)arg6 customWidth:(id)arg7 dialogType:(long long)arg8 presentationBlock:(CDUnknownBlockType)arg9;
 - (id)_initWithTitle:(id)arg1 message:(id)arg2 buttonLabels:(id)arg3 originStringForAccessibility:(id)arg4 hasPromptField:(BOOL)arg5 promptFieldDefaultResponse:(id)arg6 customWidth:(id)arg7 dialogType:(long long)arg8;
 - (id)initWithTitle:(id)arg1 message:(id)arg2 buttonLabels:(id)arg3 originStringForAccessibility:(id)arg4 hasPromptField:(BOOL)arg5 promptFieldDefaultResponse:(id)arg6 customWidth:(id)arg7;
 

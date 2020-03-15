@@ -51,6 +51,7 @@
 
 + (void)userEngagedWithUniqueIdentifier:(id)arg1 bundleId:(id)arg2 forUserQuery:(id)arg3 interactionType:(int)arg4;
 + (id)_makeQueryErrorWithErrorCode:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *privateBundleID; // @synthesize privateBundleID=_privateBundleID;
 @property(nonatomic) _Bool suspended; // @synthesize suspended=_suspended;
 @property(nonatomic) _Bool userFSIndex; // @synthesize userFSIndex=_userFSIndex;
@@ -75,7 +76,6 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(copy) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy) CDUnknownBlockType foundItemsHandler; // @synthesize foundItemsHandler=_foundItemsHandler;
-- (void).cxx_destruct;
 - (void)didFinishWithError:(id)arg1;
 - (void)didReturnResults:(long long)arg1 resultsData:(id)arg2 oidData:(id)arg3 protectionClass:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)processLiveResultsData:(id)arg1 oidData:(id)arg2 protectionClass:(id)arg3;
@@ -83,9 +83,9 @@
 - (void)processResultsData:(id)arg1 protectionClass:(id)arg2;
 - (void)handleFoundItems:(id)arg1;
 - (id)copyResultFromPlist:(id)arg1 protectionClass:(id)arg2;
-- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long *)arg4 oidCount:(unsigned int)arg5 addItems:(id *)arg6 updateItems:(id *)arg7;
+- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long *)arg4 oidCount:(unsigned int)arg5 addItems:(id *)arg6 updateItems:(id *)arg7 moveItems:(id *)arg8;
 - (_Bool)removeUserFSLiveOID:(long long)arg1 outBundleID:(id *)arg2 outIdentifier:(id *)arg3;
-- (void)addOrUpdateUserFSLiveOID:(long long)arg1 userFSDomain:(id)arg2 identifier:(id)arg3;
+- (id)addOrUpdateUserFSLiveOID:(long long)arg1 userFSDomain:(id)arg2 identifier:(id)arg3;
 - (_Bool)addOrUpdateLiveOID:(long long)arg1 bundleID:(id)arg2 identifier:(id)arg3;
 - (_Bool)removeLiveOID:(long long)arg1 outBundleID:(id *)arg2 outIdentifier:(id *)arg3;
 - (void)processRemoveResultsData:(id)arg1 protectionClass:(id)arg2;

@@ -20,9 +20,9 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_connection;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(nonatomic) __weak FPDServer *server; // @synthesize server=_server;
-- (void).cxx_destruct;
 - (void)_test_simulateUninstallOfBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_simulateInstallOfBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_callRemoveTrashedItemsOlderThanDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)scheduleActionOperationWithInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reindexAllSearchableItemsForBundleIDs:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg1;
-- (void)writeCheckReportTo:(id)arg1 limitNumberOfItems:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getSyncedRootsURLs:(CDUnknownBlockType)arg1;
 - (void)dumpStateTo:(id)arg1 limitNumberOfItems:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)didUpdateAlternateContentsDocumentForDocumentAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchAlternateContentsURLForDocumentURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

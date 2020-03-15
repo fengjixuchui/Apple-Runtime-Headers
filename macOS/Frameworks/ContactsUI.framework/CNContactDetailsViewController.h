@@ -9,7 +9,7 @@
 #import <ContactsUI/ABCardCollectionViewControllerDelegate-Protocol.h>
 #import <ContactsUI/CNContactCardWidget-Protocol.h>
 
-@class ABCardCollectionView, ABCardCollectionViewController, ABCardViewStyleProvider, AKCardViewDataSource, CNContact, NSString;
+@class ABCardCollectionView, ABCardCollectionViewController, ABCardViewStyleProvider, AKCardViewDataSource, CNContact, CNUIEditingRules, NSString;
 @protocol CNContactDetailsViewControllerDelegate;
 
 @interface CNContactDetailsViewController : NSViewController <ABCardCollectionViewControllerDelegate, CNContactCardWidget>
@@ -20,19 +20,21 @@
     ABCardViewStyleProvider *_styleProvider;
     AKCardViewDataSource *_dataSource;
     unsigned long long _mode;
+    CNUIEditingRules *_editingRules;
     ABCardCollectionView *_cardCollectionView;
     ABCardCollectionViewController *_cardCollectionViewController;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) ABCardCollectionViewController *cardCollectionViewController; // @synthesize cardCollectionViewController=_cardCollectionViewController;
 @property(retain, nonatomic) ABCardCollectionView *cardCollectionView; // @synthesize cardCollectionView=_cardCollectionView;
+@property(retain, nonatomic) CNUIEditingRules *editingRules; // @synthesize editingRules=_editingRules;
 @property(nonatomic) BOOL isUnified; // @synthesize isUnified=_isUnified;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(retain, nonatomic) AKCardViewDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) ABCardViewStyleProvider *styleProvider; // @synthesize styleProvider=_styleProvider;
 @property(nonatomic) __weak id <CNContactDetailsViewControllerDelegate> controllerDelegate; // @synthesize controllerDelegate=_controllerDelegate;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-- (void).cxx_destruct;
 - (id)userActionListDataSource;
 - (void)showLastItem;
 - (void)showFirstItem;
@@ -55,7 +57,7 @@
 - (void)cardCollectionViewControllerKeyViewLoopNeedsUpdate:(id)arg1;
 - (BOOL)shouldBeIncludedInKeyViewLoop;
 - (id)updateKeyViewLoopAndReturnTailView;
-- (void)commitEditing;
+- (BOOL)commitEditing;
 - (void)applyDisplayAttributes;
 - (void)editCollectionItemWithKey:(id)arg1 label:(id)arg2;
 - (void)highlightSearchTerms:(id)arg1;

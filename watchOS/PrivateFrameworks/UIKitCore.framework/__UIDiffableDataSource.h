@@ -37,6 +37,7 @@
     NSMutableArray *_pendingSnapshotUpdates;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableArray *pendingSnapshotUpdates; // @synthesize pendingSnapshotUpdates=_pendingSnapshotUpdates;
 @property(readonly, nonatomic) _Bool isSnapshot; // @synthesize isSnapshot=_isSnapshot;
 @property(retain, nonatomic) _UIDataSourceSnapshotter *dataSourceSnapshot; // @synthesize dataSourceSnapshot=_dataSourceSnapshot;
@@ -56,7 +57,6 @@
 @property(copy, nonatomic) CDUnknownBlockType supplementaryReuseIdentifierProvider; // @synthesize supplementaryReuseIdentifierProvider=_supplementaryReuseIdentifierProvider;
 @property(copy, nonatomic) CDUnknownBlockType supplementaryViewProvider; // @synthesize supplementaryViewProvider=_supplementaryViewProvider;
 @property(copy, nonatomic) CDUnknownBlockType tableViewCellProvider; // @synthesize tableViewCellProvider=_tableViewCellProvider;
-- (void).cxx_destruct;
 - (id)_cellForRowAtIndexPathDeprecatedSPI:(id)arg1 tableView:(id)arg2;
 - (int)_numberOfRowsInSectionDeprecatedSPI:(int)arg1 tableView:(id)arg2;
 - (int)_numberOfSectionsForTableViewDeprecatedSPI:(id)arg1;
@@ -127,6 +127,7 @@
 @property(readonly, nonatomic) NSArray *sectionIdentifiers;
 @property(readonly, nonatomic) int numberOfSections;
 @property(readonly, nonatomic) int numberOfItems;
+- (_Bool)_isDiffableDataSource;
 @property(readonly, copy) NSString *description;
 - (id)initWithTableView:(id)arg1 reuseIdentifierProvider:(CDUnknownBlockType)arg2 cellConfigurationHandler:(CDUnknownBlockType)arg3;
 - (id)initWithTableView:(id)arg1 cellProvider:(CDUnknownBlockType)arg2;

@@ -6,21 +6,19 @@
 
 #import <PhotosUICore/PXObservable.h>
 
-@class AVPlayerItem, NSError, NSString;
+@class NSString, PXVideoContentProviderLoadingResult;
 
 @interface PXVideoContentProvider : PXObservable
 {
-    AVPlayerItem *_playerItem;
+    PXVideoContentProviderLoadingResult *_loadingResult;
     double _loadingProgress;
     NSString *_contentIdentifier;
-    NSError *_error;
 }
 
-@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *contentIdentifier; // @synthesize contentIdentifier=_contentIdentifier;
 @property(nonatomic) double loadingProgress; // @synthesize loadingProgress=_loadingProgress;
-@property(retain, nonatomic) AVPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
-- (void).cxx_destruct;
+@property(retain, nonatomic) PXVideoContentProviderLoadingResult *loadingResult; // @synthesize loadingResult=_loadingResult;
 - (void)cancelLoading;
 - (void)beginLoadingWithPriority:(long long)arg1;
 - (id)mutableChangeObject;

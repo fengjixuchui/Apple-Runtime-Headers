@@ -12,7 +12,7 @@
 #import <CommunicationsSetupUI/CNMeCardSharingSettingsViewControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/IMCloudKitEventHandler-Protocol.h>
 
-@class CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, CKOnboardingController, IMCTXPCServiceSubscriptionInfo, NSString;
+@class CKBlackholeConversationListViewController, CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, CKOnboardingController, IMCTXPCServiceSubscriptionInfo, NSString;
 
 @interface CKSettingsMessagesController : CNFRegListController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler, CNMeCardSharingSettingsViewControllerDelegate, CKOnboardingControllerDelegate>
 {
@@ -24,6 +24,7 @@
     CKMultipleCTSubscriptionsController *_mmsAllowsGroupMessagingController;
     IMCTXPCServiceSubscriptionInfo *_ctSubscriptionInfo;
     CKOnboardingController *_onboardingController;
+    CKBlackholeConversationListViewController *_blackholeConversationListViewController;
     CKNSExtension *_ckExtension;
 }
 
@@ -31,14 +32,15 @@
 + (id)removeFirstPartyExtensionFromArray:(id)arg1;
 + (int)currentMessageAutoKeepOptionForType:(int)arg1;
 + (_Bool)currentMessageAutoKeepForType:(int)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CKNSExtension *ckExtension; // @synthesize ckExtension=_ckExtension;
+@property(retain, nonatomic) CKBlackholeConversationListViewController *blackholeConversationListViewController; // @synthesize blackholeConversationListViewController=_blackholeConversationListViewController;
 @property(retain, nonatomic) CKOnboardingController *onboardingController; // @synthesize onboardingController=_onboardingController;
 @property(retain, nonatomic) IMCTXPCServiceSubscriptionInfo *ctSubscriptionInfo; // @synthesize ctSubscriptionInfo=_ctSubscriptionInfo;
 @property(retain, nonatomic) CKMultipleCTSubscriptionsController *mmsAllowsGroupMessagingController; // @synthesize mmsAllowsGroupMessagingController=_mmsAllowsGroupMessagingController;
 @property(retain, nonatomic) CKMultipleCTSubscriptionsController *mmsMessagingController; // @synthesize mmsMessagingController=_mmsMessagingController;
 @property(retain) id beginMappingID; // @synthesize beginMappingID=_beginMappingID;
 @property(retain, nonatomic) CKFilteringListController *filteringController; // @synthesize filteringController=_filteringController;
-- (void).cxx_destruct;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)controllerForSpecifier:(id)arg1;
 - (id)_smsRelayDevicesController;
@@ -68,6 +70,9 @@
 - (_Bool)shouldShowMadridAccounts;
 - (id)sendAsSMSIdentifiers;
 - (_Bool)shouldShowSendAsSMS;
+- (void)setJunkFilteringReceiptsEnabled:(id)arg1 specifier:(id)arg2;
+- (id)areJunkFilteringReceiptsEnabled:(id)arg1;
+- (_Bool)shouldShowJunkFilteringReceipts;
 - (void)setReadReceiptsEnabled:(id)arg1 specifier:(id)arg2;
 - (id)areReadReceiptsEnabled:(id)arg1;
 - (id)readReceiptSpecifierIdentifiers;
@@ -106,6 +111,7 @@
 - (_Bool)shouldShowJunkConversationsRow;
 - (void)setConversationListFilteringEnabled:(id)arg1 specifier:(id)arg2;
 - (id)isConversationListFilteringEnabled:(id)arg1;
+- (id)junkFilterReceiptsRowIdentifier;
 - (id)junkConversationsRowIdentifier;
 - (id)spamFilteringSpecifierIdentifiers;
 - (id)iMessageFilteringSpecifierIdentifiers;

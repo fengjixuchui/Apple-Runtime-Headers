@@ -25,9 +25,9 @@ __attribute__((visibility("hidden")))
     NSDictionary *_sourceToAuthRecord;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *sourceToAuthRecord; // @synthesize sourceToAuthRecord=_sourceToAuthRecord;
 @property(retain, nonatomic) HKSourceListDataSource *sourceListDataSource; // @synthesize sourceListDataSource=_sourceListDataSource;
-- (void).cxx_destruct;
 - (void)sourceListDataSourceDidUpdate:(id)arg1;
 - (void)switchCellValueChanged:(id)arg1 value:(_Bool)arg2;
 - (id)_sourceForIndexPath:(id)arg1;
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 tableView:(id)arg4 fetchError:(id)arg5;
 - (void)_fetchAuthorizationRecordsBySourceForCharacteristic:(id)arg1;
 - (void)_gatherDataAndRefreshUI;
 - (void)traitCollectionDidChange:(id)arg1;

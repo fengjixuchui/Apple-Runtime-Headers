@@ -22,6 +22,7 @@
     _Bool _listsDADisplayOrderChanged;
     _Bool _inactive;
     _Bool _didChooseToMigrate;
+    _Bool _didChooseToMigrateLocally;
     _Bool _didFinishMigration;
     _Bool _daAllowsCalendarAddDeleteModify;
     _Bool _daSupportsSharedCalendars;
@@ -44,11 +45,13 @@
 + (id)objectIDWithUUID:(id)arg1;
 + (id)newObjectID;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool daWasMigrated; // @synthesize daWasMigrated=_daWasMigrated;
 @property(nonatomic) _Bool daSupportsSharedCalendars; // @synthesize daSupportsSharedCalendars=_daSupportsSharedCalendars;
 @property(nonatomic) _Bool daAllowsCalendarAddDeleteModify; // @synthesize daAllowsCalendarAddDeleteModify=_daAllowsCalendarAddDeleteModify;
 @property(copy, nonatomic) NSString *daConstraintsDescriptionPath; // @synthesize daConstraintsDescriptionPath=_daConstraintsDescriptionPath;
 @property(nonatomic) _Bool didFinishMigration; // @synthesize didFinishMigration=_didFinishMigration;
+@property(nonatomic) _Bool didChooseToMigrateLocally; // @synthesize didChooseToMigrateLocally=_didChooseToMigrateLocally;
 @property(nonatomic) _Bool didChooseToMigrate; // @synthesize didChooseToMigrate=_didChooseToMigrate;
 @property(nonatomic) _Bool inactive; // @synthesize inactive=_inactive;
 @property(nonatomic) _Bool listsDADisplayOrderChanged; // @synthesize listsDADisplayOrderChanged=_listsDADisplayOrderChanged;
@@ -63,7 +66,6 @@
 @property(copy, nonatomic) NSString *daSyncToken; // @synthesize daSyncToken;
 @property(copy, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag;
 @property(copy, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier;
-- (void).cxx_destruct;
 - (id)listIDsMergeableOrderingReplicaIDSource;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 @property(readonly, nonatomic) NSString *displayName;

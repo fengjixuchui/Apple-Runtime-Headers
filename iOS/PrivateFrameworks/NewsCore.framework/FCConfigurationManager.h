@@ -29,7 +29,6 @@
     FCNewsAppConfig *_currentAppConfiguration;
     NSArray *_treatmentIDs;
     NSArray *_segmentSetIDs;
-    NSArray *_widgetChangeTags;
     NSDictionary *_cachedWidgetConfigurationDict;
     NSData *_currentMagazinesConfiguration;
     NSHashTable *_appConfigObservers;
@@ -39,13 +38,13 @@
 + (id)overrideAppConfigID;
 + (id)internalOverrideAdditionalSegmentSetIDs;
 + (id)internalOverrideSegmentSetIDs;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isRunningUnitTests) _Bool runningUnitTests; // @synthesize runningUnitTests=_runningUnitTests;
 @property(nonatomic) _Bool attemptedAppConfigFetch; // @synthesize attemptedAppConfigFetch=_attemptedAppConfigFetch;
 @property(retain, nonatomic) NSHashTable *coreConfigObservers; // @synthesize coreConfigObservers=_coreConfigObservers;
 @property(retain, nonatomic) NSHashTable *appConfigObservers; // @synthesize appConfigObservers=_appConfigObservers;
 @property(copy, nonatomic) NSData *currentMagazinesConfiguration; // @synthesize currentMagazinesConfiguration=_currentMagazinesConfiguration;
 @property(retain, nonatomic) NSDictionary *cachedWidgetConfigurationDict; // @synthesize cachedWidgetConfigurationDict=_cachedWidgetConfigurationDict;
-@property(copy, nonatomic) NSArray *widgetChangeTags; // @synthesize widgetChangeTags=_widgetChangeTags;
 @property(nonatomic) _Bool shouldIgnoreCache; // @synthesize shouldIgnoreCache=_shouldIgnoreCache;
 @property(copy, nonatomic) NSArray *segmentSetIDs; // @synthesize segmentSetIDs=_segmentSetIDs;
 @property(copy, nonatomic) NSArray *treatmentIDs; // @synthesize treatmentIDs=_treatmentIDs;
@@ -57,9 +56,6 @@
 @property(readonly, nonatomic) id <FCFeldsparIDProvider> feldsparIDProvider; // @synthesize feldsparIDProvider=_feldsparIDProvider;
 @property(readonly, nonatomic) FCContextConfiguration *contextConfiguration; // @synthesize contextConfiguration=_contextConfiguration;
 @property(readonly, nonatomic) RCConfigurationManager *remoteConfigurationManager; // @synthesize remoteConfigurationManager=_remoteConfigurationManager;
-- (void).cxx_destruct;
-- (id)_deserializeChangeTags:(id)arg1;
-- (id)_serializeChangeTags:(id)arg1;
 - (id)_changeTagsInRecords:(id)arg1;
 - (id)_changeTagsInWidgetConfigurationDict:(id)arg1;
 - (id)_mergeRecords:(id)arg1 withCachedRecords:(id)arg2;

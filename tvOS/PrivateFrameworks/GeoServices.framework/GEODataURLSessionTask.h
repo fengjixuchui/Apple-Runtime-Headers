@@ -8,12 +8,11 @@
 
 #import <GeoServices/GEODataSessionTask-Protocol.h>
 #import <GeoServices/GEODataSessionUpdatableTask-Protocol.h>
-#import <GeoServices/GEOStateCapturing-Protocol.h>
 
 @class GEOClientMetrics, GEODataRequest, NSData, NSDate, NSError, NSHTTPURLResponse, NSMutableData, NSString, NSURL, NSURLRequest, NSURLSessionTask, NSURLSessionTaskMetrics;
 @protocol GEODataSessionTaskDelegate, GEORequestCounterTicket, NSObject, OS_dispatch_queue, OS_os_activity, OS_voucher;
 
-@interface GEODataURLSessionTask : NSObject <GEOStateCapturing, GEODataSessionTask, GEODataSessionUpdatableTask>
+@interface GEODataURLSessionTask : NSObject <GEODataSessionTask, GEODataSessionUpdatableTask>
 {
     id <GEODataSessionTaskDelegate> _delegate;
     GEODataRequest *_request;
@@ -27,10 +26,8 @@
     double _startTime;
     double _endTime;
     CDStruct_d1a7ebee _requestKind;
-    unsigned int _taskIdentifier;
     _Bool _mptcpNegotiated;
     _Bool _receivedRNFNotification;
-    unsigned long long _stateCaptureHandle;
     float _priority;
     unsigned int _sessionIdentifier;
     _Bool _backingTaskNeedsResume;
@@ -42,6 +39,7 @@
     NSDate *_originalStartDate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool receivedRNFNotification; // @synthesize receivedRNFNotification=_receivedRNFNotification;
 @property(readonly, nonatomic) _Bool mptcpNegotiated; // @synthesize mptcpNegotiated=_mptcpNegotiated;
 @property(nonatomic) unsigned int sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
@@ -49,14 +47,12 @@
 @property(readonly, nonatomic) NSURLSessionTask *backingTask; // @synthesize backingTask=_backingTask;
 @property(readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property(readonly, nonatomic) NSURLSessionTaskMetrics *urlTaskMetrics; // @synthesize urlTaskMetrics=_urlTaskMetrics;
-@property(readonly, nonatomic) unsigned int taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property(readonly, nonatomic) __weak id <GEODataSessionTaskDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) CDStruct_d1a7ebee requestKind; // @synthesize requestKind=_requestKind;
 @property(copy, nonatomic) NSData *cachedData; // @synthesize cachedData=_cachedData;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(readonly, nonatomic) GEODataRequest *request; // @synthesize request=_request;
 @property(readonly, nonatomic) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
-- (void).cxx_destruct;
 - (void)delegateAsync:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) id <GEORequestCounterTicket> requestCounterTicket;
 - (void)notifyDelegateWithSession:(id)arg1;
@@ -81,13 +77,11 @@
 - (void)_prepareForRestart;
 - (void)_start;
 - (void)start;
-- (void)dealloc;
 - (id)initWithSession:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 requestKind:(CDStruct_d1a7ebee)arg4 priority:(float)arg5;
 - (id)init;
 - (_Bool)validateContentLengthWithError:(id *)arg1;
 - (_Bool)validateNonEmptyResponseWithError:(id *)arg1;
 - (_Bool)validateTileResponse:(_Bool)arg1 error:(id *)arg2;
-- (id)captureStateWithHints:(struct os_state_hints_s *)arg1;
 - (void)didCollectMetrics:(id)arg1;
 - (void)dataSession:(id)arg1 taskDidCompleteWithError:(id)arg2;
 - (void)didReceiveData:(id)arg1;

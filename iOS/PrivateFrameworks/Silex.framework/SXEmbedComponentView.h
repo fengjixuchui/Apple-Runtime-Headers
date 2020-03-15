@@ -13,22 +13,22 @@
 #import <Silex/WKScriptMessageHandler-Protocol.h>
 #import <Silex/WKUIDelegate-Protocol.h>
 
-@class NFMultiDelegate, NSMutableSet, NSString, SXEmbedResource, SXRelatedWebViewCache, SXWebCrashRetryThrottler, UIActivityIndicatorView, UILabel, WKNavigation, WKWebView, WKWebsiteDataStore;
-@protocol SXComponentActionHandler, SXEmbedService, SXEmbedType, SXLayoutInvalidator, SXReachabilityProvider;
+@class NFMultiDelegate, NSMutableSet, NSString, SWCrashRetryThrottler, SXEmbedResource, SXRelatedWebViewCache, UIActivityIndicatorView, UILabel, WKNavigation, WKWebView, WKWebsiteDataStore;
+@protocol SWReachabilityProvider, SXComponentActionHandler, SXEmbedService, SXEmbedType, SXLayoutInvalidator;
 
 @interface SXEmbedComponentView : SXComponentView <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, UIGestureRecognizerDelegate, UIScrollViewDelegate, SXViewportChangeListener>
 {
     _Bool _failedLoading;
     _Bool _isCurrentlyLoadingEmbedData;
     _Bool _hasRegisteredScriptMessageHandlers;
-    id <SXReachabilityProvider> _reachabilityProvider;
+    id <SWReachabilityProvider> _reachabilityProvider;
     id <SXEmbedService> _embedService;
     id <SXComponentActionHandler> _actionHandler;
     id <SXLayoutInvalidator> _layoutInvalidator;
     id <SXEmbedType> _embedConfiguration;
     SXEmbedResource *_embedResource;
     WKWebView *_webView;
-    SXWebCrashRetryThrottler *_webCrashRetryThrottler;
+    SWCrashRetryThrottler *_webCrashRetryThrottler;
     WKWebView *_webViewPresentingInFullscreen;
     UILabel *_errorLabel;
     NSString *_HTML;
@@ -44,6 +44,7 @@
     struct CGSize _currentViewportSize;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) SXRelatedWebViewCache *relatedWebViewCache; // @synthesize relatedWebViewCache=_relatedWebViewCache;
 @property(readonly, nonatomic) WKWebsiteDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property(readonly, nonatomic) NFMultiDelegate *scriptMessageHandler; // @synthesize scriptMessageHandler=_scriptMessageHandler;
@@ -60,15 +61,14 @@
 @property(retain, nonatomic) NSString *HTML; // @synthesize HTML=_HTML;
 @property(retain, nonatomic) UILabel *errorLabel; // @synthesize errorLabel=_errorLabel;
 @property(retain, nonatomic) WKWebView *webViewPresentingInFullscreen; // @synthesize webViewPresentingInFullscreen=_webViewPresentingInFullscreen;
-@property(retain, nonatomic) SXWebCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
+@property(retain, nonatomic) SWCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
 @property(retain, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 @property(retain, nonatomic) SXEmbedResource *embedResource; // @synthesize embedResource=_embedResource;
 @property(retain, nonatomic) id <SXEmbedType> embedConfiguration; // @synthesize embedConfiguration=_embedConfiguration;
 @property(readonly, nonatomic) id <SXLayoutInvalidator> layoutInvalidator; // @synthesize layoutInvalidator=_layoutInvalidator;
 @property(readonly, nonatomic) id <SXComponentActionHandler> actionHandler; // @synthesize actionHandler=_actionHandler;
 @property(readonly, nonatomic) id <SXEmbedService> embedService; // @synthesize embedService=_embedService;
-@property(readonly, nonatomic) id <SXReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) id <SWReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
 - (_Bool)allowHierarchyRemoval;
 - (void)removeScriptMessageHandlers;
 - (void)addScriptMessageHandlers;

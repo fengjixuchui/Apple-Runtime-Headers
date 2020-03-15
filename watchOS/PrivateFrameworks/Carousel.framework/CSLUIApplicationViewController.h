@@ -17,7 +17,7 @@
 #import <Carousel/CSLUISwitcherPageTransitionCoordinating-Protocol.h>
 #import <Carousel/IOSSHLBacklightObserver-Protocol.h>
 
-@class CSLApplicationIcon, CSLCarouselEventFocusManagerAssertion, CSLHitTestRegion, CSLSceneContainerView, CSLSceneMonitor, CSLSceneVisibilityAssertion, CSLUIActivateApplicationViewManager, CSLUIScreenTimeOverlayViewController, CSLUISwitcherPageTransitionCoordinator, FBScene, FBSceneHostManager, NSMutableArray, NSString;
+@class CSLApplicationIcon, CSLCarouselEventFocusManagerAssertion, CSLHitTestRegion, CSLSceneContainerView, CSLSceneMonitor, CSLSceneVisibilityAssertion, CSLUIActivateApplicationViewManager, CSLUISwitcherPageTransitionCoordinator, FBScene, FBSceneHostManager, NSMutableArray, NSString, STLockoutViewController;
 @protocol BSInvalidatable, CSLSScreenWakeProviderDelegate;
 
 @interface CSLUIApplicationViewController : CSLFirstResponderEnabledViewController <CSLUIActivatingUIAssertionObserver, CSLPIButtonHandlerProtocol, CSLButtonTapAssertionHandler, CSLSceneMonitorDelegate, CSLApplicationIconDelegate, BSDescriptionProviding, CSLSScreenWakeProvider, CSLSessionObserver, IOSSHLBacklightObserver, CSLUISwitcherPageTransitionCoordinating>
@@ -49,7 +49,7 @@
     NSMutableArray *_aotSessions;
     id <BSInvalidatable> _screenWakeProviderAssertion;
     unsigned int _snapshotPolicy;
-    CSLUIScreenTimeOverlayViewController *_screenTimeVC;
+    STLockoutViewController *_screenTimeVC;
     _Bool _sceneForegroundingSuspended;
     NSString *_bundleIdentifier;
 }
@@ -58,9 +58,9 @@
 + (id)_applicationButtonHandler;
 + (void)initializeButtonHandler;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool sceneForegroundingSuspended; // @synthesize sceneForegroundingSuspended=_sceneForegroundingSuspended;
 @property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (void).cxx_destruct;
 - (void)backlight:(id)arg1 aotEnabled:(_Bool)arg2;
 - (_Bool)sessionCouldImpactScreenTimeOverlay:(id)arg1;
 - (_Bool)hasAOTSession;

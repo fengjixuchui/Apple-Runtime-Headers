@@ -16,17 +16,16 @@
     TLKProminenceView *_highlightView;
 }
 
+- (void).cxx_destruct;
 @property _Bool isEmphasized; // @synthesize isEmphasized=_isEmphasized;
 @property(retain) TLKProminenceView *highlightView; // @synthesize highlightView=_highlightView;
 @property(retain) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain) TLKLabel *label; // @synthesize label=_label;
-- (void).cxx_destruct;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)didMoveToWindow;
 - (void)_dynamicUserInterfaceTraitDidChange;
 @property(copy, nonatomic) NSString *title;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct CGSize)intrinsicContentSize;
+- (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (void)setHighlighted:(_Bool)arg1;
 - (id)init;

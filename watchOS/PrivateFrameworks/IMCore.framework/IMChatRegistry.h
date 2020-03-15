@@ -60,6 +60,7 @@
 + (id)performanceLogHandle;
 + (void)setHasInitializedChatFiltering:(_Bool)arg1;
 + (_Bool)hasInitializedChatFiltering;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *chatIdToLastMessageItemMap; // @synthesize chatIdToLastMessageItemMap=_chatIdToLastMessageItemMap;
 @property(readonly, nonatomic) TUConversationManager *conversationManager; // @synthesize conversationManager=_conversationManager;
 @property(retain, nonatomic) NSArray *preExistingAllChats; // @synthesize preExistingAllChats=_preExistingAllChats;
@@ -72,7 +73,6 @@
 @property(nonatomic, setter=_setPostMessageSentNotifications:) _Bool _postMessageSentNotifications; // @synthesize _postMessageSentNotifications;
 @property(readonly, nonatomic) _Bool _isLoading; // @synthesize _isLoading=_loading;
 @property(nonatomic, setter=_setDefaultNumberOfMessagesToLoad:) unsigned int _defaultNumberOfMessagesToLoad; // @synthesize _defaultNumberOfMessagesToLoad;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isBatchProcessing;
 - (void)_setMetaDictionary:(id)arg1 forChatIdentifier:(id)arg2;
 - (id)scrutinyInfo;
@@ -92,6 +92,7 @@
 - (id)_allGUIDsForChat:(id)arg1;
 - (void)_handleAddressBookChange:(id)arg1;
 - (void)handleIMChatParticipantsDidChange:(id)arg1;
+- (id)unblackholeAndLoadChatWithIMHandles:(id)arg1;
 - (id)loadChatFromDaemonWithChatIdentifier:(id)arg1;
 - (id)_sortedParticipantIDHashForParticipants:(id)arg1;
 - (void)_addChat:(id)arg1 participantSet:(id)arg2;
@@ -228,7 +229,9 @@
 - (void)_removeChatIdFromChatIdToLastMessageItemMap:(id)arg1;
 - (void)lastMessageForAllChats:(id)arg1;
 - (void)blackholedChatsExist:(_Bool)arg1;
+- (void)previouslyBlackholedChatLoadedWithHandleIDs:(id)arg1 chat:(id)arg2;
 - (void)chatLoadedWithChatIdentifier:(id)arg1 chats:(id)arg2;
+- (void)_previouslyBlackholedChatLoadedWithHandleIDs:(id)arg1 chat:(id)arg2;
 - (void)_chatLoadedWithChatIdentifier:(id)arg1 chats:(id)arg2;
 - (void)setupComplete;
 - (void)_daemonReallyDied:(id)arg1;

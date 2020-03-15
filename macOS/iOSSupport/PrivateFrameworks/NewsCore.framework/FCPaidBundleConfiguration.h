@@ -30,6 +30,7 @@
 + (id)defaultLandingPageByLocalizedStorefrontID;
 + (id)renewalLandingPageByLocalizedStorefrontID;
 + (id)defaultConfigurationForStorefrontID:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *subscriptionButtonConfigurationsByType; // @synthesize subscriptionButtonConfigurationsByType=_subscriptionButtonConfigurationsByType;
 @property(retain, nonatomic) NSDictionary *magazineGenresByGenre; // @synthesize magazineGenresByGenre=_magazineGenresByGenre;
 @property(retain, nonatomic) NSDictionary *paywallConfigurationsByType; // @synthesize paywallConfigurationsByType=_paywallConfigurationsByType;
@@ -37,7 +38,6 @@
 @property(readonly, copy, nonatomic) NSString *localizedStorefrontID; // @synthesize localizedStorefrontID=_localizedStorefrontID;
 @property(readonly, copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
 @property(retain, nonatomic) NSDictionary *configDict; // @synthesize configDict=_configDict;
-- (void).cxx_destruct;
 - (id)defaultMagazineGenres;
 - (id)defaultSubscriptionButtonConfigs;
 - (id)defaultPaywallConfigs;
@@ -48,6 +48,7 @@
 @property(readonly, nonatomic) unsigned long long appLaunchUpsellPaidVisibility;
 @property(readonly, nonatomic) long long minFollowedMagazinesToHideSuggestionsRegular;
 @property(readonly, nonatomic) long long minFollowedMagazinesToHideSuggestionsCompact;
+@property(readonly, nonatomic) long long minimumArticlesBeforeArticleSoftPaywall;
 @property(readonly, nonatomic) long long minimumPagesInPDFIssueBeforeRead;
 @property(readonly, nonatomic) long long minimumArticlesInANFIssueBeforeRead;
 @property(readonly, nonatomic) long long minimumReadIssuesInMyMagazines;
@@ -96,6 +97,7 @@
 @property(readonly, nonatomic, getter=isPaidBundleVisible) BOOL paidBundleVisible;
 @property(readonly, nonatomic, getter=areMagazinesEnabled) BOOL magazinesEnabled;
 @property(readonly, nonatomic) long long deferredHardPaywallMinimumBodyTextLength;
+@property(readonly, nonatomic) unsigned long long magazineFeedPaywallType;
 @property(readonly, nonatomic) unsigned long long articleHardPaywallType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

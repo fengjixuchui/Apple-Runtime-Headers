@@ -58,10 +58,10 @@ __attribute__((visibility("hidden")))
 
 + (id)XPCInterface;
 + (id)operatorWithRemoteViewControllerProxy:(id)arg1 hostPID:(int)arg2 hostBundleID:(id)arg3 hostAuditToken:(CDStruct_4c969caf)arg4;
+- (void).cxx_destruct;
 @property(copy, nonatomic, setter=_setTraitsDidChangeHandler:) CDUnknownBlockType _traitsDidChangeHandler; // @synthesize _traitsDidChangeHandler=__traitsDidChangeHandler;
 @property(copy, nonatomic, setter=_setTraitsWillChangeHandler:) CDUnknownBlockType _traitsWillChangeHandler; // @synthesize _traitsWillChangeHandler=__traitsWillChangeHandler;
 @property(nonatomic) __weak id <_UIViewServiceViewControllerOperatorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
@@ -120,6 +120,8 @@ __attribute__((visibility("hidden")))
 - (void)__hostDidChangeStatusBarOrientationToInterfaceOrientation:(long long)arg1;
 - (void)__hostDidBecomeActive;
 - (void)__hostWillResignActive;
+- (void)__hostSceneDidEnterBackground;
+- (void)__hostSceneWillEnterForeground;
 - (void)__hostWillEnterForeground;
 - (void)__hostDidEnterBackground;
 - (void)__setSheetConfiguration:(id)arg1;
@@ -153,6 +155,7 @@ __attribute__((visibility("hidden")))
 - (void)_popoverDidDismiss:(id)arg1;
 - (void)_popoverWillPresent:(id)arg1;
 - (void)_viewServiceIsDisplayingPopoverController:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 - (void)__prepareForDisconnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_windowDidBecomeKey:(id)arg1;
 - (void)_firstResponderDidChange:(id)arg1;

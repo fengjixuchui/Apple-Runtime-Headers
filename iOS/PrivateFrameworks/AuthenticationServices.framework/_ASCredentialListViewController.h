@@ -6,15 +6,17 @@
 
 #import <AuthenticationServices/_ASExtensionViewController.h>
 
+@class _ASIncomingCallObserver;
 @protocol _ASCredentialListViewControllerDelegate;
 
 @interface _ASCredentialListViewController : _ASExtensionViewController
 {
+    _ASIncomingCallObserver *_callObserver;
     id <_ASCredentialListViewControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <_ASCredentialListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <_ASCredentialListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)prepareToCompleteRequestWithHostContext:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_finishWithCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_requestDidFailWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;

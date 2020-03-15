@@ -39,6 +39,7 @@
 }
 
 + (_Bool)_preventsAppearanceProxyCustomization;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool hasAppeared; // @synthesize hasAppeared=_hasAppeared;
 @property(retain, nonatomic) WFWorkflowViewController *inlineWorkflowViewController; // @synthesize inlineWorkflowViewController=_inlineWorkflowViewController;
 @property(readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
@@ -58,7 +59,9 @@
 @property(readonly, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property(readonly, nonatomic) OBWelcomeController *welcomeController; // @synthesize welcomeController=_welcomeController;
 @property(nonatomic) __weak id <VCUIShortcutViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (int)eventSource;
+- (_Bool)isUpdatingExistingShortcut;
+- (void)trackAddEvent;
 - (void)keyboardWillChange:(id)arg1;
 - (void)updatePrimaryButton;
 - (void)didTapCancel;

@@ -25,6 +25,7 @@
     _Bool _isFullUXEnabled;
     _Bool _deactivated;
     _Bool _shouldPlayAfterAppBecomesActive;
+    _Bool _shouldBecomeNowPlayingAfterAppBecomesActive;
     _Bool _playerHasBeenValid;
     _Bool _shouldEndLimitingRemoteInput;
     _Bool _startingContentProposalPresentation;
@@ -105,6 +106,7 @@
 + (void)setActivePictureInPictureController:(id)arg1;
 + (id)activePictureInPictureController;
 + (id)keyPathsForValuesAffectingAlternateThumbnailStreamURL;
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_playbackControlsViewController, setter=_setPlaybackControlsViewController:) AVNowPlayingPlaybackControlsViewController *playbackControlsViewController; // @synthesize playbackControlsViewController=_playbackControlsViewController;
 @property(nonatomic) _Bool shouldObscureOutputDueToInsufficientExternalProtection; // @synthesize shouldObscureOutputDueToInsufficientExternalProtection=_shouldObscureOutputDueToInsufficientExternalProtection;
 @property(retain, nonatomic) AVPlayerLayerView *playerLayerView; // @synthesize playerLayerView=_playerLayerView;
@@ -114,7 +116,6 @@
 @property(readonly, nonatomic) AVPictureInPictureController *pictureInPictureController; // @synthesize pictureInPictureController=_pictureInPictureController;
 @property(readonly, nonatomic) AVInternalPlaybackOptions *playbackOptions; // @synthesize playbackOptions=_playbackOptions;
 @property(copy, nonatomic) NSString *videoGravity; // @synthesize videoGravity=_videoGravity;
-- (void).cxx_destruct;
 - (void)_didSelectMediaSelectionOption:(id)arg1 withMediaCharacteristic:(id)arg2;
 - (void)togglePlayback:(id)arg1;
 - (_Bool)_canDismiss;
@@ -221,6 +222,7 @@
 - (_Bool)resignNowPlayingWithoutUpdating;
 - (void)resignNowPlaying;
 - (_Bool)isActiveNowPlaying;
+- (_Bool)_isPictureInPictureNowPlaying;
 - (_Bool)_isAnotherPlayerViewControllerNowPlaying;
 - (id)_containerView;
 @property(readonly, nonatomic) UILayoutGuide *unobscuredContentGuide;

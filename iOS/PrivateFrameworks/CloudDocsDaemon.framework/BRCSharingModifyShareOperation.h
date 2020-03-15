@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (_Bool)shouldRetryForError:(id)arg1;
 - (void)main;
 - (void)performAfterPreparingSharingIdentityIfNecessary:(CDUnknownBlockType)arg1;
 - (void)_performAfterPreparingSharingIdentityIfNecessaryWhenWantRoutingKey:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
@@ -30,7 +29,8 @@ __attribute__((visibility("hidden")))
 - (void)_performAfterFetchingSharingIdentityOnDocumentItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performAfterGettingPublicSharingKeyForRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performAfterCopyingPublicSharingKeyWithRecordID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_updateDBAndSyncDownIfNeededWithShare:(id)arg1;
+- (void)_updateDBAndSyncDownIfNeededWithShare:(id)arg1 recordsToLearnCKInfo:(id)arg2;
+- (oneway void)invalidate;
 - (id)createActivity;
 - (id)initWithName:(id)arg1 zone:(id)arg2 share:(id)arg3;
 

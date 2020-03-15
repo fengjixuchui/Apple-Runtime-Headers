@@ -8,7 +8,6 @@
 
 @interface _TtC11AppStoreKit21TopShelfPromotionItem : _TtC11AppStoreKit12TopShelfItem
 {
-    // Error parsing type: , name: title
     // Error parsing type: , name: promotionText
     // Error parsing type: , name: contextTitle
     // Error parsing type: , name: promotionImageName
@@ -16,6 +15,7 @@
     // Error parsing type: , name: previewVideoUrl
     // Error parsing type: , name: cinemagraphUrl
     // Error parsing type: , name: termsAndConditionsText
+    // Error parsing type: , name: promotionHeadingTintStyle
 }
 
 @end

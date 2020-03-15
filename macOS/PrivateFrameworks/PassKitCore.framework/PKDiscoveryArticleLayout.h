@@ -19,19 +19,21 @@
     PKDiscoveryCard *_card;
     NSArray *_shelves;
     PKDiscoveryCallToAction *_footerLockup;
+    long long _priority;
     CDUnknownBlockType _actionOnDismiss;
 }
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=hasRequestedBadge) BOOL requestedBadge; // @synthesize requestedBadge=_requestedBadge;
 @property(copy, nonatomic) CDUnknownBlockType actionOnDismiss; // @synthesize actionOnDismiss=_actionOnDismiss;
+@property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(readonly, nonatomic) PKDiscoveryCallToAction *footerLockup; // @synthesize footerLockup=_footerLockup;
 @property(readonly, nonatomic) NSArray *shelves; // @synthesize shelves=_shelves;
 @property(readonly, nonatomic) PKDiscoveryCard *card; // @synthesize card=_card;
 @property(readonly, nonatomic) long long variant; // @synthesize variant=_variant;
 @property(readonly, nonatomic) long long version; // @synthesize version=_version;
 @property(retain, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;

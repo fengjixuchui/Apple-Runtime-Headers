@@ -10,15 +10,16 @@
 
 @interface MFSearchableIndexManager_macOS : EDSearchableIndexManager
 {
+    struct os_unfair_lock_s _indexLock;
     EDSearchableIndex *_index;
     EDSearchableIndexPersistence *_persistence;
     EDSearchableIndexScheduler *_scheduler;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) EDSearchableIndexScheduler *scheduler; // @synthesize scheduler=_scheduler;
 @property(retain, nonatomic) EDSearchableIndexPersistence *persistence; // @synthesize persistence=_persistence;
 @property(retain, nonatomic) EDSearchableIndex *index; // @synthesize index=_index;
-- (void).cxx_destruct;
 - (void)enableIndexingAndBeginScheduling:(BOOL)arg1 budgetConfiguration:(id)arg2;
 - (void)enableIndexingAndBeginScheduling:(BOOL)arg1;
 - (id)initWithDatabase:(id)arg1 hookResponder:(id)arg2;

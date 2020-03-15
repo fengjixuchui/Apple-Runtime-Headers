@@ -26,12 +26,13 @@
 + (_Bool)validateMangledIDString:(id)arg1;
 + (_Bool)validateOwnerName:(id)arg1;
 + (_Bool)validateContainerID:(id)arg1;
++ (id)sideCarMangledID;
 + (id)documentsMangledID;
 + (id)desktopMangledID;
 + (_Bool)supportsSecureCoding;
 + (id)cloudDocsMangledID;
-@property(readonly, nonatomic) NSString *mangledIDString; // @synthesize mangledIDString=_mangledIDString;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *mangledIDString; // @synthesize mangledIDString=_mangledIDString;
 @property(readonly, nonatomic) NSString *aliasTargetContainerString;
 @property(readonly, nonatomic) NSString *ownerName;
 @property(readonly, nonatomic) NSString *appLibraryOrZoneName;

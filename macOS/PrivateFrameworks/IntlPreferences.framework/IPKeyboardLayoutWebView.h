@@ -29,6 +29,7 @@
 
 + (id)supportedHardwareIDs;
 + (id)userInterfaceLocale;
+- (void).cxx_destruct;
 @property __weak NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 @property BOOL isKeyboardLayoutDocumentTrackpadHandwriting; // @synthesize isKeyboardLayoutDocumentTrackpadHandwriting=_isKeyboardLayoutDocumentTrackpadHandwriting;
 @property(retain) DOMDocument *keyboardLayoutDocument; // @synthesize keyboardLayoutDocument=_keyboardLayoutDocument;
@@ -40,7 +41,6 @@
 @property(copy) NSString *inputSourceLanguageCode; // @synthesize inputSourceLanguageCode=_inputSourceLanguageCode;
 @property(copy) NSString *inputSourceID; // @synthesize inputSourceID=_inputSourceID;
 @property(copy) NSString *keyboardLayoutIdentifier; // @synthesize keyboardLayoutIdentifier=_keyboardLayoutIdentifier;
-- (void).cxx_destruct;
 @property(readonly) NSDictionary *wubihuaWorkaroundMappingTable;
 @property(readonly) NSDictionary *inputModeKeyboardLayoutMappingTable;
 @property(nonatomic) unsigned char physicalKeyboardHardwareID; // @synthesize physicalKeyboardHardwareID=_physicalKeyboardHardwareID;
@@ -48,6 +48,7 @@
 - (id)webView:(id)arg1 contextMenuItemsForElement:(id)arg2 defaultMenuItems:(id)arg3;
 - (void)webView:(id)arg1 didFinishLoadForFrame:(id)arg2;
 - (unsigned char)defaultFallbackForPhysicalKeyboardID:(unsigned char)arg1;
+- (unsigned char)fallbackForKeyboardIDWithDFRAndEscapeKey:(unsigned char)arg1;
 - (void)updateAriaLabel;
 - (void)updateTrackpadLabel;
 - (void)updateKeyLabels;

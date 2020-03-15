@@ -17,7 +17,6 @@
 @interface HMHomeManager : NSObject <HMFLogging, HMFMessageReceiver, HMMutableApplicationData, HMApplicationData>
 {
     HMFUnfairLock *_lock;
-    HMAccessory *_currentAccessory;
     NSOperationQueue *_syncOperationQueue;
     _Bool _frameworkMergeComplete;
     _Bool _thisDeviceResidentCapable;
@@ -55,6 +54,7 @@
 
 + (id)logCategory;
 + (_Bool)dataSyncInProgressFromDataSyncState:(unsigned long long)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) HMNetworkRouterFirewallRuleManager *firewallRuleManager; // @synthesize firewallRuleManager=_firewallRuleManager;
 @property(nonatomic, getter=isViewServiceActive) _Bool viewServiceActive; // @synthesize viewServiceActive=_viewServiceActive;
 @property(nonatomic) unsigned long long metadataVersion; // @synthesize metadataVersion=_metadataVersion;
@@ -71,7 +71,6 @@
 @property(retain, nonatomic) HMMutableArray *homeInvitations; // @synthesize homeInvitations=_homeInvitations;
 @property(retain, nonatomic) HMMutableArray *currentHomes; // @synthesize currentHomes=_currentHomes;
 @property(readonly) HMUserCloudShareManager *userCloudShareManager; // @synthesize userCloudShareManager=_userCloudShareManager;
-- (void).cxx_destruct;
 @property(readonly, copy) NSUUID *applicationDataIdentifier;
 - (void)_pairingIdentityForAccessoryWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pairingIdentityForAccessoryWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -142,9 +141,7 @@
 - (void)queryiCloudSwitchStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_shouldDisplayiCloudSwitchWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)shouldDisplayiCloudSwitchWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_setMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_queryMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)queryMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_primaryAccountWasDeletedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)primaryAccountWasDeletedWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -158,14 +155,10 @@
 - (void)checkEventValidity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_deleteDuetEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteDuetEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_dumpState:(id)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dumpState:(id)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_queryVersionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)queryVersionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_queryHomeKitUsageStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)queryHomeKitUsageStateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_logControl:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)logControl:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_eraseHomeDataAndDeleteMetadata:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)eraseHomeDataAndDeleteMetadata:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)eraseHomeDataWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -207,8 +200,7 @@
 @property(readonly) HMHomeManagerConfiguration *configuration; // @synthesize configuration=_configuration;
 - (void)setApplicationData:(id)arg1;
 @property(readonly, nonatomic) HMApplicationData *applicationData;
-- (void)setCurrentAccessory:(id)arg1;
-@property(readonly) __weak HMAccessory *currentAccessory;
+@property(readonly) HMAccessory *currentAccessory;
 - (void)setCurrentHome:(id)arg1;
 @property(readonly, nonatomic) HMHome *currentHome; // @synthesize currentHome=_currentHome;
 @property(retain, nonatomic) HMHome *primaryHome; // @synthesize primaryHome=_primaryHome;

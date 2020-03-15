@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)ribbonCellWithElement:(id)arg1 existingCell:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
 @property(retain, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
-- (void).cxx_destruct;
 - (id)selectingView;
 - (void)_updateMaskingModeForParameters:(id)arg1;
 

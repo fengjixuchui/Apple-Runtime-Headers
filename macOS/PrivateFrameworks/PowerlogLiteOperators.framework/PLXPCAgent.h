@@ -85,6 +85,8 @@
     PLEntry *_lastDosimetryEntry;
 }
 
++ (id)entryAggregateDefinitionKeyboardTime;
++ (id)entryAggregateDefinitionKeyboardWordsAndCharacters;
 + (id)entryAggregateDefinitions;
 + (id)entryEventNoneDefinitions;
 + (id)entryEventIntervalDefinitionRapportReceivedMessage;
@@ -106,6 +108,7 @@
 + (id)entryEventBackwardDefinitionPeekPop;
 + (id)entryEventBackwardDefinitionSiriFalseAlarm;
 + (id)entryEventBackwardDefinitions;
++ (id)entryEventForwardDefinitionThermalSensors;
 + (id)entryEventForwardDefinitionsDosimetry;
 + (id)entryEventForwardDefinitionAppleBacklightBrightness;
 + (id)entryEventForwardDefinitionSOSKVSRateLimitingEvent;
@@ -162,6 +165,7 @@
 + (BOOL)shouldLogiOSWatchOSOnly;
 + (id)defaults;
 + (void)load;
+- (void).cxx_destruct;
 @property int lastLinearBrightness; // @synthesize lastLinearBrightness=_lastLinearBrightness;
 @property(retain) PLEntry *lastDosimetryEntry; // @synthesize lastDosimetryEntry=_lastDosimetryEntry;
 @property(retain) PLXPCListenerOperatorComposition *DosimetryXPCListener; // @synthesize DosimetryXPCListener=_DosimetryXPCListener;
@@ -235,7 +239,6 @@
 @property(retain) PLXPCListenerOperatorComposition *UIKitActivityXPCListener; // @synthesize UIKitActivityXPCListener=_UIKitActivityXPCListener;
 @property(retain) PLXPCListenerOperatorComposition *UIKitKeyboardXPCListener; // @synthesize UIKitKeyboardXPCListener=_UIKitKeyboardXPCListener;
 @property(retain) PLXPCListenerOperatorComposition *testMarkerXPCListener; // @synthesize testMarkerXPCListener=_testMarkerXPCListener;
-- (void).cxx_destruct;
 - (void)createInCallServiceAccountingEvent:(id)arg1;
 - (void)createAirDropAccountingEvent:(id)arg1;
 - (void)createAccessoryAccountingEventWithName:(id)arg1 isStartEvent:(BOOL)arg2;

@@ -15,11 +15,15 @@
 }
 
 - (float)fingerDiameter;
+- (_Bool)showInnerCircle;
+- (_Bool)showFingerOutlines;
 - (float)fingerInnerCircleInnerRadius;
 - (float)fingerOuterRadius;
 - (float)fingerInnerRadius;
+- (float)innerCircleStrokeOutlineWidth;
 - (float)strokeOutlineWidth;
 - (float)strokeWidth;
+- (id)pressedCircularProgressFillColor;
 - (id)circularProgressFillColor;
 - (id)strokeOutlineColor;
 - (id)deselectedStrokeColor;

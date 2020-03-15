@@ -6,20 +6,31 @@
 
 #import <Contacts/CNPredicate.h>
 
+#import <Contacts/CNCDContainerPredicate-Protocol.h>
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNCDContainersInAccountWithExternalIdentifier : CNPredicate
+@interface CNCDContainersInAccountWithExternalIdentifier : CNPredicate <CNCDContainerPredicate>
 {
     NSString *_accountExternalIdentifier;
 }
 
-@property(readonly, nonatomic) NSString *accountExternalIdentifier; // @synthesize accountExternalIdentifier=_accountExternalIdentifier;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *accountExternalIdentifier; // @synthesize accountExternalIdentifier=_accountExternalIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)cn_persistenceFilterRequest;
+- (id)cn_topLevelFilter;
+- (id)cn_coreDataPredicate;
 - (id)initWithAccountExternalIdentifider:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

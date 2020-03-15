@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 _debugPlayerTime;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *debugEndOffsetView; // @synthesize debugEndOffsetView=_debugEndOffsetView;
 @property(retain, nonatomic) UIView *debugStartOffsetView; // @synthesize debugStartOffsetView=_debugStartOffsetView;
 @property(retain, nonatomic) UIView *debugEndRectView; // @synthesize debugEndRectView=_debugEndRectView;
@@ -93,7 +94,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
 @property(readonly, nonatomic) id <PXTrimToolPlayerWrapper> playerWrapper; // @synthesize playerWrapper=_playerWrapper;
 @property(nonatomic) __weak id <PUTrimToolControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)slalomRegionEditorRequestForceUnzoom:(id)arg1;
 - (_Bool)slalomRegionEditorRequestForceZoom:(id)arg1;
 - (void)slalomRegionEditorEndValueChanged:(id)arg1;
@@ -161,7 +161,6 @@ __attribute__((visibility("hidden")))
 - (void)_createRendererIfNeeded;
 @property(retain, nonatomic) UIImage *placeholderImage;
 - (void)livePhotoRenderDidChange:(_Bool)arg1;
-- (_Bool)_canShowWhileLocked;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)trimScrubber:(id)arg1 debugEndOffset:(struct CGRect)arg2;

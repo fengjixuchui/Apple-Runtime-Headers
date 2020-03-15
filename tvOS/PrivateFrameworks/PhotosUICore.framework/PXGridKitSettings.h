@@ -9,6 +9,9 @@
 @interface PXGridKitSettings : PXSettings
 {
     _Bool _pauseWhenIdle;
+    _Bool _enableXcodeCustomDebugHierarchy;
+    _Bool _sortSpritesInXcodeCustomDebugHierarchy;
+    _Bool _includeLayoutsLocalSpritesInDebugHierarchy;
     _Bool _enableMetalRenderer;
     _Bool _enableViewRenderer;
     _Bool _enableAccessibilityRenderer;
@@ -24,6 +27,7 @@
     _Bool _requestThumbnailsOnly;
     _Bool _requestMasterThumbsOnly;
     _Bool _disableLowResThumbnails;
+    _Bool _simulateSomeAssetsInCloud;
     _Bool _loadThumbnailsAsync;
     _Bool _allowBlockingDuringScrolling;
     _Bool _allowBlockingDueToFences;
@@ -32,6 +36,8 @@
     _Bool _wantsRectDiagnosticsDebugHUD;
     _Bool _enableAnchoringRectDiagnostics;
     _Bool _enableAssetsRectDiagnostics;
+    _Bool _enableFocusRectDiagnostics;
+    _Bool _enableCurrentFocusRectDiagnostics;
     _Bool _enableRectDiagnosticsForUndefinedSprites;
     _Bool _enableRectDiagnosticsForNamedImageSprites;
     _Bool _enableRectDiagnosticsForDisplayAssetSprites;
@@ -76,6 +82,8 @@
 @property(nonatomic) _Bool enableRectDiagnosticsForDisplayAssetSprites; // @synthesize enableRectDiagnosticsForDisplayAssetSprites=_enableRectDiagnosticsForDisplayAssetSprites;
 @property(nonatomic) _Bool enableRectDiagnosticsForNamedImageSprites; // @synthesize enableRectDiagnosticsForNamedImageSprites=_enableRectDiagnosticsForNamedImageSprites;
 @property(nonatomic) _Bool enableRectDiagnosticsForUndefinedSprites; // @synthesize enableRectDiagnosticsForUndefinedSprites=_enableRectDiagnosticsForUndefinedSprites;
+@property(nonatomic) _Bool enableCurrentFocusRectDiagnostics; // @synthesize enableCurrentFocusRectDiagnostics=_enableCurrentFocusRectDiagnostics;
+@property(nonatomic) _Bool enableFocusRectDiagnostics; // @synthesize enableFocusRectDiagnostics=_enableFocusRectDiagnostics;
 @property(nonatomic) _Bool enableAssetsRectDiagnostics; // @synthesize enableAssetsRectDiagnostics=_enableAssetsRectDiagnostics;
 @property(nonatomic) _Bool enableAnchoringRectDiagnostics; // @synthesize enableAnchoringRectDiagnostics=_enableAnchoringRectDiagnostics;
 @property(nonatomic) _Bool wantsRectDiagnosticsDebugHUD; // @synthesize wantsRectDiagnosticsDebugHUD=_wantsRectDiagnosticsDebugHUD;
@@ -95,6 +103,7 @@
 @property(nonatomic) double opportunisticPreheatRequiredIdleTime; // @synthesize opportunisticPreheatRequiredIdleTime=_opportunisticPreheatRequiredIdleTime;
 @property(nonatomic) long long thumbnailCacheSize; // @synthesize thumbnailCacheSize=_thumbnailCacheSize;
 @property(nonatomic) _Bool loadThumbnailsAsync; // @synthesize loadThumbnailsAsync=_loadThumbnailsAsync;
+@property(nonatomic) _Bool simulateSomeAssetsInCloud; // @synthesize simulateSomeAssetsInCloud=_simulateSomeAssetsInCloud;
 @property(nonatomic) _Bool disableLowResThumbnails; // @synthesize disableLowResThumbnails=_disableLowResThumbnails;
 @property(nonatomic) _Bool requestMasterThumbsOnly; // @synthesize requestMasterThumbsOnly=_requestMasterThumbsOnly;
 @property(nonatomic) _Bool requestThumbnailsOnly; // @synthesize requestThumbnailsOnly=_requestThumbnailsOnly;
@@ -111,6 +120,9 @@
 @property(nonatomic) _Bool enableAccessibilityRenderer; // @synthesize enableAccessibilityRenderer=_enableAccessibilityRenderer;
 @property(nonatomic) _Bool enableViewRenderer; // @synthesize enableViewRenderer=_enableViewRenderer;
 @property(nonatomic) _Bool enableMetalRenderer; // @synthesize enableMetalRenderer=_enableMetalRenderer;
+@property(nonatomic) _Bool includeLayoutsLocalSpritesInDebugHierarchy; // @synthesize includeLayoutsLocalSpritesInDebugHierarchy=_includeLayoutsLocalSpritesInDebugHierarchy;
+@property(nonatomic) _Bool sortSpritesInXcodeCustomDebugHierarchy; // @synthesize sortSpritesInXcodeCustomDebugHierarchy=_sortSpritesInXcodeCustomDebugHierarchy;
+@property(nonatomic) _Bool enableXcodeCustomDebugHierarchy; // @synthesize enableXcodeCustomDebugHierarchy=_enableXcodeCustomDebugHierarchy;
 @property(nonatomic) _Bool pauseWhenIdle; // @synthesize pauseWhenIdle=_pauseWhenIdle;
 - (void)setDefaultValues;
 - (_Bool)anySpritesRectDiagnosticsEnabled;

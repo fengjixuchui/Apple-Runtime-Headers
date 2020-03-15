@@ -34,6 +34,10 @@
 + (id)hmbReadOnlyBefore;
 + (id)hmbExternalRecordType;
 + (id)hmbSchemaHashRoot;
++ (void)load;
++ (void)hmbResetModelsWithQueries;
++ (id)hmbModelClassesWithQueries;
++ (id)hmbMutableModelClassesWithQueries;
 + (id)hmbQueries;
 + (id)hmbPropertyNames;
 + (id)hmbProperties;
@@ -41,6 +45,7 @@
 + (void)setHmbShouldLogPrivateInformation:(_Bool)arg1;
 + (_Bool)hmbShouldLogPrivateInformation;
 + (id)sort:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) __weak HMBModelContainer *hmbModelContainer; // @synthesize hmbModelContainer=_hmbModelContainer;
 @property(retain, nonatomic) NSSet *hmbReadOnlyProperties; // @synthesize hmbReadOnlyProperties=_hmbReadOnlyProperties;
 @property(retain, nonatomic) NSSet *hmbUnavailableProperties; // @synthesize hmbUnavailableProperties=_hmbUnavailableProperties;
@@ -50,7 +55,6 @@
 @property(retain, nonatomic) NSUUID *hmbParentModelID; // @synthesize hmbParentModelID=_hmbParentModelID;
 @property(retain, nonatomic) NSUUID *hmbModelID; // @synthesize hmbModelID=_hmbModelID;
 @property(retain, nonatomic) NSMutableDictionary *hmbReserved; // @synthesize hmbReserved=_hmbReserved;
-- (void).cxx_destruct;
 - (id)logIdentifier;
 @property(readonly, nonatomic) NSString *hmbDescription;
 - (void)dumpDebug;
@@ -81,7 +85,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned int hash;
 - (id)prepareForStorageLocation:(unsigned int)arg1 using:(id)arg2 updatedModelIDs:(id)arg3 error:(id *)arg4;
-- (id)hmbPrepareFor:(unsigned int)arg1;
+- (id)hmbPrepareForStorageLocation:(unsigned int)arg1;
 - (id)validateType:(id)arg1 path:(id)arg2;
 - (_Bool)_validateType:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSSet *hmbDependentUUIDs;

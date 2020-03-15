@@ -17,9 +17,9 @@
 + (id)metadataDateFromString:(id)arg1;
 + (id)stringFromMetadataDate:(id)arg1;
 + (id)dateFormatter;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSFileCoordinator *fileCoordinator; // @synthesize fileCoordinator=_fileCoordinator;
 @property(retain, nonatomic) NSFileManager *fileManager; // @synthesize fileManager=_fileManager;
-- (void).cxx_destruct;
 - (id)assetsForURLs:(id)arg1 missingFromAssets:(id)arg2 error:(id *)arg3;
 - (void)_addURLsFromAsset:(id)arg1 toSet:(id)arg2;
 - (id)orphanAssetsInAssets:(id)arg1 error:(id *)arg2;
@@ -27,7 +27,8 @@
 - (id)_renameExistingPDFMetadata:(id)arg1 toDisplayName:(id)arg2 error:(id *)arg3;
 - (void)_backupMetadataIfNeeded:(id)arg1;
 - (BOOL)_writeExtendedAttributes:(id)arg1 url:(id)arg2 error:(id *)arg3;
-- (unsigned long long)_fixPermissionsAndCalculateAllocatedSizeAtURL:(id)arg1 error:(id *)arg2;
+- (unsigned long long)fixPermissionsAndCalculateAllocatedSizeAtURL:(id)arg1 error:(id *)arg2;
+- (BOOL)checkValidFilePermissionsForAsset:(id)arg1 error:(id *)arg2;
 - (BOOL)setExtendedAttributesForAsset:(id)arg1 error:(id *)arg2;
 - (BOOL)updateExtendedAttributesForAsset:(id)arg1 error:(id *)arg2;
 - (id)extendedAttributesForAsset:(id)arg1 error:(id *)arg2;

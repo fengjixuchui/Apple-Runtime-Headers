@@ -20,7 +20,6 @@
 - (void)didAttemptToDisableAllDevicesResult:(_Bool)arg1;
 - (void)didPerformAdditionalStorageRequiredCheckWithSuccess:(_Bool)arg1 additionalStorageRequired:(unsigned long long)arg2 forAccountId:(NSString *)arg3 error:(NSError *)arg4;
 - (void)didAttemptToSetEnabledTo:(_Bool)arg1 result:(_Bool)arg2;
-- (void)returnMOCEnabledState:(unsigned int)arg1;
 - (void)updateCloudKitStateWithDictionary:(NSDictionary *)arg1;
 - (void)updateCloudKitState;
 - (void)updatePersonalNickname:(IMNickname *)arg1;
@@ -67,6 +66,7 @@
 - (void)fileTransfer:(NSString *)arg1 updatedWithProperties:(NSDictionary *)arg2;
 - (void)fileTransfer:(NSString *)arg1 createdWithProperties:(NSDictionary *)arg2;
 - (void)blackholedChatsExist:(_Bool)arg1;
+- (void)previouslyBlackholedChatLoadedWithHandleIDs:(NSArray *)arg1 chat:(NSDictionary *)arg2;
 - (void)chatLoadedWithChatIdentifier:(NSString *)arg1 chats:(NSArray *)arg2;
 - (void)frequentRepliesQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSArray *)arg4 limit:(unsigned int)arg5;
 - (void)historicalMessageGUIDsDeleted:(NSArray *)arg1 chatGUIDs:(NSArray *)arg2 queryID:(NSString *)arg3;

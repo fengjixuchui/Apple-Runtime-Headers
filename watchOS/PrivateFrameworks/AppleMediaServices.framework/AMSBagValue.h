@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class ACAccount, NSString;
 @protocol AMSBagDataSourceProtocol;
 
 @interface AMSBagValue : NSObject
 {
+    ACAccount *_account;
     id <AMSBagDataSourceProtocol> _dataSource;
     NSString *_key;
     unsigned int _valueType;
@@ -21,14 +22,18 @@
 + (id)globalBagValueStorage;
 + (id)frozenBagValueWithKey:(id)arg1 value:(id)arg2 valueType:(unsigned int)arg3;
 + (id)failingBagValueWithKey:(id)arg1 valueType:(unsigned int)arg2 error:(id)arg3;
++ (id)bagValueWithKey:(id)arg1 valueType:(unsigned int)arg2 valuePromise:(id)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int valueType; // @synthesize valueType=_valueType;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
 @property(nonatomic) __weak id <AMSBagDataSourceProtocol> dataSource; // @synthesize dataSource=_dataSource;
-- (void).cxx_destruct;
+@property(copy, nonatomic) ACAccount *account; // @synthesize account=_account;
+- (id)_processedDefaultValue:(id)arg1;
 - (id)valuePromise;
 - (id)valueWithError:(id *)arg1;
 - (void)valueWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
+- (id)initWithDataSource:(id)arg1 key:(id)arg2 valueType:(unsigned int)arg3 account:(id)arg4;
 - (id)initWithDataSource:(id)arg1 key:(id)arg2 valueType:(unsigned int)arg3;
 
 @end

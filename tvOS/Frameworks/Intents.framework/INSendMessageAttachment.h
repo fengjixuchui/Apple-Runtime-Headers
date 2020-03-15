@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/INFileEnumerable-Protocol.h>
+#import <Intents/INEnumerable-Protocol.h>
 #import <Intents/INJSONSerializable-Protocol.h>
 
 @class INFile, NSString, NSURL;
 
-@interface INSendMessageAttachment : NSObject <INJSONSerializable, INFileEnumerable>
+@interface INSendMessageAttachment : NSObject <INJSONSerializable, INEnumerable>
 {
     _Bool _currentLocation;
     INFile *_file;
@@ -23,10 +23,10 @@
 + (id)attachmentWithFile:(id)arg1;
 + (id)attachmentWithCurrentLocation;
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSURL *speechDataURL; // @synthesize speechDataURL=_speechDataURL;
 @property(readonly, copy, nonatomic) INFile *file; // @synthesize file=_file;
 @property(readonly, nonatomic) _Bool currentLocation; // @synthesize currentLocation=_currentLocation;
-- (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -35,8 +35,7 @@
 @property(readonly) unsigned long long hash;
 - (id)_initWithCurrentLocation:(_Bool)arg1 file:(id)arg2 speechDataURL:(id)arg3;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
-- (void)_intents_enumerateFileURLsWithBlock:(CDUnknownBlockType)arg1 mutate:(_Bool)arg2;
-- (void)_intents_enumerateFilesWithBlock:(CDUnknownBlockType)arg1 mutate:(_Bool)arg2;
+- (_Bool)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_group> *_internalInitializeGroup;
 }
 
+- (void).cxx_destruct;
 @property(retain) NSObject<OS_dispatch_group> *internalInitializeGroup; // @synthesize internalInitializeGroup=_internalInitializeGroup;
 @property(retain) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(retain) NSMutableDictionary *itemsByIdentifier; // @synthesize itemsByIdentifier=_itemsByIdentifier;
@@ -35,7 +36,6 @@ __attribute__((visibility("hidden")))
 @property(retain) id notifyToken; // @synthesize notifyToken=_notifyToken;
 @property(retain) _SFLList *internalList; // @synthesize internalList=_internalList;
 @property(readonly, retain) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)resolveItemWithIdentifier:(id)arg1 options:(unsigned long long)arg2 relativeToURL:(id)arg3;
 - (void)resolveItemWithIdentifier:(id)arg1 options:(unsigned long long)arg2 relativeToURL:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_notifyObserversListDidChange;
@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)itemAtIndex:(unsigned long long)arg1;
 - (BOOL)insertItem:(id)arg1 atIndex:(unsigned long long)arg2 error:(id *)arg3;
 - (void)removeObserver:(id)arg1;
+- (BOOL)openItem:(id)arg1 error:(id *)arg2;
 - (void)addObserver:(id)arg1;
 - (BOOL)containsItem:(id)arg1;
 - (BOOL)updateItem:(id)arg1 error:(id *)arg2;

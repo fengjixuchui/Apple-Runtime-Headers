@@ -24,9 +24,9 @@
 
 + (id)bestAccountFromAccounts:(id)arg1;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool networkDataAvailable; // @synthesize networkDataAvailable=_networkDataAvailable;
 @property(copy) NSArray *accounts; // @synthesize accounts=_accounts;
-- (void).cxx_destruct;
 - (void)_rebuildOperationalAccountsCache:(_Bool)arg1;
 - (void)_disableCache;
 - (void)_enableCache;
@@ -99,6 +99,7 @@
 - (id)_bestOperationalAccountForSendingForService:(id)arg1;
 - (id)__iCloudSystemAccountForService:(id)arg1;
 - (id)_bestAccountForAddresses:(id)arg1;
+- (int)activeAccountsAreEligibleForSpamFilter;
 
 @end
 

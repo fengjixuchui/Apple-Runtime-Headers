@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class _PASLock;
+@protocol OS_dispatch_queue;
 
 @interface PPNotificationManager : NSObject
 {
     _PASLock *_lockedData;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 + (void)addSuggestionsObserverForLifetimeOfObject:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -24,6 +26,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)addSuggestionsChangeBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
+- (void)_registerForEventKitChangeTrackingWithGuardedData:(id)arg1;
 - (void)addEventKitChangeBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
 - (void)addPortraitInvalidationBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
 - (void)addPortraitChangeBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;

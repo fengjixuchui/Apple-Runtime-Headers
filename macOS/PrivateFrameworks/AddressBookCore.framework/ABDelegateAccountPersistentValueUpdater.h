@@ -6,29 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSPersonNameComponents, NSRegularExpression, NSString;
+@class NSDictionary, NSRegularExpression, NSString;
 
 @interface ABDelegateAccountPersistentValueUpdater : NSObject
 {
     NSString *_dsid;
-    NSPersonNameComponents *_nameComponents;
     NSRegularExpression *_regex;
-    NSString *_fullName;
+    NSDictionary *_homeInfo;
 }
 
-@property(readonly, copy, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
-@property(readonly, copy, nonatomic) NSRegularExpression *regex; // @synthesize regex=_regex;
-@property(readonly, copy, nonatomic) NSPersonNameComponents *nameComponents; // @synthesize nameComponents=_nameComponents;
-@property(readonly, copy, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
++ (void)absorbHomeInfoValuesFromCombinedHomeInfoDictionary:(id)arg1 intoHomeInfoDictionary:(id)arg2;
++ (id)bootstrappedNewHomeInfoGeneratedUsingCombinedDictionary:(id)arg1;
++ (id)delegateValuesToUpdateFromCombinedDictionary:(id)arg1 existingDelegateValues:(id)arg2;
++ (id)allowedHomeInfoKeys;
++ (id)homeInfoKeysToCopyFromParent;
++ (id)allowedKeys;
 - (void).cxx_destruct;
-- (void)updateServerRootPathInDictionary:(id)arg1;
+@property(readonly, copy, nonatomic) NSDictionary *homeInfo; // @synthesize homeInfo=_homeInfo;
+@property(readonly, copy, nonatomic) NSRegularExpression *regex; // @synthesize regex=_regex;
+@property(readonly, copy, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
+- (void)updateDictionary:(id)arg1 withReconstructedDelegatePath:(id)arg2 reconstructedDelegateInfo:(id)arg3;
+- (void)setAllowedHomeInfoDataInDictionary:(id)arg1 givenParentHomeInfo:(id)arg2;
 - (void)updateDictionary:(id)arg1 byReplacingDSIDInValueForKey:(id)arg2;
-- (void)updateAccountURLInDictionary:(id)arg1;
-- (id)childDictionaryByUpdatingPersistentValuesInParentDictionary:(id)arg1;
-- (void)prepareFullName;
+- (void)updateServerRootPathInDictionary:(id)arg1;
+- (id)startByFilteringOutDisallowedDataFromParentDictionary:(id)arg1;
+- (id)combinedDictionaryWithDelegateValuesAndValuesInParentDictionary:(id)arg1;
 - (void)prepareRegex;
 - (id)stringByReplacingDSIDInString:(id)arg1;
-- (id)initWithDSID:(id)arg1 nameComponents:(id)arg2;
+- (id)initWithDSID:(id)arg1 homeInfo:(id)arg2;
 - (id)init;
 
 @end

@@ -16,6 +16,7 @@
     _Bool _isUpdating;
     _Bool _didAlreadyUpdateLoadedItems;
     _Bool _enableBestCropRect;
+    _Bool _fillSafeAreaTopInset;
     int _mediaKind;
     int _presentationType;
     double _interItemSpacing;
@@ -30,10 +31,12 @@
     struct UIEdgeInsets _padding;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGPoint anchorItemCenter; // @synthesize anchorItemCenter=_anchorItemCenter;
 @property(nonatomic) long long anchorItem; // @synthesize anchorItem=_anchorItem;
 @property(nonatomic) struct CGPoint anchorViewportCenter; // @synthesize anchorViewportCenter=_anchorViewportCenter;
 @property(retain, nonatomic) id anchorObjectReference; // @synthesize anchorObjectReference=_anchorObjectReference;
+@property(nonatomic) _Bool fillSafeAreaTopInset; // @synthesize fillSafeAreaTopInset=_fillSafeAreaTopInset;
 @property(nonatomic) double aspectRatioLimit; // @synthesize aspectRatioLimit=_aspectRatioLimit;
 @property(nonatomic) double overrideAspectRatioAmount; // @synthesize overrideAspectRatioAmount=_overrideAspectRatioAmount;
 @property(nonatomic) double overrideAspectRatio; // @synthesize overrideAspectRatio=_overrideAspectRatio;
@@ -43,7 +46,6 @@
 @property(nonatomic) int presentationType; // @synthesize presentationType=_presentationType;
 @property(nonatomic) int mediaKind; // @synthesize mediaKind=_mediaKind;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
-- (void).cxx_destruct;
 - (id)diagnosticDescription;
 - (void)applySpriteChangeDetails:(id)arg1 countAfterChanges:(unsigned int)arg2 initialState:(CDUnknownBlockType)arg3 modifyState:(CDUnknownBlockType)arg4;
 - (void)setNumberOfItems:(long long)arg1 withChangeDetails:(id)arg2 changeMediaVersionHandler:(CDUnknownBlockType)arg3;

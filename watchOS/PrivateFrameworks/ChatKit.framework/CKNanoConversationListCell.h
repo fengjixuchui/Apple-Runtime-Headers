@@ -23,13 +23,14 @@ __attribute__((visibility("hidden")))
 
 + (float)cellHeight;
 + (id)identifierForConversation:(id)arg1;
-@property(nonatomic) _Bool shouldHidePreviewSummary; // @synthesize shouldHidePreviewSummary=_shouldHidePreviewSummary;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldHidePreviewSummary; // @synthesize shouldHidePreviewSummary=_shouldHidePreviewSummary;
 - (void)layoutSubviews;
 - (void)_calculateLayoutFrames;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateContentsForConversation:(id)arg1 fastPreview:(_Bool)arg2;
 - (void)updateContentsForConversation:(id)arg1;
+- (id)_summaryAttributedTextForBlockedConversationWithIcon:(_Bool)arg1;
 - (void)_setUpDrawingContentView;
 - (void)prepareForReuse;
 - (id)initWithStyle:(int)arg1 reuseIdentifier:(id)arg2;

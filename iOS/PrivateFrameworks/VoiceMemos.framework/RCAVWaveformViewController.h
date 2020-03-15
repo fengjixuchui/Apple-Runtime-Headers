@@ -40,6 +40,7 @@
     CDStruct_73a5d3ca _highlightTimeRange;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isOverview; // @synthesize isOverview=_isOverview;
 @property(nonatomic) _Bool isEditMode; // @synthesize isEditMode=_isEditMode;
 @property(nonatomic) double maximumSelectionDuration; // @synthesize maximumSelectionDuration=_maximumSelectionDuration;
@@ -57,7 +58,6 @@
 @property(retain, nonatomic) RCWaveformViewController *waveformViewController; // @synthesize waveformViewController=_waveformViewController;
 @property(nonatomic) __weak id <RCAVWaveformViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) RCWaveformDataSource *waveformDataSource; // @synthesize waveformDataSource=_waveformDataSource;
-- (void).cxx_destruct;
 - (id)_selectionOverlay;
 - (void)_endShowingSelectionOverlayWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_beginShowingSelectionOverlayAndEnableInsertMode:(_Bool)arg1;
@@ -92,6 +92,7 @@
 @property(readonly, nonatomic) CDStruct_73a5d3ca nextPreviewTimeRange;
 - (void)reloadWaveformDataSource:(id)arg1 initialTime:(double)arg2;
 - (void)reloadWaveformDataSource:(id)arg1 withActiveTimeController:(id)arg2;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

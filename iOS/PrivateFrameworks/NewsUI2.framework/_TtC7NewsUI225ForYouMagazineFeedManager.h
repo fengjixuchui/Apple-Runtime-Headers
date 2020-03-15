@@ -6,9 +6,7 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <NewsUI2/TSForYouMagazineFeedManagerType-Protocol.h>
-
-@interface _TtC7NewsUI225ForYouMagazineFeedManager : _TtCs12_SwiftObject <TSForYouMagazineFeedManagerType>
+@interface _TtC7NewsUI225ForYouMagazineFeedManager : _TtCs12_SwiftObject
 {
     // Error parsing type: , name: magazineFeedServiceConfigFetcher
     // Error parsing type: , name: magazineFeedService
@@ -18,7 +16,7 @@
     // Error parsing type: , name: lock
 }
 
-- (id)knownGroupForIdentifier:(id)arg1;
+- (id)knownGroupForIdentifier:(id)arg1 headlines:(id)arg2 assetHandles:(id)arg3;
 - (id)knownCursorForIdentifier:(id)arg1;
 - (void)fetchNextGroupFromCursor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)cursorForTopOfFeed;

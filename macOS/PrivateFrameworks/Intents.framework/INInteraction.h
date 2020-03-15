@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/INFileEnumerable-Protocol.h>
+#import <Intents/INEnumerable-Protocol.h>
 #import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/INInteractionExport-Protocol.h>
 #import <Intents/INKeyImageProducing-Protocol.h>
@@ -15,7 +15,7 @@
 
 @class CSSearchableItem, INImage, INIntent, INIntentResponse, NSDate, NSDateInterval, NSString, NSUUID, SAUISnippet;
 
-@interface INInteraction : NSObject <INFileEnumerable, INInteractionExport, INImageProxyInjecting, INKeyImageProducing, NSSecureCoding, NSCopying>
+@interface INInteraction : NSObject <INEnumerable, INInteractionExport, INImageProxyInjecting, INKeyImageProducing, NSSecureCoding, NSCopying>
 {
     INIntent *_intent;
     INIntentResponse *_intentResponse;
@@ -35,6 +35,7 @@
 + (void)deleteAllInteractionsWithCompletion:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(copy) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property(copy) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
@@ -45,9 +46,8 @@
 @property(copy, setter=_setContextExtensionUUID:) NSUUID *_contextExtensionUUID; // @synthesize _contextExtensionUUID;
 @property(nonatomic, setter=_setDonatedBySiri:) BOOL _donatedBySiri; // @synthesize _donatedBySiri;
 @property(retain, setter=_setSnippet:) SAUISnippet *_snippet; // @synthesize _snippet;
-- (void).cxx_destruct;
 - (id)parameterValueForParameter:(id)arg1;
-@property(readonly) unsigned long long _indexingHash;
+@property(readonly) long long _indexingHash;
 - (id)_searchableItemIncludingData:(BOOL)arg1;
 @property(readonly, copy) CSSearchableItem *_searchableItem;
 - (id)_dictionaryRepresentation;
@@ -69,8 +69,7 @@
 @property(copy, nonatomic) NSString *domainIdentifier;
 @property(nonatomic) double duration;
 @property(retain, nonatomic) NSDate *date;
-- (void)_intents_enumerateFileURLsWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
-- (void)_intents_enumerateFilesWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
+- (BOOL)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

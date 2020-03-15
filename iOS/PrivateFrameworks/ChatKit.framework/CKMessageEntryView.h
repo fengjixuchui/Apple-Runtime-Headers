@@ -98,6 +98,7 @@
 + (struct UIEdgeInsets)coverViewInsetsForMarginInsets:(struct UIEdgeInsets)arg1 shouldShowPluginButtons:(_Bool)arg2 shouldShowCharacterCount:(_Bool)arg3;
 + (struct UIEdgeInsets)coverViewInsetsForMarginInsets:(struct UIEdgeInsets)arg1 shouldShowPluginButtons:(_Bool)arg2 shouldShowCharacterCount:(_Bool)arg3 shouldCenterCharacterCount:(_Bool *)arg4;
 + (id)sharedAppStripDatasource;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UISwipeGestureRecognizer *swipeGestureRecognizer; // @synthesize swipeGestureRecognizer=_swipeGestureRecognizer;
 @property(nonatomic) _Bool entryFieldUpdaterAnimatedValue; // @synthesize entryFieldUpdaterAnimatedValue=_entryFieldUpdaterAnimatedValue;
 @property(nonatomic) _Bool entryFieldUpdaterCollapsedValue; // @synthesize entryFieldUpdaterCollapsedValue=_entryFieldUpdaterCollapsedValue;
@@ -167,7 +168,6 @@
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(copy, nonatomic) NSArray *keyCommands; // @synthesize keyCommands=_keyCommands;
-- (void).cxx_destruct;
 - (void)_setBehaviorsForCurrentTransparencySetting;
 - (void)sendCurrentLocationMessage;
 - (void)textEffectsWindowOffsetDidChange:(id)arg1;
@@ -179,6 +179,7 @@
 - (_Bool)sendButtonEnabled;
 - (void)_initializeInputContextHistory;
 - (void)_addMessageToInputContextHistory:(id)arg1;
+- (void)_contactLimitsChanged:(id)arg1;
 - (void)_participantsDidChange:(id)arg1;
 - (BOOL)_sendButtonColor;
 - (_Bool)_isSURFInShelf;
@@ -276,6 +277,7 @@
 @property(nonatomic) _Bool shouldHideBackgroundView; // @dynamic shouldHideBackgroundView;
 - (void)updateBackgroundBlurVisualEffect;
 - (void)setupKnockoutVisualEffect;
+- (void)deferredSetup;
 - (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldAllowImpact:(_Bool)arg3 shouldShowSendButton:(_Bool)arg4 shouldShowSubject:(_Bool)arg5 shouldShowPluginButtons:(_Bool)arg6 shouldShowCharacterCount:(_Bool)arg7 traitCollection:(id)arg8;
 - (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldShowSendButton:(_Bool)arg3 shouldShowSubject:(_Bool)arg4 shouldShowPluginButtons:(_Bool)arg5 shouldShowCharacterCount:(_Bool)arg6 traitCollection:(id)arg7;
 - (struct CGRect)activeKeyboardHeight;

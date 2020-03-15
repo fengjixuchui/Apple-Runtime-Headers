@@ -9,16 +9,18 @@
 #import <EmailDaemon/EDMessageQueryHelperDelegate-Protocol.h>
 #import <EmailDaemon/EFContentProtectionObserver-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
+#import <EmailDaemon/EMCollectionItemIDStateCapturerDelegate-Protocol.h>
 
-@class EDMessageQueryHelper, EDThreadReloadSummaryHelper, EDUpdateThrottler, EDVIPManager, EMMailboxScope, NSArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSString;
+@class EDMessageQueryHelper, EDThreadReloadSummaryHelper, EDUpdateThrottler, EDVIPManager, EFProcessTransaction, EMCollectionItemIDStateCapturer, EMMailboxScope, NSArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSString;
 @protocol EDRemoteSearchProvider, EFScheduler, EMMessageListItemQueryResultsObserver, OS_dispatch_queue;
 
-@interface EDInMemoryThreadQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver>
+@interface EDInMemoryThreadQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver, EMCollectionItemIDStateCapturerDelegate>
 {
     NSMutableOrderedSet *_conversationIDs;
     NSMutableDictionary *_threadsByConversationID;
     NSMutableDictionary *_changesWhilePaused;
     NSMutableDictionary *_oldestThreadsByMailboxObjectIDs;
+    EFProcessTransaction *_processTransaction;
     struct os_unfair_lock_s _threadsLock;
     _Bool _didCancel;
     _Bool _isInitialized;
@@ -35,9 +37,12 @@
     NSObject<OS_dispatch_queue> *_contentProtectionQueue;
     NSObject<OS_dispatch_queue> *_resultQueue;
     EMMailboxScope *_mailboxScope;
+    EMCollectionItemIDStateCapturer *_stateCapturer;
 }
 
 + (id)log;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) EMCollectionItemIDStateCapturer *stateCapturer; // @synthesize stateCapturer=_stateCapturer;
 @property(readonly, nonatomic) EMMailboxScope *mailboxScope; // @synthesize mailboxScope=_mailboxScope;
 @property(nonatomic) _Bool hasChangesWhilePaused; // @synthesize hasChangesWhilePaused=_hasChangesWhilePaused;
 @property(nonatomic) _Bool isPaused; // @synthesize isPaused=_isPaused;
@@ -53,7 +58,8 @@
 @property(retain, nonatomic) EDMessageQueryHelper *messageQueryHelper; // @synthesize messageQueryHelper=_messageQueryHelper;
 @property(readonly, nonatomic) id <EDRemoteSearchProvider> remoteSearchProvider; // @synthesize remoteSearchProvider=_remoteSearchProvider;
 @property(readonly, nonatomic) EDVIPManager *vipManager; // @synthesize vipManager=_vipManager;
-- (void).cxx_destruct;
+- (id)itemIDsForStateCaptureWithErrorString:(id *)arg1;
+- (id)labelForStateCapture;
 - (_Bool)_messageListItemChangeAffectsSorting:(id)arg1;
 - (id)_inMemoryThreadSortDescriptorsForThreadSortDescriptors:(id)arg1;
 - (id)_messageQueryFromThreadsQuery:(id)arg1;
@@ -99,7 +105,8 @@
 - (void)cancel;
 - (void)start;
 - (void)tearDown;
-- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 vipManager:(id)arg4 remoteSearchProvider:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7;
+- (void)test_tearDown;
+- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 vipManager:(id)arg4 remoteSearchProvider:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7 observationResumer:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

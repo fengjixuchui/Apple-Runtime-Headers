@@ -7,7 +7,7 @@
 #import <NewsCore/FCOperation.h>
 
 @class FCCachePolicy, FCForYouConfig, NSArray, NSDictionary;
-@protocol FCContentContext, FCCoreConfiguration, FCFeedPersonalizing;
+@protocol FCContentContext, FCCoreConfiguration, FCFeedPersonalizing, FCForYouBridgedConfigurationParser;
 
 @interface FCForYouConfigHeadlinesOperation : FCOperation
 {
@@ -15,6 +15,7 @@
     id <FCCoreConfiguration> _configuration;
     id <FCContentContext> _context;
     id <FCFeedPersonalizing> _personalizer;
+    id <FCForYouBridgedConfigurationParser> _bridgedConfigurationParser;
     long long _fields;
     NSArray *_additionalArticleListIDs;
     NSArray *_additionalTagIDs;
@@ -30,6 +31,7 @@
     NSDictionary *_resultTagsByID;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *resultTagsByID; // @synthesize resultTagsByID=_resultTagsByID;
 @property(retain, nonatomic) NSDictionary *resultHeadlinesByArticleID; // @synthesize resultHeadlinesByArticleID=_resultHeadlinesByArticleID;
 @property(retain, nonatomic) NSDictionary *resultHeadlinesByArticleListID; // @synthesize resultHeadlinesByArticleListID=_resultHeadlinesByArticleListID;
@@ -44,10 +46,10 @@
 @property(copy, nonatomic) NSArray *additionalTagIDs; // @synthesize additionalTagIDs=_additionalTagIDs;
 @property(copy, nonatomic) NSArray *additionalArticleListIDs; // @synthesize additionalArticleListIDs=_additionalArticleListIDs;
 @property(nonatomic) long long fields; // @synthesize fields=_fields;
+@property(retain, nonatomic) id <FCForYouBridgedConfigurationParser> bridgedConfigurationParser; // @synthesize bridgedConfigurationParser=_bridgedConfigurationParser;
 @property(retain, nonatomic) id <FCFeedPersonalizing> personalizer; // @synthesize personalizer=_personalizer;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 @property(copy, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
-- (void).cxx_destruct;
 - (id)_edgeCacheHint;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

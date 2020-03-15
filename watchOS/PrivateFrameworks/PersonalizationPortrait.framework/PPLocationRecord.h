@@ -9,10 +9,11 @@
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSMutableCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
+#import <PersonalizationPortrait/PPRecord-Protocol.h>
 
 @class NSArray, NSString, NSUUID, PPLocation, PPSource;
 
-@interface PPLocationRecord : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
+@interface PPLocationRecord : NSObject <PPRecord, NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSUUID *_uuid;
     PPLocation *_location;
@@ -28,9 +29,9 @@
 
 + (id)describeAlgorithm:(unsigned short)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *extractionOsBuild; // @synthesize extractionOsBuild=_extractionOsBuild;
 @property(readonly, nonatomic) NSArray *contextualNamedEntities; // @synthesize contextualNamedEntities=_contextualNamedEntities;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int extractionAssetVersion;
 @property(readonly, nonatomic) double sentimentScore;
 @property(readonly, nonatomic) double decayRate;

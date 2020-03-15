@@ -38,6 +38,7 @@
 
 + (id)logCategory;
 + (id)zoneNameForHome:(id)arg1;
+- (void).cxx_destruct;
 @property(retain) HMFTimer *safeModeTimer; // @synthesize safeModeTimer=_safeModeTimer;
 @property(copy) CDUnknownBlockType timerFactory; // @synthesize timerFactory=_timerFactory;
 @property(readonly) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -51,7 +52,6 @@
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property __weak id <HMDCameraProfileSettingsManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) unsigned long long currentAccessMode; // @synthesize currentAccessMode=_currentAccessMode;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (id)logIdentifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue; // @synthesize messageReceiveQueue=_messageReceiveQueue;
@@ -67,7 +67,7 @@
 - (id)localZone:(id)arg1 didProcessModelUpdate:(id)arg2;
 - (id)localZone:(id)arg1 didProcessModelCreation:(id)arg2;
 - (void)localZone:(id)arg1 processingDidComplete:(id)arg2 mirrorOutputFuture:(id)arg3 actions:(id)arg4;
-@property(readonly, getter=isCurrentDevicePrimaryResident) BOOL currentDevicePrimaryResident;
+@property(readonly, getter=isCurrentDeviceConfirmedPrimaryResident) BOOL currentDeviceConfirmedPrimaryResident;
 - (id)messageDestination;
 - (void)timerDidFire:(id)arg1;
 - (void)_startSafeModeTimer;

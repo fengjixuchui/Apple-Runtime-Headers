@@ -41,9 +41,10 @@
 }
 
 + (id)requiredPropertiesForStaticMediaClips;
-@property(copy, nonatomic) MPModelGenericObject *fallbackSectionRepresentation; // @synthesize fallbackSectionRepresentation=_fallbackSectionRepresentation;
 - (void).cxx_destruct;
+@property(copy, nonatomic) MPModelGenericObject *fallbackSectionRepresentation; // @synthesize fallbackSectionRepresentation=_fallbackSectionRepresentation;
 - (void)_updateProactiveCaching;
+- (id)_supplementalLibraryRequest;
 - (id)_sectionedModelObjectsRepresentationForSectionedCollection:(id)arg1;
 - (id)_equivalencySourceAdamIDForIdentifierSet:(id)arg1;
 - (void)_endBackgroundTaskAssertion;

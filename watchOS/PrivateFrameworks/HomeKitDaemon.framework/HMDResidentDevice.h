@@ -16,7 +16,7 @@
 
 @interface HMDResidentDevice : HMFObject <HMDDeviceControllerDelegate, HMDBackingStoreObjectProtocol, HMFDumpState, HMFLogging, NSSecureCoding>
 {
-    HMFUnfairLock *__lock;
+    HMFUnfairLock *_lock;
     HMDDevice *_device;
     HMDDeviceController *_deviceController;
     _Bool _enabled;
@@ -33,16 +33,16 @@
 + (id)logCategory;
 + (id)batteryStateAsString:(int)arg1;
 + (id)shortDescription;
+- (void).cxx_destruct;
 @property(nonatomic) __weak HMDResidentDeviceManager *residentDeviceManager; // @synthesize residentDeviceManager=_residentDeviceManager;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) HMDDevice *device; // @synthesize device=_device;
 @property(nonatomic, getter=isLowBattery) _Bool lowBattery; // @synthesize lowBattery=_lowBattery;
 @property(nonatomic) int batteryState; // @synthesize batteryState=_batteryState;
 @property(nonatomic, getter=isReachable) _Bool reachable; // @synthesize reachable=_reachable;
-@property(nonatomic, getter=isConfirmed) _Bool confirmed; // @synthesize confirmed=_confirmed;
+@property(readonly, nonatomic, getter=isConfirmed) _Bool confirmed; // @synthesize confirmed=_confirmed;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)logIdentifier;

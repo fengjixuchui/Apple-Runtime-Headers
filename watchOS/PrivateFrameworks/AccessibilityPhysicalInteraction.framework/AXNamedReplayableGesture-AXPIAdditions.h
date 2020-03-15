@@ -15,11 +15,13 @@
 + (id)pinchOutGestureWithPoint:(struct CGPoint)arg1 bounds:(struct CGRect)arg2;
 + (id)pinchInGestureWithPoint:(struct CGPoint)arg1 bounds:(struct CGRect)arg2;
 + (id)forceTouchGestureAtPoint:(struct CGPoint)arg1;
++ (id)scrollGestureFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 duration:(float)arg3;
 + (id)lineGestureBetweenPoints:(id)arg1 duration:(float)arg2 numberOfFingers:(unsigned int)arg3 initialHoldDuration:(float)arg4;
 + (id)lineGestureBetweenPoints:(id)arg1 duration:(float)arg2 numberOfFingers:(unsigned int)arg3;
 + (id)flickGestureStartingAtPoint:(struct CGPoint)arg1 endingAtPoint:(struct CGPoint)arg2 numberOfFingers:(unsigned int)arg3;
 + (id)flickGestureAtPoint:(struct CGPoint)arg1 angle:(float)arg2 numberOfFingers:(unsigned int)arg3;
 + (id)holdGestureAtPoint:(struct CGPoint)arg1 withDuration:(float)arg2 numberOfFingers:(unsigned int)arg3;
++ (id)longPressGestureAtPoint:(struct CGPoint)arg1;
 + (id)_tapGestureAtPoint:(struct CGPoint)arg1 isDoubleTap:(_Bool)arg2 numberOfFingers:(unsigned int)arg3 force:(float)arg4;
 + (id)tapGestureAtPoint:(struct CGPoint)arg1 isDoubleTap:(_Bool)arg2 numberOfFingers:(unsigned int)arg3;
 + (id)lineGestureBetweenPoints:(id)arg1 duration:(float)arg2;

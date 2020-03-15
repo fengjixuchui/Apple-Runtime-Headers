@@ -22,6 +22,7 @@
     _Bool _canHandleVisibleRectRejection;
     _Bool _enableBestCropRect;
     unsigned char _mediaFlags;
+    _Bool _fillSafeAreaTopInset;
     _Bool _hideIncompleteLastRow;
     _Bool _mediaTargetSizeIgnoresSpacing;
     _Bool _loadItemsOutsideAnchorViewport;
@@ -43,6 +44,7 @@
     struct UIEdgeInsets _padding;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGPoint contentOrigin; // @synthesize contentOrigin=_contentOrigin;
 @property(nonatomic) _Bool loadItemsOutsideAnchorViewport; // @synthesize loadItemsOutsideAnchorViewport=_loadItemsOutsideAnchorViewport;
 @property(nonatomic) struct CGPoint anchorViewportCenter; // @synthesize anchorViewportCenter=_anchorViewportCenter;
@@ -52,6 +54,7 @@
 @property(nonatomic) _Bool mediaTargetSizeIgnoresSpacing; // @synthesize mediaTargetSizeIgnoresSpacing=_mediaTargetSizeIgnoresSpacing;
 @property(nonatomic) _Bool hideIncompleteLastRow; // @synthesize hideIncompleteLastRow=_hideIncompleteLastRow;
 @property(nonatomic) long long visualItemShift; // @synthesize visualItemShift=_visualItemShift;
+@property(nonatomic) _Bool fillSafeAreaTopInset; // @synthesize fillSafeAreaTopInset=_fillSafeAreaTopInset;
 @property(nonatomic) int presentationType; // @synthesize presentationType=_presentationType;
 @property(nonatomic) unsigned char mediaFlags; // @synthesize mediaFlags=_mediaFlags;
 @property(nonatomic) int mediaKind; // @synthesize mediaKind=_mediaKind;
@@ -65,7 +68,6 @@
 @property(nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic) _Bool canHandleVisibleRectRejection; // @synthesize canHandleVisibleRectRejection=_canHandleVisibleRectRejection;
-- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *diagnosticDescription;
 - (id)itemsInRect:(struct CGRect)arg1 inLayout:(id)arg2;
 - (id)itemsBetweenItem:(long long)arg1 andItem:(long long)arg2;
@@ -73,6 +75,7 @@
 - (void)applySpriteChangeDetails:(id)arg1 countAfterChanges:(unsigned int)arg2 initialState:(CDUnknownBlockType)arg3 modifyState:(CDUnknownBlockType)arg4;
 - (void)setNumberOfItems:(long long)arg1 withChangeDetails:(id)arg2 changeMediaVersionHandler:(CDUnknownBlockType)arg3;
 - (void)loadedItemsDidChange;
+- (void)safeAreaInsetsDidChange;
 - (void)visibleRectDidChange;
 - (void)alphaDidChange;
 - (void)screenScaleDidChange;
@@ -80,6 +83,7 @@
 - (_Bool)shouldUpdateDecorationMediaTargetSizes;
 - (unsigned int)spriteIndexForObjectReference:(id)arg1 options:(unsigned long long)arg2 updatedObjectReference:(out id *)arg3;
 - (id)itemsGeometry;
+- (struct CGSize)sizeForItem:(long long)arg1;
 - (struct _NSRange)itemsToLoad;
 - (struct CGRect)_pageAlignedRectForVisibleRect:(struct CGRect)arg1;
 - (struct _NSRange)_itemsToLoadForVisibleRect:(struct CGRect)arg1;

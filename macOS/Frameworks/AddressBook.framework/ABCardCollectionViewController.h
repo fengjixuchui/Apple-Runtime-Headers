@@ -9,7 +9,7 @@
 #import <AddressBook/ABCardCollectionViewDataSource-Protocol.h>
 #import <AddressBook/ABCardCollectionViewDelegate-Protocol.h>
 
-@class ABCardCollectionView, ABCardViewLabelGenerator, ABCardViewPropertyProvider, ABCardViewStyleProvider, ABCollectionViewItemFactory, NSArray, NSString;
+@class ABCardCollectionView, ABCardViewLabelGenerator, ABCardViewPropertyProvider, ABCardViewStyleProvider, ABCollectionViewItemFactory, CNUIEditingRules, NSArray, NSString;
 @protocol ABCardCollectionViewControllerDelegate, ABCardViewDataSource;
 
 @interface ABCardCollectionViewController : NSObject <ABCardCollectionViewDataSource, ABCardCollectionViewDelegate>
@@ -25,8 +25,11 @@
     ABCardViewPropertyProvider *_propertyProvider;
     NSArray *_propetyKeysToDisplay;
     BOOL _suggestedCardMode;
+    CNUIEditingRules *_editingRules;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) CNUIEditingRules *editingRules; // @synthesize editingRules=_editingRules;
 @property(retain, nonatomic) NSArray *propetyKeysToDisplay; // @synthesize propetyKeysToDisplay=_propetyKeysToDisplay;
 @property(nonatomic, getter=isSuggestedCardMode) BOOL suggestedCardMode; // @synthesize suggestedCardMode=_suggestedCardMode;
 @property(retain, nonatomic) ABCardViewStyleProvider *styleProvider; // @synthesize styleProvider=_styleProvider;
@@ -35,7 +38,6 @@
 @property(retain, nonatomic) ABCardViewLabelGenerator *labelGenerator; // @synthesize labelGenerator=_labelGenerator;
 @property __weak id <ABCardCollectionViewControllerDelegate> controllerDelegate; // @synthesize controllerDelegate=_controllerDelegate;
 @property(retain, nonatomic) ABCardCollectionView *view; // @synthesize view=_view;
-- (void).cxx_destruct;
 - (void)notifyDelegateActionWasPerformed;
 - (void)cardViewNoteDidChange;
 - (id)colorForProperty:(id)arg1 identifier:(id)arg2;

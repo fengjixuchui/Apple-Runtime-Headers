@@ -28,6 +28,7 @@
     int _resultType;
     NSString *_sectionId;
     NSString *_sourceChannelId;
+    int _storekitError;
     NSData *_subscriptionPurchaseSessionId;
     BOOL _arrivedFromAd;
     BOOL _sawSubscriptionSheet;
@@ -37,12 +38,14 @@
         unsigned int paidSubscriptionConversionPointType:1;
         unsigned int parentFeedType:1;
         unsigned int resultType:1;
+        unsigned int storekitError:1;
         unsigned int arrivedFromAd:1;
         unsigned int sawSubscriptionSheet:1;
         unsigned int subscriptionOnlyArticlePreview:1;
     } _has;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
 @property(retain, nonatomic) NSString *parentFeedId; // @synthesize parentFeedId=_parentFeedId;
 @property(retain, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
@@ -59,7 +62,6 @@
 @property(retain, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property(retain, nonatomic) NSString *sectionId; // @synthesize sectionId=_sectionId;
 @property(retain, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
@@ -68,6 +70,10 @@
 - (BOOL)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsStorekitError:(id)arg1;
+- (id)storekitErrorAsString:(int)arg1;
+@property(nonatomic) BOOL hasStorekitError;
+@property(nonatomic) int storekitError; // @synthesize storekitError=_storekitError;
 @property(readonly, nonatomic) BOOL hasIssueData;
 @property(readonly, nonatomic) BOOL hasParentFeedId;
 @property(readonly, nonatomic) BOOL hasGroupFeedId;

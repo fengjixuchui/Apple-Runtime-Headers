@@ -38,6 +38,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)numberFormatter;
 + (id)emptyConversationWithGroupUUID:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject *reportingHierarchySubToken; // @synthesize reportingHierarchySubToken=_reportingHierarchySubToken;
 @property(retain, nonatomic) NSObject *reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
 @property(nonatomic) long long maxVideoDecodesAllowed; // @synthesize maxVideoDecodesAllowed=_maxVideoDecodesAllowed;
@@ -57,13 +58,14 @@
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) NSUUID *groupUUID; // @synthesize groupUUID=_groupUUID;
 @property(readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqualToConversation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)handles;
+- (id)bundleIdentifier;
 @property(readonly, nonatomic) TUContactsDataProvider *contactsDataProvider; // @synthesize contactsDataProvider=_contactsDataProvider;
 - (BOOL)isRepresentedByRemoteMembers:(id)arg1;
 - (id)initiatorLocalizedName;

@@ -17,6 +17,7 @@
     void *_abDB;
     CNContactStore *_contactStore;
     NSString *_familyDelegateAltDSID;
+    NSString *_familyDelegateACAccountID;
     NSMutableArray *_saveRequests;
     int _abConnectionCount;
     // Error parsing type: ^{CalDatabase={__CFRuntimeBase=IAI}i^{CPRecordStore}^{CalEventOccurrenceCache}^{CalScheduledTaskCache}^{__CFDictionary}^{__CFDictionary}{_opaque_pthread_mutex_t=l[40c]}II^{__CFArray}^{__CFString}^{__CFArray}ii^{__CFString}^{__CFString}^{__CFString}i@?{_opaque_pthread_mutex_t=l[40c]}B^{__CFArray}^{__CFArray}^{__CFArray}@B^{__CFSet}@B}, name: _calDB
@@ -33,6 +34,7 @@
 + (void)abSetTestABDBDir:(id)arg1;
 + (id)sharedInstanceForAccountType:(id)arg1 creatingClass:(Class)arg2;
 + (id)os_log;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType calUnitTestCallbackBlock; // @synthesize calUnitTestCallbackBlock=_calUnitTestCallbackBlock;
 @property(nonatomic) int noteConnectionCount; // @synthesize noteConnectionCount=_noteConnectionCount;
 @property(retain, nonatomic) NoteContext *noteDB; // @synthesize noteDB=_noteDB;
@@ -43,10 +45,10 @@
 
 @property(nonatomic) int abConnectionCount; // @synthesize abConnectionCount=_abConnectionCount;
 @property(retain, nonatomic) NSMutableArray *saveRequests; // @synthesize saveRequests=_saveRequests;
+@property(retain, nonatomic) NSString *familyDelegateACAccountID; // @synthesize familyDelegateACAccountID=_familyDelegateACAccountID;
 @property(retain, nonatomic) NSString *familyDelegateAltDSID; // @synthesize familyDelegateAltDSID=_familyDelegateAltDSID;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(nonatomic) void *abDB; // @synthesize abDB=_abDB;
-- (void).cxx_destruct;
 - (void)calUnitTestsSetCallbackBlockForSave:(CDUnknownBlockType)arg1;
 - (_Bool)noteCloseDBAndSave:(_Bool)arg1;
 - (_Bool)noteSaveDB;
@@ -71,12 +73,13 @@
 - (_Bool)_abOpenDBWithClientIdentifier:(id)arg1;
 - (void)_registerForAddressBookYieldNotifications;
 - (_Bool)useContacts;
+- (void)removeDelegateDatabasesNotMatchingAltDSIDs:(id)arg1;
 - (void)executeAllSaveRequests;
 - (void)addSaveRequest:(id)arg1;
 - (void *)abDBThrowOnNil:(_Bool)arg1;
 - (id)changeTrackingID;
 - (void)dealloc;
-- (id)initWithContactsFamilyDelegateAltDSID:(id)arg1;
+- (id)initWithContactsFamilyDelegateAltDSID:(id)arg1 familyDelegateACAccountID:(id)arg2;
 - (id)init;
 
 @end

@@ -13,7 +13,7 @@
     BOOL _muted;
     unsigned long long _userAction;
     double _mediaTimePlayed;
-    NSString *_mediaPlayMethod;
+    unsigned long long _mediaPlayMethod;
     NSString *_mediaPauseMethod;
     NSString *_mediaResumeMethod;
     unsigned long long _mediaPausePosition;
@@ -24,6 +24,7 @@
     NSError *_error;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic) double volume; // @synthesize volume=_volume;
 @property(nonatomic) BOOL muted; // @synthesize muted=_muted;
@@ -33,10 +34,9 @@
 @property(nonatomic) unsigned long long mediaPausePosition; // @synthesize mediaPausePosition=_mediaPausePosition;
 @property(retain, nonatomic) NSString *mediaResumeMethod; // @synthesize mediaResumeMethod=_mediaResumeMethod;
 @property(retain, nonatomic) NSString *mediaPauseMethod; // @synthesize mediaPauseMethod=_mediaPauseMethod;
-@property(retain, nonatomic) NSString *mediaPlayMethod; // @synthesize mediaPlayMethod=_mediaPlayMethod;
+@property(nonatomic) unsigned long long mediaPlayMethod; // @synthesize mediaPlayMethod=_mediaPlayMethod;
 @property(nonatomic) double mediaTimePlayed; // @synthesize mediaTimePlayed=_mediaTimePlayed;
 @property(nonatomic) unsigned long long userAction; // @synthesize userAction=_userAction;
-- (void).cxx_destruct;
 
 @end
 

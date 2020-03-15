@@ -6,31 +6,45 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaDictationContext-Protocol.h>
+@class NSArray, NSData, NSString, SISchemaLocaleIdentifier;
 
-@class NSData, NSString;
-
-@interface SISchemaDictationContext : PBCodable <SISchemaDictationContext, NSSecureCoding>
+@interface SISchemaDictationContext : PBCodable
 {
     NSString *_keyboardLanguage;
+    SISchemaLocaleIdentifier *_keyboardLocale;
+    SISchemaLocaleIdentifier *_dictationLocale;
+    SISchemaLocaleIdentifier *_userSelectedLocale;
+    SISchemaLocaleIdentifier *_siriSelectedLocale;
+    NSArray *_keyboardLocalesEnableds;
+    NSArray *_dictationLocalesEnableds;
+    NSString *_bundleId;
 }
 
-@property(copy, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
+@property(copy, nonatomic) NSArray *dictationLocalesEnableds; // @synthesize dictationLocalesEnableds=_dictationLocalesEnableds;
+@property(copy, nonatomic) NSArray *keyboardLocalesEnableds; // @synthesize keyboardLocalesEnableds=_keyboardLocalesEnableds;
+@property(retain, nonatomic) SISchemaLocaleIdentifier *siriSelectedLocale; // @synthesize siriSelectedLocale=_siriSelectedLocale;
+@property(retain, nonatomic) SISchemaLocaleIdentifier *userSelectedLocale; // @synthesize userSelectedLocale=_userSelectedLocale;
+@property(retain, nonatomic) SISchemaLocaleIdentifier *dictationLocale; // @synthesize dictationLocale=_dictationLocale;
+@property(retain, nonatomic) SISchemaLocaleIdentifier *keyboardLocale; // @synthesize keyboardLocale=_keyboardLocale;
+@property(copy, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
+- (id)dictationLocalesEnabledAtIndex:(unsigned long long)arg1;
+- (unsigned long long)dictationLocalesEnabledCount;
+- (void)addDictationLocalesEnabled:(id)arg1;
+- (void)clearDictationLocalesEnabled;
+- (id)keyboardLocalesEnabledAtIndex:(unsigned long long)arg1;
+- (unsigned long long)keyboardLocalesEnabledCount;
+- (void)addKeyboardLocalesEnabled:(id)arg1;
+- (void)clearKeyboardLocalesEnabled;
 
 @end
 

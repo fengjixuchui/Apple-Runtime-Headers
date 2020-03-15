@@ -44,6 +44,7 @@
 
 + (_Bool)hasMessageReceiverChildren;
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly) NSMutableSet *activeRecordingSessions; // @synthesize activeRecordingSessions=_activeRecordingSessions;
 @property(retain) HMDCameraRecordingSession *currentRecordingSession; // @synthesize currentRecordingSession=_currentRecordingSession;
 @property(getter=isMotionActive) _Bool motionActive; // @synthesize motionActive=_motionActive;
@@ -64,7 +65,6 @@
 @property(readonly) HMDCameraRecordingResidentElector *recordingResidentElector; // @synthesize recordingResidentElector=_recordingResidentElector;
 @property(retain) HMDStreamDataChunkAssembler *dataChunkAssembler; // @synthesize dataChunkAssembler=_dataChunkAssembler;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID; // @synthesize messageTargetUUID=_messageTargetUUID;
-- (void).cxx_destruct;
 - (_Bool)supportsDeviceWithCapabilities:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 - (void)closeSession:(id)arg1 withError:(id)arg2;
@@ -81,11 +81,11 @@
 - (void)_submitReadEventWithStatus:(unsigned short)arg1;
 - (void)_bulkSendReadDidReceiveStreamDataChunk:(id)arg1;
 - (void)_startBulkSendDataReadEvent;
-- (void)_startRecordingSessionForTrigger:(unsigned long long)arg1 presenceByPairingIdentity:(id)arg2 reason:(id)arg3 completionCallback:(CDUnknownBlockType)arg4;
+- (void)_startRecordingSessionForTrigger:(unsigned long long)arg1 homePresenceByPairingIdentity:(id)arg2 reason:(id)arg3 completionCallback:(CDUnknownBlockType)arg4;
 - (_Bool)_canAnyDeviceStartRecordingSession;
 - (void)handleStartRecordingSessionRequest:(id)arg1;
-- (void)_startCameraRecordingSessionForTrigger:(unsigned long long)arg1 reason:(id)arg2;
-- (void)_createRecordingSessionForTrigger:(unsigned long long)arg1 presenceByPairingIdentity:(id)arg2;
+- (void)_startRecordingSessionForTrigger:(unsigned long long)arg1 homePresenceByPairingIdentity:(id)arg2 reason:(id)arg3;
+- (void)_createRecordingSessionForTrigger:(unsigned long long)arg1 homePresenceByPairingIdentity:(id)arg2;
 - (void)_forwardRecordingSession:(unsigned long long)arg1 withSortedDevices:(id)arg2 withRetries:(long long)arg3;
 @property(readonly) NSDictionary *homePresenceByPairingIdentity;
 - (void)_coordinateRecordingSessionForAccessory:(unsigned long long)arg1;

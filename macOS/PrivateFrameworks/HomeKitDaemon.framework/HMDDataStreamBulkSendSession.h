@@ -21,26 +21,26 @@
     NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _activeReadHandler;
     NSMutableArray *_pendingReads;
-    NSError *_receivedFailure;
+    NSError *_pendingError;
     NSString *_logIdentifier;
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
-@property(retain, nonatomic) NSError *receivedFailure; // @synthesize receivedFailure=_receivedFailure;
+@property(retain, nonatomic) NSError *pendingError; // @synthesize pendingError=_pendingError;
 @property(retain, nonatomic) NSMutableArray *pendingReads; // @synthesize pendingReads=_pendingReads;
 @property(copy, nonatomic) CDUnknownBlockType activeReadHandler; // @synthesize activeReadHandler=_activeReadHandler;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) NSNumber *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property(readonly, nonatomic) __weak HMDDataStreamBulkSendProtocol *bulkSendProtocol; // @synthesize bulkSendProtocol=_bulkSendProtocol;
-- (void).cxx_destruct;
 - (void)_pumpReadDataIfPossible;
 - (void)_closeSession;
 - (void)asyncHandleRemoteCloseWithError:(id)arg1;
 - (void)asyncHandleIncomingPackets:(id)arg1 isEof:(BOOL)arg2;
 - (void)read:(CDUnknownBlockType)arg1;
 - (void)cancelWithReason:(unsigned short)arg1;
-@property(readonly) BOOL hasMoreData;
+@property(readonly, getter=isActive) BOOL active;
 - (void)dealloc;
 - (id)initWithProtocol:(id)arg1 sessionIdentifier:(id)arg2 queue:(id)arg3 logIdentifier:(id)arg4;
 

@@ -26,7 +26,6 @@
     NSMutableDictionary *_bundleIDToWeightUsingGPSCache;
     NSMutableDictionary *_bundleIDToWeightUsingWiFiCache;
     NSMutableDictionary *_bundleIDToWeightUsingLocationCache;
-    NSMutableDictionary *_activeClients;
     NSDate *_lastResyncActiveClientsDate;
     double _gps_segment_power;
     NSDate *_gps_segment_lastWrittenDate;
@@ -49,13 +48,13 @@
 + (id)entryEventPointDefinitions;
 + (id)defaults;
 + (void)load;
+- (void).cxx_destruct;
 @property double gps_segment_timestamp; // @synthesize gps_segment_timestamp=_gps_segment_timestamp;
 @property(retain) NSDate *gps_segment_date; // @synthesize gps_segment_date=_gps_segment_date;
 @property double gps_segment_lastWrittenTimestamp; // @synthesize gps_segment_lastWrittenTimestamp=_gps_segment_lastWrittenTimestamp;
 @property(retain) NSDate *gps_segment_lastWrittenDate; // @synthesize gps_segment_lastWrittenDate=_gps_segment_lastWrittenDate;
 @property double gps_segment_power; // @synthesize gps_segment_power=_gps_segment_power;
 @property(retain) NSDate *lastResyncActiveClientsDate; // @synthesize lastResyncActiveClientsDate=_lastResyncActiveClientsDate;
-@property(retain) NSMutableDictionary *activeClients; // @synthesize activeClients=_activeClients;
 @property(retain) NSMutableDictionary *bundleIDToWeightUsingLocationCache; // @synthesize bundleIDToWeightUsingLocationCache=_bundleIDToWeightUsingLocationCache;
 @property(retain) NSMutableDictionary *bundleIDToWeightUsingWiFiCache; // @synthesize bundleIDToWeightUsingWiFiCache=_bundleIDToWeightUsingWiFiCache;
 @property(retain) NSMutableDictionary *bundleIDToWeightUsingGPSCache; // @synthesize bundleIDToWeightUsingGPSCache=_bundleIDToWeightUsingGPSCache;
@@ -72,8 +71,8 @@
 @property(retain) NSNumber *appStatusLimiterIsActive; // @synthesize appStatusLimiterIsActive=_appStatusLimiterIsActive;
 @property(retain) NSDate *lastAppStatusNotificationDate; // @synthesize lastAppStatusNotificationDate=_lastAppStatusNotificationDate;
 @property(retain) PLCFNotificationOperatorComposition *appStatusChangedNotification; // @synthesize appStatusChangedNotification=_appStatusChangedNotification;
-- (void).cxx_destruct;
 - (void)UpdateGnssPowerMetric:(id)arg1;
+- (void)updateLocationQualificationEvents;
 - (void)updateLocationDistributionEvents;
 - (void)logEventNoneClientStatusDebugWithClients:(id)arg1;
 - (void)logEventNoneClientStatus;

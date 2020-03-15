@@ -8,19 +8,22 @@
 
 #import <coreroutine/MSPQueryDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, RTTimer, RTTimerManager;
+@class MSPFavoritesContainer, MSPHistoryContainer, MSPPinnedPlacesContainer, NSMutableDictionary, NSString, RTTimer, RTTimerManager;
 
 @interface RTMapsSupportManager_MSP : RTMapsSupportManager <MSPQueryDelegate>
 {
+    MSPFavoritesContainer *_favoritesContainer;
+    MSPHistoryContainer *_historyContainer;
+    MSPPinnedPlacesContainer *_pinnedPlacesContainer;
     RTTimerManager *_timerManager;
     RTTimer *_queryTimer;
     NSMutableDictionary *_queryMap;
 }
 
 + (id)createQueryWithContainer:(id)arg1 delegate:(id)arg2 filteredWithBlock:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *queryMap; // @synthesize queryMap=_queryMap;
 @property(retain, nonatomic) RTTimer *queryTimer; // @synthesize queryTimer=_queryTimer;
-- (void).cxx_destruct;
 - (void)_handleQueryTimerExpiry;
 - (void)_queryContentsDidLoad:(id)arg1 contentsVersion:(unsigned long long)arg2;
 - (void)queryContentsDidLoad:(id)arg1 contentsVersion:(unsigned long long)arg2;
@@ -43,6 +46,7 @@
 - (void)_createHistoryPlaceDisplaysQuery:(id)arg1;
 - (void)_createFavoritesQuery:(id)arg1;
 - (void)_createQueries;
+- (void)_createContainers;
 - (void)_setup;
 - (void)setup;
 - (id)initWithMapServiceManager:(id)arg1 timerManager:(id)arg2;

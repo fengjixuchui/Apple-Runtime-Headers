@@ -29,6 +29,7 @@
     unsigned long long _startTime;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CSLPIPowerAssertion *powerAssertion; // @synthesize powerAssertion=_powerAssertion;
 @property(nonatomic, getter=wasAborted) _Bool aborted; // @synthesize aborted=_aborted;
 @property(nonatomic) _Bool isPartialUpdate; // @synthesize isPartialUpdate=_isPartialUpdate;
@@ -40,7 +41,6 @@
 @property(readonly, nonatomic) NSDate *referenceDate; // @synthesize referenceDate=_referenceDate;
 @property(readonly, nonatomic) unsigned int frameCount; // @synthesize frameCount=_frameCount;
 @property(readonly, nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
-- (void).cxx_destruct;
 - (unsigned long long)encodePresentationTime:(id)arg1;
 - (void)swapEndUpdateObserversAndCopyReasonsFromUpdate:(id)arg1;
 - (void)advanceToNextAnimationDates;
@@ -54,7 +54,6 @@
 - (id)description;
 - (void)_relinquishPowerAssertion;
 - (_Bool)dateIsCurrentMinute:(id)arg1;
-- (void)adjustCurrentAnimationEndDateToNowTimerDate;
 - (void)dealloc;
 - (id)init;
 - (id)initWithFirstAnimationStartDate:(id)arg1 firstAnimationEndDate:(id)arg2 lastFrameFromPreviousUpdate:(id)arg3 delegate:(id)arg4;

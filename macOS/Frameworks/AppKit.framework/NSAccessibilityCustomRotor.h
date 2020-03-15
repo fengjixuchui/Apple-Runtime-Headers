@@ -17,14 +17,15 @@
     id <NSAccessibilityElementLoading> _itemLoadingDelegate;
 }
 
+- (void).cxx_destruct;
 @property long long type; // @synthesize type=_type;
 @property(copy) NSString *label; // @synthesize label=_label;
-- (void).cxx_destruct;
 - (id)description;
 - (id)_defaultLabelForType:(long long)arg1;
 @property __weak id <NSAccessibilityElementLoading> itemLoadingDelegate; // @dynamic itemLoadingDelegate;
 @property __weak id <NSAccessibilityCustomRotorItemSearchDelegate> itemSearchDelegate; // @dynamic itemSearchDelegate;
 - (void)dealloc;
+- (void)_setupLoadingTokenCache;
 - (id)initWithLabel:(id)arg1 itemSearchDelegate:(id)arg2;
 - (id)initWithRotorType:(long long)arg1 itemSearchDelegate:(id)arg2;
 - (id)init;

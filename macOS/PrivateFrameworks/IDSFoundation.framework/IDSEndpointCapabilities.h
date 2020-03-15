@@ -38,7 +38,8 @@
     BOOL _supportsOriginalTimestampOrderingV1;
     BOOL _nicknamesVersion;
     BOOL _ecVersion;
-    BOOL _supportsProtobufPayloadDataV1;
+    BOOL _supportsKeySharing;
+    BOOL _supportsProtobufPayloadDataV2;
 }
 
 + (BOOL)supportsSecureCoding;

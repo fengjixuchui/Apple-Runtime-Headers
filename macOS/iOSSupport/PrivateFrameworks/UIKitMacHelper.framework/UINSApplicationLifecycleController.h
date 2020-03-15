@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSRunningApplication *_observedRunningApplication;
     NSMutableArray *_windowsHiddenForTermination;
     NSMutableArray *_windowStateForWindowsHiddenForTermination;
+    NSMutableArray *_miniaturizedWindowsToRestoreInDockOnRelaunch;
     _UINSLifecycleWatchdog *_foregroundTransitionWatchdog;
     _UINSLifecycleWatchdog *_backgroundTransitionWatchdog;
     _UINSLifecycleWatchdog *_backgroundTaskWatchdog;
@@ -29,11 +30,13 @@ __attribute__((visibility("hidden")))
     NSTimer *_finalWarningShotTimer;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *finalWarningShotTimer; // @synthesize finalWarningShotTimer=_finalWarningShotTimer;
 @property(retain, nonatomic) _UINSLifecycleWatchdog *finalTerminationWatchdog; // @synthesize finalTerminationWatchdog=_finalTerminationWatchdog;
 @property(retain, nonatomic) _UINSLifecycleWatchdog *backgroundTaskWatchdog; // @synthesize backgroundTaskWatchdog=_backgroundTaskWatchdog;
 @property(retain, nonatomic) _UINSLifecycleWatchdog *backgroundTransitionWatchdog; // @synthesize backgroundTransitionWatchdog=_backgroundTransitionWatchdog;
 @property(retain, nonatomic) _UINSLifecycleWatchdog *foregroundTransitionWatchdog; // @synthesize foregroundTransitionWatchdog=_foregroundTransitionWatchdog;
+@property(retain, nonatomic) NSMutableArray *miniaturizedWindowsToRestoreInDockOnRelaunch; // @synthesize miniaturizedWindowsToRestoreInDockOnRelaunch=_miniaturizedWindowsToRestoreInDockOnRelaunch;
 @property(retain, nonatomic) NSMutableArray *windowStateForWindowsHiddenForTermination; // @synthesize windowStateForWindowsHiddenForTermination=_windowStateForWindowsHiddenForTermination;
 @property(retain, nonatomic) NSMutableArray *windowsHiddenForTermination; // @synthesize windowsHiddenForTermination=_windowsHiddenForTermination;
 @property(nonatomic) BOOL firstWindowCreationEncountered; // @synthesize firstWindowCreationEncountered=_firstWindowCreationEncountered;
@@ -45,7 +48,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BOOL terminationIsForLogoutOrShutdown; // @synthesize terminationIsForLogoutOrShutdown=_terminationIsForLogoutOrShutdown;
 @property(nonatomic) __weak UINSApplicationDelegate *appDelegate; // @synthesize appDelegate=_appDelegate;
 @property(nonatomic) BOOL isAttemptingTermination; // @synthesize isAttemptingTermination=_isAttemptingTermination;
-- (void).cxx_destruct;
 - (void)_setLSNextAppLaunchDelay;
 - (void)_setLSRestoreTypeToForeground:(BOOL)arg1;
 - (void)_endWindowOrderBatching;

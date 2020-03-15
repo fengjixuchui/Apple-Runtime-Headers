@@ -6,7 +6,7 @@
 
 #import <CloudDocsDaemon/BRCClientZone.h>
 
-@class BRCAppLibrary, BRCPrivateServerZone, BRCProblemReport, BRCServerZoneHealthState, NSMutableArray, NSMutableSet, NSSet;
+@class BRCAppLibrary, BRCPrivateServerZone, BRCProblemReport, BRCServerZoneHealthState, NSMapTable, NSMutableArray, NSMutableSet, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface BRCPrivateClientZone : BRCClientZone
@@ -17,11 +17,12 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_faultsLiveBarriers;
     NSMutableSet *_appLibraries;
     BRCAppLibrary *_defaultAppLibrary;
+    NSMapTable *_pcsChainFolderOperations;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) BRCServerZoneHealthState *zoneHealthState; // @synthesize zoneHealthState=_zoneHealthState;
 @property(readonly, nonatomic) NSSet *appLibraries; // @synthesize appLibraries=_appLibraries;
-- (void).cxx_destruct;
 - (BOOL)validateItemsLoggingToFile:(struct __sFILE *)arg1 db:(id)arg2;
 - (BOOL)validateStructureLoggingToFile:(struct __sFILE *)arg1 db:(id)arg2;
 - (void)_checkResultSetIsEmpty:(id)arg1 logToFile:(struct __sFILE *)arg2 reason:(id)arg3 result:(char *)arg4;
@@ -50,17 +51,18 @@ __attribute__((visibility("hidden")))
 - (void)removeAppLibrary:(id)arg1;
 - (void)addAppLibrary:(id)arg1;
 @property(readonly, nonatomic) NSSet *appLibraryIDs;
+- (id)pcsChainOperationForItemID:(id)arg1;
+- (void)registerPCSChainingOperation:(id)arg1;
 @property(readonly, nonatomic) BOOL hasDefaultAppLibrary;
 @property(readonly, nonatomic) BRCAppLibrary *defaultAppLibrary; // @synthesize defaultAppLibrary=_defaultAppLibrary;
-- (struct BRCDirectoryItem *)fetchZoneRootItemInDB:(id)arg1;
+- (id)fetchZoneRootItemInDB:(id)arg1;
 - (id)rootItemID;
 @property(readonly, nonatomic) BRCPrivateServerZone *privateServerZone;
 - (id)asPrivateClientZone;
 @property(readonly, nonatomic) BOOL isPrivateZone;
-- (struct PQLResultSet *)reparentedItemsNeedingChaining;
-- (struct PQLResultSet *)unchainedItemInfoInServerTruthEnumeratorParentedTo:(id)arg1;
+- (id)unchainedItemInfoInServerTruthEnumeratorParentedTo:(id)arg1;
 - (BOOL)parentIDHasLiveUnchainedChildren:(id)arg1;
-- (BOOL)isItemIDMarkedChained:(id)arg1;
+- (unsigned int)pcsChainStateForItem:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) BOOL isSharedZone; // @dynamic isSharedZone;

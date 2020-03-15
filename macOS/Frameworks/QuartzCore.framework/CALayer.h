@@ -58,6 +58,8 @@
 @property double borderWidth;
 @property struct CGColor *borderColor;
 @property(copy) NSDictionary *actions;
+@property(copy) NSDictionary *separatedOptions;
+@property(getter=isSeparated) BOOL separated;
 @property(copy) NSDictionary *style;
 @property(copy) NSString *name;
 @property(retain) id compositingFilter;
@@ -233,6 +235,7 @@
 - (BOOL)doubleSided;
 - (BOOL)opaque;
 - (BOOL)hidden;
+- (BOOL)CAMLTypeSupportedForKey:(id)arg1;
 - (id)CAMLTypeForKey:(id)arg1;
 - (void)encodeWithCAMLWriter:(id)arg1;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;

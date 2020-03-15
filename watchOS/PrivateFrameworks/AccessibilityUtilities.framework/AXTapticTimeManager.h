@@ -32,12 +32,12 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *dateOverride; // @synthesize dateOverride=_dateOverride;
 @property(retain, nonatomic) NSLocale *localeOverride; // @synthesize localeOverride=_localeOverride;
 @property(copy, nonatomic) CDUnknownBlockType testingQueueCallback; // @synthesize testingQueueCallback=_testingQueueCallback;
 @property(nonatomic) unsigned int assertionID; // @synthesize assertionID=_assertionID;
 @property(readonly, nonatomic) _Bool isCurrentlyOutputting; // @synthesize isCurrentlyOutputting=_isCurrentlyOutputting;
-- (void).cxx_destruct;
 - (void)_dequeueSound;
 - (void)_handleTestingQueueCallback;
 - (id)_convertSoundToStringName:(unsigned long)arg1;
@@ -53,9 +53,9 @@
 - (_Bool)_preStartCheck;
 - (void)_clearQueue;
 - (int)_numberOfTapMinutesForClockTime;
-- (int)_numberOfTapHoursForClockTime;
+- (int)_numberOfTapHoursForClockTimeWithEncoding:(int)arg1;
 - (id)_dateComponentsForClockTime;
-- (int)_numberOfTapsForHourNumber:(int)arg1;
+- (int)_numberOfTapsForHourNumber:(int)arg1 withEncoding:(int)arg2;
 - (_Bool)_is24HourTime;
 - (void)_updateIs24HourTime;
 - (void)_localeDidChange:(id)arg1;

@@ -33,6 +33,7 @@
 + (id)fontWithStyle:(id)arg1 adjustedForMaxSizeCategory:(id)arg2;
 + (id)orderedContentSizeCategories;
 + (id)sharedBehaviors;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIImage *whatsNewViewApplePayImage; // @synthesize whatsNewViewApplePayImage=_whatsNewViewApplePayImage;
 @property(readonly, nonatomic) float whatsNewViewBulletPointTextTrailingAnchorLayoutConstraintConstant; // @synthesize whatsNewViewBulletPointTextTrailingAnchorLayoutConstraintConstant=_whatsNewViewBulletPointTextTrailingAnchorLayoutConstraintConstant;
 @property(readonly, nonatomic) float whatsNewViewBulletPointSymbolLeadingAnchorLayoutConstraintConstant; // @synthesize whatsNewViewBulletPointSymbolLeadingAnchorLayoutConstraintConstant=_whatsNewViewBulletPointSymbolLeadingAnchorLayoutConstraintConstant;
@@ -51,7 +52,6 @@
 @property(readonly, nonatomic) UIImage *dndActionImage; // @synthesize dndActionImage=_dndActionImage;
 @property(readonly, nonatomic) Class navigationBarClass; // @synthesize navigationBarClass=_navigationBarClass;
 @property(nonatomic) int HUDStyle; // @synthesize HUDStyle=_HUDStyle;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) UIImage *carplayComposeButtonImage;
 @property(readonly, nonatomic) UIImage *carplayChevronImage;
 @property(readonly, nonatomic) UIFont *searchIndexingSubtitleFont;
@@ -117,6 +117,7 @@
 - (id)messageAcknowledgmentPollingImageNameForAcknowledgmentType:(int)arg1;
 - (id)messageAcknowledgmentImageNameForType:(int)arg1;
 @property(readonly, nonatomic) NSArray *messageAcknowledgmentPickerBarAcknowledgmentOrder;
+@property(readonly, nonatomic) float messageAcknowledgementVotingViewHeight;
 @property(readonly, nonatomic) UIFont *messageAcknowledgmentVoteCountFont;
 @property(readonly, nonatomic) struct CGSize aggregateAcknowledgmentTranscriptBalloonSize;
 @property(readonly, nonatomic) struct CGSize messageAcknowledgmentPickerBarOffsetFromBalloon;
@@ -529,6 +530,9 @@
 @property(readonly, nonatomic) _Bool showPendingInConversationList;
 @property(readonly, nonatomic) Class conversationListNavigationControllerClass;
 @property(readonly, nonatomic) Class conversationListTableViewClass;
+@property(readonly, nonatomic) UIFont *filterCellTitleFont;
+- (void)setupNavBarAppearanceWithNavigationController:(id)arg1 withBackgroundColor:(id)arg2;
+- (void)setupNavBarAppearanceWithNavigationController:(id)arg1;
 @property(readonly, nonatomic) NSArray *acceptableUTIs;
 @property(readonly, nonatomic) UIImage *chevronImage;
 @property(readonly, nonatomic) UIFont *navbarDefaultLabelFont;

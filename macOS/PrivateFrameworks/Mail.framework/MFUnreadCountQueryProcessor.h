@@ -15,6 +15,7 @@
 
 @interface MFUnreadCountQueryProcessor : NSObject <EFLoggable, MFSearchableIndexQueryResultProcessor, MFMessageConsumer>
 {
+    struct os_unfair_lock_s _logPrefixStringLock;
     BOOL _useTotalCount;
     BOOL _cancelled;
     id <MFSearchableIndexQueryResultProcessorDelegate> _delegate;
@@ -27,6 +28,7 @@
 }
 
 + (id)log;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *logPrefixString; // @synthesize logPrefixString=_logPrefixString;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *seenMessageIDHeadersQueue; // @synthesize seenMessageIDHeadersQueue=_seenMessageIDHeadersQueue;
 @property(retain, nonatomic) NSMutableDictionary *persistentIDToMessageIDHeaders; // @synthesize persistentIDToMessageIDHeaders=_persistentIDToMessageIDHeaders;
@@ -36,7 +38,6 @@
 @property(readonly, nonatomic) BOOL useTotalCount; // @synthesize useTotalCount=_useTotalCount;
 @property(readonly, nonatomic) id <MFMailboxDisplayCountUpdater> displayCountUpdater; // @synthesize displayCountUpdater=_displayCountUpdater;
 @property(nonatomic) __weak id <MFSearchableIndexQueryResultProcessorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)newMessagesAvailable:(id)arg1 secondaryMessages:(id)arg2 fromUpdate:(BOOL)arg3;
 - (void)searchPhaseComplete;
 - (void)finishedSendingMessages;

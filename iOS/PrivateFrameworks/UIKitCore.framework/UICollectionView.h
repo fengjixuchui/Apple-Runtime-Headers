@@ -238,6 +238,7 @@
 }
 
 + (id)_reuseKeyForSupplementaryViewOfKind:(id)arg1 withReuseIdentifier:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_currentPromiseFulfillmentCell, setter=_setCurrentPromiseFulfillmentCell:) UICollectionViewCell *currentPromiseFulfillmentCell; // @synthesize currentPromiseFulfillmentCell=_currentPromiseFulfillmentCell;
 @property(readonly, nonatomic, getter=_endOfContentFocusContainerGuide) UIFocusContainerGuide *endOfContentFocusContainerGuide; // @synthesize endOfContentFocusContainerGuide=_endOfContentFocusContainerGuide;
 @property(copy, nonatomic, getter=_navigationCompletion, setter=_setNavigationCompletion:) CDUnknownBlockType navigationCompletion; // @synthesize navigationCompletion=_navigationCompletion;
@@ -255,7 +256,6 @@
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(nonatomic) __weak id <UICollectionViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) UICollectionViewLayout *collectionViewLayout; // @synthesize collectionViewLayout=_layout;
-- (void).cxx_destruct;
 - (id)_contextMenuInteraction:(id)arg1 accessoriesForMenuWithConfiguration:(id)arg2 layoutAnchor:(CDStruct_6f807b77)arg3;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
@@ -268,6 +268,7 @@
 - (void)_configureContextMenuInteractionIfNeeded;
 - (id)_orthogonalScrollerController;
 - (id)_updateTranslator;
+- (_Bool)_isConnectedToDiffableDataSource;
 - (void)_performDiffableUpdate:(CDUnknownBlockType)arg1;
 - (void)_managedSubviewAdded:(id)arg1;
 - (id)_prefetchDataSourceActual;
@@ -391,6 +392,7 @@
 - (void)_updateContentFocusContainerGuides;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)_orthogonalScrollingSection:(long long)arg1 didScrollToOffset:(struct CGPoint)arg2;
+- (_Bool)_indexPathIsValid:(id)arg1 allowSectionItemSentinel:(_Bool)arg2;
 - (_Bool)_indexPathIsValid:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (id)_dynamicAnimationsForTrackValues;
@@ -691,8 +693,8 @@
 @property(readonly, nonatomic, getter=_collectionViewData) UICollectionViewData *collectionViewData;
 - (id)_indexPathsForSelectedItems;
 @property(readonly, nonatomic) NSArray *indexPathsForSelectedItems;
-- (void)_decrementSuspendLayoutCount;
-- (void)_incrementSuspendLayoutCount;
+- (void)_decrementUpdateAnimationCount;
+- (void)_incrementUpdateAnimationCount;
 - (long long)_dataSourceNumberOfItemsInSection:(long long)arg1;
 - (long long)_dataSourceNumberOfSections;
 - (long long)_numberOfItemsInSection:(long long)arg1;

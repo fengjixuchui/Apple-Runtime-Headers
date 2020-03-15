@@ -26,15 +26,16 @@
 + (_Bool)destroyCurrentAccountSynchronously;
 + (id)primaryiCloudAccountID;
 + (id)primaryiCloudAccount;
++ (_Bool)icloudAccountIsInCarry;
 + (id)icloudDriveAccountID;
 + (void)_migrateAccountIfNecessaryForAccountID:(id)arg1;
 + (id)mobileDocsAccountID;
 + (id)dbAccountID;
 + (id)accountIDPath;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *pushQueue; // @synthesize pushQueue=_pushQueue;
 @property(readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 @property(nonatomic) __weak id <BRCAccountHandlerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)setSyncPolicy:(long long)arg1 forSyncedFolderType:(unsigned long long)arg2;
 - (long long)syncPolicyforSyncedFolderType:(unsigned long long)arg1;
 - (void)reloadSyncedFolderPoliciesDisableiCloudDesktop:(_Bool)arg1;

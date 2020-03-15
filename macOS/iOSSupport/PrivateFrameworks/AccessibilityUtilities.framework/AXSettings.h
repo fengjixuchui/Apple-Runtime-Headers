@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AXSSKeyboardCommandMap, AXVoiceOverActivity, NSArray, NSData, NSDate, NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, NSUUID;
+@class AXVoiceOverActivity, NSArray, NSData, NSDate, NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, NSUUID;
 
 @interface AXSettings : NSObject
 {
@@ -30,6 +30,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *updateBlocks; // @synthesize updateBlocks=_updateBlocks;
 @property(retain, nonatomic) NSMutableDictionary *synchronizeDomains; // @synthesize synchronizeDomains=_synchronizeDomains;
 @property(retain, nonatomic) NSMutableSet *registeredNotifications; // @synthesize registeredNotifications=_registeredNotifications;
@@ -44,7 +45,6 @@
 @property(nonatomic) double voiceOverHapticIntensity; // @synthesize voiceOverHapticIntensity=_voiceOverHapticIntensity;
 @property(nonatomic) BOOL writeAXLogsToFile; // @synthesize writeAXLogsToFile=_writeAXLogsToFile;
 @property(nonatomic) BOOL assistiveTouchInternalOnlyHiddenNubbitModeEnabled; // @synthesize assistiveTouchInternalOnlyHiddenNubbitModeEnabled=_assistiveTouchInternalOnlyHiddenNubbitModeEnabled;
-- (void).cxx_destruct;
 @property(nonatomic) BOOL callAudioRoutingAutoAnswerEnabled;
 @property(nonatomic) double callAudioRoutingAutoAnswerDelay;
 @property(nonatomic) BOOL reachabilityEnabled;
@@ -87,9 +87,13 @@
 - (void)gizmoSetAutoSpeakEnabledForComplication:(id)arg1 slot:(id)arg2 face:(id)arg3 toggle:(BOOL)arg4;
 @property(nonatomic) BOOL gizmoApplicationAccessibilityEnabled;
 @property(nonatomic) BOOL appValidationTestingMode;
+@property(nonatomic) BOOL fullKeyboardAccessShouldShowTextEditingModeInstructions;
+@property(nonatomic) long long fullKeyboardAccessFocusRingColor;
+@property(nonatomic) BOOL fullKeyboardAccessFocusRingHighContrastEnabled;
+@property(nonatomic) BOOL fullKeyboardAccessLargeFocusRingEnabled;
 @property(nonatomic) BOOL fullKeyboardAccessFocusRingTimeoutEnabled;
 @property(nonatomic) double fullKeyboardAccessFocusRingTimeout;
-@property(retain, nonatomic) AXSSKeyboardCommandMap *fullKeyboardAccessCommandMap;
+@property(retain, nonatomic) NSData *fullKeyboardAccessCommandMapData;
 @property(nonatomic) double magnifierBrightness;
 @property(nonatomic) double magnifierContrast;
 @property(nonatomic) BOOL magnifierFilterInverted;
@@ -295,6 +299,7 @@
 @property(nonatomic) BOOL ignoreAXAsserts;
 @property(nonatomic) BOOL includeBacktraceInLogs;
 @property(nonatomic) BOOL validateSecondPartyApps;
+@property(nonatomic) BOOL assistiveTouchInternalOnlyPearlTrackingEnabled;
 - (BOOL)assistiveTouchInternalOnlyHiddenNubbitMode;
 @property(nonatomic) BOOL assistiveTouchCameraSwitchPreviewEnabled;
 @property(retain, nonatomic) NSDate *gaxInternalSettingsLastPasscodeSetDate;
@@ -366,6 +371,10 @@
 @property(nonatomic) long long switchControlTapBehavior;
 @property(nonatomic) double switchControlDwellTime;
 @property(nonatomic) long long switchControlScanningStyle;
+@property(nonatomic) unsigned long long switchControlCameraPointPickerMode;
+@property(nonatomic) double switchControlCameraPointPickerMovementToleranceInJoystickMode;
+@property(nonatomic) double switchControlCameraPointPickerSensitivity;
+@property(nonatomic) BOOL switchControlUseCameraForPointMode;
 @property(nonatomic) long long switchControlPointPickerSelectionStyle;
 @property(nonatomic) BOOL switchControlRestartScanningAtCurrentKey;
 @property(nonatomic) BOOL switchControlShouldUseExtendedKeyboardPredictions;
@@ -391,6 +400,7 @@
 @property(retain, nonatomic) NSUUID *switchControlLaunchRecipeUUID;
 @property(retain, nonatomic) NSArray *switchControlRecipes;
 @property(retain, nonatomic) NSDictionary *assistiveTouchMainScreenCustomization;
+@property(readonly, nonatomic) NSDictionary *assistiveTouchMainScreenDefaultCustomization;
 @property(nonatomic) double assistiveTouchIdleOpacity;
 - (BOOL)assistiveTouchCustomizationEnabled;
 @property(retain, nonatomic) NSString *assistiveTouchOrbAction;
@@ -404,12 +414,38 @@
 @property(nonatomic) BOOL assistiveTouchScannerAddedTripleClickAutomatically;
 @property(nonatomic) BOOL assistiveTouchSwitchUsageConfirmed;
 @property(nonatomic) long long assistiveTouchHeadMovementSensitivity;
+- (void)assistiveTouchMotionTrackerShouldOffsetBufferPoints:(BOOL)arg1;
+- (BOOL)assistiveTouchMotionTrackerShouldOffsetBufferPoints;
+- (void)setAssistiveTouchMotionTrackerYNormalizationOffset:(double)arg1;
+- (double)assistiveTouchMotionTrackerYNormalizationOffset;
+- (void)setAssistiveTouchMotionTrackerXNormalizationOffset:(double)arg1;
+- (double)assistiveTouchMotionTrackerXNormalizationOffset;
+- (void)setAssistiveTouchMotionTrackerYNormalizationOrder:(double)arg1;
+- (double)assistiveTouchMotionTrackerYNormalizationOrder;
+- (void)setAssistiveTouchMotionTrackerXNormalizationOrder:(double)arg1;
+- (double)assistiveTouchMotionTrackerXNormalizationOrder;
+- (void)setAssistiveTouchMotionTrackerSmoothingMaxDelta:(double)arg1;
+- (double)assistiveTouchMotionTrackerSmoothingMaxDelta;
+- (void)setAssistiveTouchMotionTrackerSmoothingBufferSize:(unsigned long long)arg1;
+- (unsigned long long)assistiveTouchMotionTrackerSmoothingBufferSize;
+- (BOOL)assistiveTouchMotionTrackerConfigurable;
+- (BOOL)assistiveTouchMotionTrackerEnableHIDTracking;
 - (void)setAssistiveTouchMouseZoomPanningStyle:(unsigned long long)arg1;
 - (unsigned long long)assistiveTouchMouseZoomPanningStyle;
+- (BOOL)assistiveTouchMouseDwellControlShowPrompt;
+- (void)setAssistiveTouchMouseDwellControlShowPrompt:(BOOL)arg1;
+- (BOOL)assistiveTouchMouseDwellControlMutatedMenu;
+- (void)setAssistiveTouchMouseDwellControlMutatedMenu:(BOOL)arg1;
+- (id)assistiveTouchMouseDwellControlCornerCustomization;
+- (void)setAssistiveTouchMouseDwellControlCornerCustomization:(id)arg1;
 - (void)setAssistiveTouchMouseDwellControlMovementToleranceRadius:(double)arg1;
 - (double)assistiveTouchMouseDwellControlMovementToleranceRadius;
 - (void)setAssistiveTouchMouseDwellControlActivationTimeout:(double)arg1;
 - (double)assistiveTouchMouseDwellControlActivationTimeout;
+- (id)assistiveTouchMouseDwellControlAutorevertAction;
+- (void)setAssistiveTouchMouseDwellControlAutorevertAction:(id)arg1;
+- (BOOL)assistiveTouchMouseDwellControlAutorevertEnabled;
+- (void)setAssistiveTouchMouseDwellControlAutorevertEnabled:(BOOL)arg1;
 - (BOOL)assistiveTouchMouseDwellControlEnabled;
 - (void)setAssistiveTouchMouseDwellControlEnabled:(BOOL)arg1;
 - (double)assistiveTouchMousePointerTimeout;
@@ -421,6 +457,7 @@
 - (long long)assistiveTouchMousePointerColor;
 - (void)setAssistiveTouchMousePointerColor:(long long)arg1;
 @property(nonatomic) long long assistiveTouchCursorColor;
+@property(retain, nonatomic) NSSet *assistiveTouchCameraPointPickerSwitches;
 @property(retain, nonatomic) NSSet *assistiveTouchSwitches;
 @property(nonatomic) double assistiveTouchScannerSpeechRate;
 @property(nonatomic) BOOL assistiveTouchScannerSpeechEnabled;
@@ -463,12 +500,12 @@
 - (void)setAssistiveTouchMouseAlwaysShowSoftwareKeyboardEnabled:(BOOL)arg1;
 - (BOOL)assistiveTouchMouseAlwaysShowSoftwareKeyboardEnabled;
 - (void)setAssistiveTouchMouseKeysDelay:(long long)arg1;
+- (BOOL)assistiveTouchMouseKeysUseMainKeyboardKeys;
+- (void)setAssistiveTouchMouseKeysUseMainKeyboardKeys:(BOOL)arg1;
 - (BOOL)assistiveTouchMouseKeysOptionToggleEnabled;
 - (void)setAssistiveTouchMouseKeysOptionToggleEnabled:(BOOL)arg1;
 - (BOOL)assistiveTouchMouseKeysEnabled;
 - (void)setAssistiveTouchMouseKeysEnabled:(BOOL)arg1;
-- (BOOL)assistiveTouchMouseDragLockEnabled;
-- (void)setAssistiveTouchMouseDragLockEnabled:(BOOL)arg1;
 @property(nonatomic) BOOL assistiveTouchOpenMenuSwaggleEnabled;
 @property(nonatomic) BOOL supportsAdvancedDisplayFilters;
 @property(nonatomic) BOOL assistiveTouchAlwaysShowMenuEnabled;

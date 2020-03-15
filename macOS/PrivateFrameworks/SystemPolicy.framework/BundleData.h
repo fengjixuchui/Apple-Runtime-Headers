@@ -13,14 +13,16 @@
     NSURL *_url;
     CDUnknownBlockType _reloadHandler;
     NSString *_version;
+    NSString *_versionNumber;
     NSDate *_timestamp;
     struct __FSEventStream *_stream;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property(readonly, nonatomic) NSString *versionNumber; // @synthesize versionNumber=_versionNumber;
 @property(readonly, nonatomic) NSString *version; // @synthesize version=_version;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
-- (void).cxx_destruct;
 - (void)forceReload;
 - (void)reloadIfNecessary;
 - (void)loadInternalData:(id)arg1;

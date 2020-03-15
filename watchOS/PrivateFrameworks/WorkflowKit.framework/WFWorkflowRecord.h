@@ -35,6 +35,7 @@
     NSString *_lastMigratedClientVersion;
     int _lastSyncedHash;
     NSString *_lastSavedOnDeviceName;
+    unsigned int _estimatedSize;
     NSSet *_accessResourcePerWorkflowStates;
     int _remoteQuarantineStatus;
     NSNumber *_location;
@@ -42,11 +43,13 @@
 }
 
 + (id)defaultPropertyValues;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int cachedSyncHash; // @synthesize cachedSyncHash=_cachedSyncHash;
 @property(readonly, nonatomic, getter=isConflictOfOtherWorkflow) _Bool conflictOfOtherWorkflow; // @synthesize conflictOfOtherWorkflow=_conflictOfOtherWorkflow;
 @property(readonly, nonatomic) NSNumber *location; // @synthesize location=_location;
 @property(nonatomic) int remoteQuarantineStatus; // @synthesize remoteQuarantineStatus=_remoteQuarantineStatus;
 @property(copy, nonatomic) NSSet *accessResourcePerWorkflowStates; // @synthesize accessResourcePerWorkflowStates=_accessResourcePerWorkflowStates;
+@property(readonly, nonatomic) unsigned int estimatedSize; // @synthesize estimatedSize=_estimatedSize;
 @property(copy, nonatomic) NSString *lastSavedOnDeviceName; // @synthesize lastSavedOnDeviceName=_lastSavedOnDeviceName;
 @property(nonatomic) int lastSyncedHash; // @synthesize lastSyncedHash=_lastSyncedHash;
 @property(copy, nonatomic) NSString *lastMigratedClientVersion; // @synthesize lastMigratedClientVersion=_lastMigratedClientVersion;
@@ -69,7 +72,6 @@
 @property(retain, nonatomic) WFWorkflowIcon *icon; // @synthesize icon=_icon;
 @property(copy, nonatomic) NSString *legacyName; // @synthesize legacyName=_legacyName;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (unsigned int)syncHash;
 - (_Bool)isEquivalentForSyncTo:(id)arg1;
 - (_Bool)saveChangesToStorage:(id)arg1 error:(id *)arg2;

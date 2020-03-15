@@ -47,6 +47,7 @@
 
 + (BOOL)supportsSecureCoding;
 + (id)log;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) EFQuery *originatingQuery; // @synthesize originatingQuery=_originatingQuery;
 - (void)setIsCCMe:(BOOL)arg1;
 @property(readonly) BOOL isCCMe;
@@ -82,7 +83,7 @@
 @property(readonly) ECSubject *subject;
 - (void)setDate:(id)arg1;
 @property(readonly) NSDate *date;
-- (void).cxx_destruct;
+- (void)notifyChangeObserverAboutChangesByItemIDs:(id)arg1;
 @property(readonly) BOOL isEditable;
 @property(readonly) BOOL shouldArchiveByDefault;
 @property(readonly) BOOL supportsArchiving;
@@ -90,6 +91,7 @@
 @property(readonly) EMMessage *displayMessage;
 @property(readonly) EMObjectID *displayMessageObjectID;
 - (void)setMailboxes:(id)arg1;
+@property long long _internalID;
 @property(readonly, copy) NSArray *mailboxes;
 - (void)setMailboxObjectIDs:(id)arg1;
 @property(readonly, copy) NSArray *mailboxObjectIDs;

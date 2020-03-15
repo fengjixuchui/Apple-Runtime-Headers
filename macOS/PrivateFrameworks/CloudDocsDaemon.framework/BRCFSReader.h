@@ -28,9 +28,9 @@
     NSObject<OS_dispatch_group> *_lostScanGroup;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) brc_task_tracker *taskTracker; // @synthesize taskTracker=_taskTracker;
 @property(readonly, nonatomic) NSObject<OS_dispatch_group> *lostScanGroup; // @synthesize lostScanGroup=_lostScanGroup;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (void)resume;
 - (void)suspend;
@@ -69,6 +69,7 @@
 - (id)itemForCreatedDocumentsDirectory:(id)arg1 appLibrary:(id)arg2 path:(id)arg3;
 - (void)fseventOnAlias:(id)arg1 flags:(unsigned int)arg2 lookup:(id)arg3;
 - (void)fseventOnSymlink:(id)arg1 flags:(unsigned int)arg2 lookup:(id)arg3;
+- (BOOL)_createSharedZoneIfNecessaryWithLookup:(id)arg1;
 - (void)fseventOnDeadPath:(id)arg1 item:(id)arg2;
 - (void)fseventOnContainer:(id)arg1 flags:(unsigned int)arg2;
 - (void)fseventOnRoot:(id)arg1 flags:(unsigned int)arg2;

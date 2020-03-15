@@ -59,6 +59,7 @@
 + (id)standardPorts;
 + (id)backgroundQueue;
 + (id)invocationQueue;
+- (void).cxx_destruct;
 @property(nonatomic) BOOL shouldIncludePrefixInPath; // @synthesize shouldIncludePrefixInPath=_shouldIncludePrefixInPath;
 @property(nonatomic) BOOL lastConnectionFailed; // @synthesize lastConnectionFailed=_lastConnectionFailed;
 @property double lastMailboxListFetchTime; // @synthesize lastMailboxListFetchTime=_lastMailboxListFetchTime;
@@ -67,7 +68,6 @@
 @property(copy) NSDictionary *serverID; // @synthesize serverID=_serverID;
 @property(readonly, nonatomic) NSOperationQueue *remoteFetchQueue; // @synthesize remoteFetchQueue=_remoteFetchQueue;
 @property(readonly, nonatomic) NSOperationQueue *remoteTaskQueue; // @synthesize remoteTaskQueue=_remoteTaskQueue;
-- (void).cxx_destruct;
 - (void)_performDiagnostics:(id)arg1;
 - (void)messageDeliveryWillBegin:(id)arg1;
 - (BOOL)storesUnseenCount;
@@ -87,7 +87,7 @@
 - (void)insertInMailboxes:(id)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)renameMailbox:(id)arg1 newDisplayName:(id)arg2 parent:(id)arg3;
 - (void)_recursivelyModifySubscriptions:(BOOL)arg1 forMailbox:(id)arg2 children:(id)arg3 withSyncHandler:(id)arg4;
-- (void)_mailboxesWereRemovedFromTree:(id)arg1 withFileSystemPaths:(id)arg2;
+- (void)_mailboxesWereRemovedFromTree:(id)arg1 withFileSystemPaths:(id)arg2 names:(id)arg3;
 - (void)_waitForMailboxListingLoadToComplete;
 - (void)_loadMailboxListingIntoCache:(id)arg1 parent:(id)arg2 addedMailboxes:(id)arg3 removedMailboxes:(id)arg4 updatingSourceMailbox:(BOOL)arg5;
 - (void)_loadMailboxListingIntoCache:(id)arg1 parent:(id)arg2 addedMailboxes:(id)arg3 removedMailboxes:(id)arg4;

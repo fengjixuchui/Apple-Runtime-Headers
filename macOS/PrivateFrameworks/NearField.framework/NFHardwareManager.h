@@ -73,6 +73,8 @@
 - (unsigned int)checkUserBlessing:(id)arg1 hasCards:(char *)arg2;
 - (unsigned int)checkUserBlessing:(id)arg1;
 - (void)dumpLPMDebugLog;
+- (id)releaseSinglePollExpressModeAssertion;
+- (id)startSinglePollExpressModeAssertion:(double)arg1;
 - (id)getPowerCounters:(id *)arg1;
 - (id)disableHeadless;
 - (BOOL)getHeadlessFactoryMode:(id *)arg1;

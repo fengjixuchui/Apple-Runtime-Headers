@@ -12,7 +12,7 @@
 #import <TelephonyUtilities/TUFilteredRequest-Protocol.h>
 #import <TelephonyUtilities/TUVideoRequest-Protocol.h>
 
-@class BSProcessHandle, IDSDestination, NSArray, NSDate, NSString, NSURL, NSUUID, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle, TUSenderIdentity, TUSenderIdentityClient;
+@class BSProcessHandle, CNGeminiManager, IDSDestination, NSArray, NSDate, NSString, NSURL, NSUUID, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle, TUSenderIdentity, TUSenderIdentityClient;
 
 @interface TUDialRequest : NSObject <TUCallRequest, TUVideoRequest, TUFilteredRequest, NSSecureCoding, NSCopying>
 {
@@ -28,6 +28,7 @@
     _Bool _shouldSuppressInCallUI;
     NSString *_uniqueProxyIdentifier;
     TUSenderIdentityClient *_senderIdentityClient;
+    CNGeminiManager *_contactGeminiManager;
     TUCallProvider *_provider;
     int _dialType;
     TUHandle *_handle;
@@ -69,6 +70,7 @@
 + (int)handleTypeForQueryItem:(id)arg1;
 + (id)stringForDialType:(int)arg1;
 + (int)dialRequestTTYTypeForCHRecentCallTTYType:(int)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) BSProcessHandle *processHandle; // @synthesize processHandle=_processHandle;
 @property(copy, nonatomic) NSString *failureNotification; // @synthesize failureNotification=_failureNotification;
 @property(copy, nonatomic) NSString *successNotification; // @synthesize successNotification=_successNotification;
@@ -99,10 +101,10 @@
 @property(retain, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
 @property(nonatomic) int dialType; // @synthesize dialType=_dialType;
 @property(retain, nonatomic) TUCallProvider *provider; // @synthesize provider=_provider;
+@property(retain, nonatomic) CNGeminiManager *contactGeminiManager; // @synthesize contactGeminiManager=_contactGeminiManager;
 @property(nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property(nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
 @property(copy, nonatomic) NSString *uniqueProxyIdentifier; // @synthesize uniqueProxyIdentifier=_uniqueProxyIdentifier;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -156,6 +158,7 @@
 - (id)destinationIDFromURL:(id)arg1;
 - (id)callProviderFromURLComponents:(id)arg1 video:(_Bool *)arg2;
 - (_Bool)boolValueForQueryItemWithName:(id)arg1 inURLComponents:(id)arg2;
+- (id)contactNamesByHandleWithContactsDataSource:(id)arg1;
 - (id)handles;
 - (id)bundleIdentifier;
 @property(readonly, nonatomic) IDSDestination *endpointIDSDestination;

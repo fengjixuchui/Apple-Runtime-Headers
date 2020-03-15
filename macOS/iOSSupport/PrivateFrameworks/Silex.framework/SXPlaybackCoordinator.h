@@ -34,6 +34,7 @@
     struct CGSize _dimensions;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SVKeyValueObserver *playbackBufferFullObserver; // @synthesize playbackBufferFullObserver=_playbackBufferFullObserver;
 @property(retain, nonatomic) SVKeyValueObserver *playbackLikelyToKeepUpObserver; // @synthesize playbackLikelyToKeepUpObserver=_playbackLikelyToKeepUpObserver;
 @property(retain, nonatomic) SVKeyValueObserver *muteStateObserver; // @synthesize muteStateObserver=_muteStateObserver;
@@ -53,7 +54,6 @@
 @property(readonly, nonatomic) id <SXVideoProviding> video; // @synthesize video=_video;
 @property(readonly, nonatomic) BOOL playbackBufferFull; // @synthesize playbackBufferFull=_playbackBufferFull;
 @property(readonly, nonatomic) BOOL playbackLikelyToKeepUp; // @synthesize playbackLikelyToKeepUp=_playbackLikelyToKeepUp;
-- (void).cxx_destruct;
 - (void)removePlayerItemPresentationSizeObserver;
 - (void)addPlayerItemPresentationSizeObserver;
 - (void)muteStateChanged;
@@ -70,7 +70,7 @@
 - (void)playbackResumed;
 - (void)playbackPaused;
 - (void)playbackStarted;
-- (void)playbackInitiated;
+- (void)playbackInitiatedWithButtonTapped:(BOOL)arg1;
 - (void)setupPlayerWithURL:(id)arg1;
 - (void)loadVideoIfNeeded;
 - (void)load;
@@ -85,7 +85,7 @@
 - (void)removePlaybackObserver:(id)arg1;
 - (void)addPlaybackObserver:(id)arg1;
 - (void)pause;
-- (void)play;
+- (void)playWithButtonTapped:(BOOL)arg1;
 - (id)initWithVideo:(id)arg1 playerFactory:(id)arg2;
 
 // Remaining properties

@@ -18,17 +18,19 @@ __attribute__((visibility("hidden")))
     UIFont *_bodyFont;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIFont *bodyFont; // @synthesize bodyFont=_bodyFont;
 @property(retain, nonatomic) HKSample *sample; // @synthesize sample=_sample;
 @property(retain, nonatomic) NSArray *disallowedApps; // @synthesize disallowedApps=_disallowedApps;
 @property(retain, nonatomic) NSArray *allowedApps; // @synthesize allowedApps=_allowedApps;
-- (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)resetAccess;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)_textForCellAtIndexPath:(id)arg1;
-- (id)_imageForCellAtIndexPath:(id)arg1;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 tableView:(id)arg4 fetchError:(id)arg5;
+- (void)_loadIconForSource:(id)arg1 onCell:(id)arg2 ofTableView:(id)arg3;
+- (id)_sourceForIndexPath:(id)arg1;
 - (id)_identifierForCellInSection:(long long)arg1;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

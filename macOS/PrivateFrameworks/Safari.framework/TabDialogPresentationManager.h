@@ -21,9 +21,10 @@ __attribute__((visibility("hidden")))
     id <TabDialogPresentationManagerDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <TabDialogPresentationManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) TabDialogViewController *tabDialogViewController; // @synthesize tabDialogViewController=_tabDialogViewController;
-- (void).cxx_destruct;
+- (void)transplantDialogToNewInstallationTarget;
 - (void)_transplantDialogAndDimmingViewToTabContentViewIfNeeded;
 - (BOOL)_shouldSkipAnimationsDuringDismissal;
 - (long long)_tabDialogVerticalPlacementPolicyForViewController:(id)arg1;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)owningWebViewWillNavigate;
 @property(readonly, nonatomic) long long currentTabDialogType;
 @property(readonly, nonatomic, getter=isShowingTabDialog) BOOL showingTabDialog;
+- (void)updateCurrentDialogWithConfiguration:(id)arg1;
 - (void)dismissTabDialog;
 - (void)presentTabDialogWithConfiguration:(id)arg1 dismissalBlock:(CDUnknownBlockType)arg2 blocksWebProcessUntilDismissed:(BOOL)arg3 cancellationExemptions:(id)arg4;
 - (void)stopRedirectingTabDialogs;

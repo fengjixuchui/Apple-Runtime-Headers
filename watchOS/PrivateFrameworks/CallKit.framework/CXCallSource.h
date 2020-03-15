@@ -19,10 +19,10 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic, getter=isConnected) _Bool connected; // @synthesize connected=_connected;
 @property(nonatomic) __weak id <CXCallSourceDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (oneway void)handleAudioSessionActivationStateChangedTo:(_Bool)arg1;
 - (oneway void)handleActionTimeout:(id)arg1;
 - (oneway void)commitTransaction:(id)arg1;
@@ -50,6 +50,7 @@
 - (oneway void)reportNewIncomingCallWithUUID:(id)arg1 update:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (oneway void)registerWithConfiguration:(id)arg1;
 - (void)beginWithCompletionHandler:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic, getter=isPermittedToUseBluetoothAccessories) _Bool permittedToUseBluetoothAccessories;
 @property(readonly, nonatomic, getter=isPermittedToUsePrivateAPI) _Bool permittedToUsePrivateAPI;
 @property(readonly, nonatomic, getter=isPermittedToUsePublicAPI) _Bool permittedToUsePublicAPI;
 @property(readonly, nonatomic) int processIdentifier;

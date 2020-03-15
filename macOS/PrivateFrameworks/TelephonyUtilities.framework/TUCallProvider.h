@@ -34,9 +34,12 @@
     NSData *_iconTemplateImageData;
     unsigned long long _maximumCallGroups;
     unsigned long long _maximumCallsPerCallGroup;
+    long long _sandboxExtensionHandle;
 }
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) long long sandboxExtensionHandle; // @synthesize sandboxExtensionHandle=_sandboxExtensionHandle;
 @property(nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property(nonatomic) BOOL supportsCurrentPlatform; // @synthesize supportsCurrentPlatform=_supportsCurrentPlatform;
 @property(nonatomic) BOOL supportsRecents; // @synthesize supportsRecents=_supportsRecents;
@@ -58,7 +61,6 @@
 @property(nonatomic) BOOL supportsAudioOnly; // @synthesize supportsAudioOnly=_supportsAudioOnly;
 @property(copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

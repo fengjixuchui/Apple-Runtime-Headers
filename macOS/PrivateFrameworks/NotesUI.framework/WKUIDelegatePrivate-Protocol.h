@@ -6,12 +6,13 @@
 
 #import <NotesUI/WKUIDelegate-Protocol.h>
 
-@class NSData, NSDictionary, NSEvent, NSMenu, NSString, NSURL, WKFrameInfo, WKNavigationAction, WKSecurityOrigin, WKWebView, WKWebViewConfiguration, WKWindowFeatures, _WKAttachment, _WKContextMenuElementInfo, _WKFrameHandle, _WKHitTestResult;
+@class NSData, NSDictionary, NSEvent, NSMenu, NSString, NSURL, WKFrameInfo, WKNavigationAction, WKSecurityOrigin, WKWebView, WKWebViewConfiguration, WKWindowFeatures, _WKAttachment, _WKContextMenuElementInfo, _WKFrameHandle, _WKHitTestResult, _WKInspector, _WKWebAuthenticationPanel;
 @protocol NSSecureCoding;
 
 @protocol WKUIDelegatePrivate <WKUIDelegate>
 
 @optional
+- (void)_webView:(WKWebView *)arg1 didAttachInspector:(_WKInspector *)arg2;
 - (void)_webView:(WKWebView *)arg1 didPerformDragOperation:(BOOL)arg2;
 - (void)_webView:(WKWebView *)arg1 getContextMenuFromProposedMenu:(NSMenu *)arg2 forElement:(_WKContextMenuElementInfo *)arg3 userInfo:(id <NSSecureCoding>)arg4 completionHandler:(void (^)(NSMenu *))arg5;
 - (NSMenu *)_webView:(WKWebView *)arg1 contextMenu:(NSMenu *)arg2 forElement:(_WKContextMenuElementInfo *)arg3 userInfo:(id <NSSecureCoding>)arg4;
@@ -40,6 +41,7 @@
 - (void)_completeImmediateActionAnimationForWebView:(WKWebView *)arg1;
 - (void)_cancelImmediateActionAnimationForWebView:(WKWebView *)arg1;
 - (void)_prepareForImmediateActionAnimationForWebView:(WKWebView *)arg1;
+- (void)_webView:(WKWebView *)arg1 runWebAuthenticationPanel:(_WKWebAuthenticationPanel *)arg2 initiatedByFrame:(WKFrameInfo *)arg3 completionHandler:(void (^)(long long))arg4;
 - (void)_webView:(WKWebView *)arg1 takeFocus:(long long)arg2;
 - (void)_webView:(WKWebView *)arg1 didChangeFontAttributes:(NSDictionary *)arg2;
 - (void)_webView:(WKWebView *)arg1 requestStorageAccessPanelForDomain:(NSString *)arg2 underCurrentDomain:(NSString *)arg3 completionHandler:(void (^)(BOOL))arg4;

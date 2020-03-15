@@ -16,14 +16,15 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) VUIButtonLayout *buttonLayout; // @synthesize buttonLayout=_buttonLayout;
 @property(readonly, nonatomic) VUITextLayout *disclaimerTextLayout; // @synthesize disclaimerTextLayout=_disclaimerTextLayout;
-- (void).cxx_destruct;
 - (void)_configureLayout;
 - (double)buttonSpacing;
 - (double)buttonHeight;
 - (double)disclaimerBottomMargin;
-- (struct UIEdgeInsets)safeAreaInsets;
+- (struct UIEdgeInsets)safeAreaInsetsPad;
+- (struct UIEdgeInsets)safeAreaInsetsPhone;
 - (id)init;
 
 @end

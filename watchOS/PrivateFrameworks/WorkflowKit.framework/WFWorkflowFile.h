@@ -22,13 +22,13 @@
 }
 
 + (id)writableTypeIdentifiersForItemProvider;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) WFFileRepresentation *file; // @synthesize file=_file;
 @property(readonly, nonatomic) NSMutableDictionary *rootObject; // @synthesize rootObject=_rootObject;
 @property(retain, nonatomic) WFWorkflowQuarantine *quarantine; // @synthesize quarantine=_quarantine;
 @property(retain, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property(retain, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void).cxx_destruct;
 - (void)migrateTypesForImport;
 - (_Bool)migrateRootObject;
 - (_Bool)isEqual:(id)arg1;
@@ -45,6 +45,7 @@
 @property(copy, nonatomic) NSArray *workflowTypes;
 @property(retain, nonatomic) WFWorkflowIcon *icon;
 - (id)recordRepresentationWithError:(id *)arg1;
+@property(readonly, nonatomic) unsigned int estimatedSize;
 - (id)descriptor;
 - (id)initWithDescriptor:(id)arg1 performMigration:(_Bool)arg2 error:(id *)arg3;
 - (id)initWithDictionary:(id)arg1 name:(id)arg2 performMigration:(_Bool)arg3;

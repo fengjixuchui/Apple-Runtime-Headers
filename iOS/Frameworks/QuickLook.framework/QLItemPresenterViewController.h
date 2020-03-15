@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     DMFCategoryPolicyMonitor *_screenTimeCategoryMonitor;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) DMFCategoryPolicyMonitor *screenTimeCategoryMonitor; // @synthesize screenTimeCategoryMonitor=_screenTimeCategoryMonitor;
 @property(retain, nonatomic) DMFApplicationPolicyMonitor *screenTimeApplicationMonitor; // @synthesize screenTimeApplicationMonitor=_screenTimeApplicationMonitor;
 @property(copy, nonatomic) NSString *hostApplicationBundleIdentifier; // @synthesize hostApplicationBundleIdentifier=_hostApplicationBundleIdentifier;
@@ -48,7 +49,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) QLLoadingItemViewController *loadingViewController; // @synthesize loadingViewController=_loadingViewController;
 @property(retain, nonatomic) QLErrorItemViewController *errorViewController; // @synthesize errorViewController=_errorViewController;
 @property(retain, nonatomic) QLItemViewController *previewProvider; // @synthesize previewProvider=_previewProvider;
-- (void).cxx_destruct;
 - (_Bool)_processIsEntitledToConfigureScreenTime;
 - (_Bool)_processIsEntitledToCheckScreenTimePolicy;
 - (_Bool)_shouldApplyScreenTimeMoviePolicyForItem:(id)arg1;
@@ -89,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (void)showErrorViewController;
 - (void)_performLoadingCompletionHandlerWithError:(id)arg1;
 - (void)_performReadyBlockIfNedded;
+- (struct CGSize)preferredContentSize;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_showReadyToDisplayPreviewViewControllerDeferredIfNeeded:(id)arg1;
 - (void)_showLoadingViewControllerDeferredIfNeeded;

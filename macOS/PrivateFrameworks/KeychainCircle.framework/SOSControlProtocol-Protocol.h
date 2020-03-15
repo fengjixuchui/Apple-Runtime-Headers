@@ -9,6 +9,7 @@
 @class NSArray, NSData, NSDictionary;
 
 @protocol SOSControlProtocol <NSObject>
+- (void)triggerBackup:(NSArray *)arg1 complete:(void (^)(NSError *))arg2;
 - (void)setWatchdogParmeters:(NSDictionary *)arg1 complete:(void (^)(NSError *))arg2;
 - (void)getWatchdogParameters:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)triggerSync:(NSArray *)arg1 complete:(void (^)(_Bool, NSError *))arg2;

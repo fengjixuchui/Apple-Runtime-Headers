@@ -27,7 +27,9 @@
     _Bool _wifiP2P;
     unsigned char _osVersion;
     _Bool _paired;
+    _Bool _testMode;
     NSString *_accountID;
+    int _audioRoutingScore;
     NSArray *_batteryInfo;
     SFBLEDevice *_bleDevice;
     NSString *_contactIdentifier;
@@ -48,6 +50,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool testMode; // @synthesize testMode=_testMode;
 @property(nonatomic) _Bool paired; // @synthesize paired=_paired;
 @property(nonatomic) unsigned char osVersion; // @synthesize osVersion=_osVersion;
 @property(readonly, nonatomic) _Bool wifiP2P; // @synthesize wifiP2P=_wifiP2P;
@@ -80,8 +84,8 @@
 @property(copy, nonatomic) NSArray *batteryInfo; // @synthesize batteryInfo=_batteryInfo;
 @property(nonatomic) _Bool autoUnlockWatch; // @synthesize autoUnlockWatch=_autoUnlockWatch;
 @property(nonatomic) _Bool autoUnlockEnabled; // @synthesize autoUnlockEnabled=_autoUnlockEnabled;
+@property(nonatomic) int audioRoutingScore; // @synthesize audioRoutingScore=_audioRoutingScore;
 @property(copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
-- (void).cxx_destruct;
 - (void)updateWithRPIdentity:(id)arg1;
 - (void)updateWithPairedPeer:(id)arg1;
 - (void)updateWithBLEDevice:(id)arg1;

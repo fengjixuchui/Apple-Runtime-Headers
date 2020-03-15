@@ -6,24 +6,24 @@
 
 #import <Silex/SXMediaComponentView.h>
 
+#import <Silex/SWReachabilityObserver-Protocol.h>
 #import <Silex/SXFullscreenVideoPlaybackCandidate-Protocol.h>
 #import <Silex/SXMediaPlaybackDelegate-Protocol.h>
-#import <Silex/SXReachabilityObserver-Protocol.h>
 #import <Silex/SXVideoAdProviderDataSource-Protocol.h>
 #import <Silex/SXVideoPlayerViewControllerDataSource-Protocol.h>
 #import <Silex/SXVideoPlayerViewControllerDelegate-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
 @class ADBannerView, NSString, SVVolumeProvider, SXAdController, SXPosterFrameView, SXVideoAnalyticsRouter, SXVideoComponentAnalyticsReporting, SXVideoPlayerViewController, SXVideoPlayerViewControllerManager;
-@protocol SXAppStateMonitor, SXBookmarkManager, SXReachabilityProvider, SXResourceDataSource, SXScrollObserverManager;
+@protocol SWReachabilityProvider, SXAppStateMonitor, SXBookmarkManager, SXResourceDataSource, SXScrollObserverManager;
 
-@interface SXVideoComponentView : SXMediaComponentView <SXViewportChangeListener, SXMediaPlaybackDelegate, SXVideoPlayerViewControllerDelegate, SXVideoPlayerViewControllerDataSource, SXVideoAdProviderDataSource, SXReachabilityObserver, SXFullscreenVideoPlaybackCandidate>
+@interface SXVideoComponentView : SXMediaComponentView <SXViewportChangeListener, SXMediaPlaybackDelegate, SXVideoPlayerViewControllerDelegate, SXVideoPlayerViewControllerDataSource, SXVideoAdProviderDataSource, SWReachabilityObserver, SXFullscreenVideoPlaybackCandidate>
 {
     BOOL _isReceivingViewportDynamicBoundsChanges;
     SXVideoPlayerViewController *_videoPlayerViewController;
     SXAdController *_adController;
     id <SXResourceDataSource> _resourceDataSource;
-    id <SXReachabilityProvider> _reachabilityProvider;
+    id <SWReachabilityProvider> _reachabilityProvider;
     id <SXAppStateMonitor> _appStateMonitor;
     SXPosterFrameView *_posterFrame;
     CDUnknownBlockType _thumbnailRequestCancelHandler;
@@ -37,6 +37,7 @@
     CDUnknownBlockType _presentationBlock;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType presentationBlock; // @synthesize presentationBlock=_presentationBlock;
 @property(nonatomic) __weak ADBannerView *bannerView; // @synthesize bannerView=_bannerView;
 @property(readonly, nonatomic) id <SXBookmarkManager> bookmarkManager; // @synthesize bookmarkManager=_bookmarkManager;
@@ -49,11 +50,10 @@
 @property(retain, nonatomic) SXPosterFrameView *posterFrame; // @synthesize posterFrame=_posterFrame;
 @property(nonatomic) BOOL isReceivingViewportDynamicBoundsChanges; // @synthesize isReceivingViewportDynamicBoundsChanges=_isReceivingViewportDynamicBoundsChanges;
 @property(readonly, nonatomic) id <SXAppStateMonitor> appStateMonitor; // @synthesize appStateMonitor=_appStateMonitor;
-@property(readonly, nonatomic) id <SXReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
+@property(readonly, nonatomic) id <SWReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
 @property(readonly, nonatomic) id <SXResourceDataSource> resourceDataSource; // @synthesize resourceDataSource=_resourceDataSource;
 @property(readonly, nonatomic) SXAdController *adController; // @synthesize adController=_adController;
 @property(retain, nonatomic) SXVideoPlayerViewController *videoPlayerViewController; // @synthesize videoPlayerViewController=_videoPlayerViewController;
-- (void).cxx_destruct;
 - (BOOL)allowHierarchyRemoval;
 - (void)reachabilityChanged:(BOOL)arg1;
 - (unsigned long long)analyticsVideoType;

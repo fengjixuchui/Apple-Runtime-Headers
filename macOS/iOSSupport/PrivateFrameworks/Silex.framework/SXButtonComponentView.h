@@ -16,9 +16,9 @@
     struct CGRect _typographicBounds;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) struct CGRect typographicBounds; // @synthesize typographicBounds=_typographicBounds;
 @property(readonly, nonatomic) SXTextView *textView; // @synthesize textView=_textView;
-- (void).cxx_destruct;
 - (struct CGRect)absoluteTextViewFrame;
 - (id)accessibilityContextualLabelForTextView:(id)arg1;
 - (id)accessibilityCustomRotorMembershipForTextView:(id)arg1;
@@ -30,6 +30,9 @@
 - (void)setAbsoluteFrame:(struct CGRect)arg1;
 - (void)didMoveToSuperview;
 - (void)presentComponentWithChanges:(CDStruct_74be42e1)arg1;
+- (id)accessibilityHint;
+- (id)accessibilityValue;
+- (id)accessibilityLabel;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4;
 
 // Remaining properties

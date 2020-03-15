@@ -9,12 +9,13 @@
 #import <Email/EFContentProtectionObserver-Protocol.h>
 #import <Email/EFLoggable-Protocol.h>
 #import <Email/EMCollectionChangeObserver-Protocol.h>
+#import <Email/EMCollectionItemIDStateCapturerDelegate-Protocol.h>
 #import <Email/EMMessageListQueryResultsObserver-Protocol.h>
 
-@class EFLazyCache, EMMailboxScope, EMMessageListChangeObserverHelper, EMMessageRepository, EMObjectID, EMThreadScope, NSMapTable, NSMutableDictionary, NSObject, NSSet, NSString;
+@class EFLazyCache, EMCollectionItemIDStateCapturer, EMMailboxScope, EMMessageRepository, EMObjectID, EMThreadScope, NSMapTable, NSMutableDictionary, NSObject, NSSet, NSString;
 @protocol EFScheduler, OS_dispatch_queue;
 
-@interface EMMessageList : EMCollection <EFContentProtectionObserver, EFLoggable, EMCollectionChangeObserver, EMMessageListQueryResultsObserver>
+@interface EMMessageList : EMCollection <EFContentProtectionObserver, EFLoggable, EMCollectionChangeObserver, EMCollectionItemIDStateCapturerDelegate, EMMessageListQueryResultsObserver>
 {
     NSMutableDictionary *_expandedThreads;
     NSMapTable *_messageListItemsForRetry;
@@ -25,20 +26,24 @@
     id <EFScheduler> _observerScheduler;
     NSObject<OS_dispatch_queue> *_contentProtectionQueue;
     EMMessageList *_unfilteredMessageList;
-    EMMessageListChangeObserverHelper *_changeObserverHelper;
+    NSSet *_recentlyCollapsedItemIDs;
+    EMCollectionItemIDStateCapturer *_stateCapturer;
 }
 
 + (id)simpleMessageListForMailboxes:(id)arg1 withRepository:(id)arg2 shouldTrackOldestItems:(_Bool)arg3;
 + (id)threadedMessageListForMailboxes:(id)arg1 withRepository:(id)arg2 shouldTrackOldestItems:(_Bool)arg3;
 + (id)log;
-@property(retain, nonatomic) EMMessageListChangeObserverHelper *changeObserverHelper; // @synthesize changeObserverHelper=_changeObserverHelper;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) EMCollectionItemIDStateCapturer *stateCapturer; // @synthesize stateCapturer=_stateCapturer;
+@property(retain, nonatomic) NSSet *recentlyCollapsedItemIDs; // @synthesize recentlyCollapsedItemIDs=_recentlyCollapsedItemIDs;
 @property(retain, nonatomic) EMMessageList *unfilteredMessageList; // @synthesize unfilteredMessageList=_unfilteredMessageList;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *contentProtectionQueue; // @synthesize contentProtectionQueue=_contentProtectionQueue;
 @property(readonly, nonatomic) id <EFScheduler> observerScheduler; // @synthesize observerScheduler=_observerScheduler;
 @property(readonly, nonatomic) EFLazyCache *cache; // @synthesize cache=_cache;
 @property(readonly, nonatomic) EMThreadScope *threadScope; // @synthesize threadScope=_threadScope;
 @property(readonly, nonatomic) EMMailboxScope *mailboxScope; // @synthesize mailboxScope=_mailboxScope;
-- (void).cxx_destruct;
+- (id)itemIDsForStateCaptureWithErrorString:(id *)arg1;
+- (id)labelForStateCapture;
 - (id)itemIDOfFirstMessageListItemMatchingPredicate:(id)arg1;
 - (id)_nextThreadItemIDAfterThreadItemID:(id)arg1;
 - (_Bool)_threadIsExpandedForItemID:(id)arg1;
@@ -67,6 +72,8 @@
 - (id)messageListItemsForItemIDs:(id)arg1;
 - (id)messageListItemForItemID:(id)arg1 ifAvailable:(_Bool)arg2;
 - (id)messageListItemForItemID:(id)arg1;
+- (void)clearRecentlyCollapsedThread;
+- (_Bool)recentlyCollapsedThreadContainsItemID:(id)arg1;
 - (_Bool)anyExpandedThreadContainsItemID:(id)arg1;
 - (void)collapseThread:(id)arg1;
 - (void)expandThread:(id)arg1;
@@ -78,7 +85,7 @@
 - (void)notifyChangeObserverAboutAddedItemIDs:(id)arg1 after:(id)arg2 extraInfo:(id)arg3;
 - (void)notifyChangeObserverAboutAddedItemIDs:(id)arg1 before:(id)arg2 extraInfo:(id)arg3;
 - (id)_unreadItemIDsFromExtraInfo:(id)arg1;
-- (void)removeItemIDs:(id)arg1;
+- (id)removeItemIDs:(id)arg1;
 - (_Bool)objectIDBelongsToCollection:(id)arg1;
 - (id)itemIDForObjectID:(id)arg1;
 - (id)objectIDForItemID:(id)arg1;
@@ -89,6 +96,7 @@
 - (void)_commonInitWithRepository:(id)arg1;
 - (id)initWithQuery:(id)arg1 repository:(id)arg2;
 - (id)initWithObjectID:(id)arg1 query:(id)arg2 repository:(id)arg3;
+- (id)initWithMailboxes:(id)arg1 repository:(id)arg2 targetClass:(Class)arg3 shouldTrackOldestItems:(_Bool)arg4 labelPrefix:(id)arg5;
 - (void)setRepository:(id)arg1;
 @property(readonly, nonatomic) EMMessageRepository *repository;
 

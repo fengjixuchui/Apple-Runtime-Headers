@@ -13,7 +13,8 @@
 __attribute__((visibility("hidden")))
 @interface WFPBRunActionEvent : PBCodable <NSCopying>
 {
-    NSString *_actionName;
+    NSString *_actionIdentifier;
+    NSString *_automationType;
     NSString *_key;
     NSString *_runSource;
     int _source;
@@ -24,11 +25,12 @@ __attribute__((visibility("hidden")))
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
+@property(retain, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
 @property(nonatomic) _Bool completed; // @synthesize completed=_completed;
-@property(retain, nonatomic) NSString *actionName; // @synthesize actionName=_actionName;
 @property(retain, nonatomic) NSString *runSource; // @synthesize runSource=_runSource;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -38,8 +40,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasAutomationType;
+@property(readonly, nonatomic) _Bool hasActionIdentifier;
 @property(nonatomic) _Bool hasCompleted;
-@property(readonly, nonatomic) _Bool hasActionName;
 @property(readonly, nonatomic) _Bool hasRunSource;
 - (int)StringAsSource:(id)arg1;
 - (id)sourceAsString:(int)arg1;

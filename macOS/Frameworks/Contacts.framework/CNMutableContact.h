@@ -70,6 +70,7 @@
 @property(copy) NSData *externalRepresentation; // @dynamic externalRepresentation;
 - (void)_setExternalIdentifier:(id)arg1;
 @property(copy) NSString *externalIdentifier; // @dynamic externalIdentifier;
+@property(copy) NSString *externalURI;
 - (void)_setTextAlert:(id)arg1;
 @property(copy) CNActivityAlert *textAlert; // @dynamic textAlert;
 - (void)_setCallAlert:(id)arg1;
@@ -88,7 +89,9 @@
 - (void)_setLinkIdentifier:(id)arg1;
 @property(copy, nonatomic) NSString *linkIdentifier; // @dynamic linkIdentifier;
 @property(nonatomic) BOOL imageDataAvailable; // @dynamic imageDataAvailable;
+- (void)updateExternalImageURIFromCurrentState;
 - (void)updateImageDataAvailableFromCurrentState;
+- (void)updateDependentImagePropertiesFromCurrentState;
 - (void)_setSyncImageData:(id)arg1;
 - (void)setSyncImageData:(id)arg1;
 - (id)syncImageData;

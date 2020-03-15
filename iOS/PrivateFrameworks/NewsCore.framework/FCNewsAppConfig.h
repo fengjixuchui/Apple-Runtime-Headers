@@ -45,6 +45,7 @@
 + (id)languageConfigDictionaryForConfig:(id)arg1 preferredLanguageTags:(id)arg2;
 + (id)configurationWithData:(id)arg1 storefrontID:(id)arg2 preferredLanguageTags:(id)arg3;
 + (id)defaultConfigurationForStoreFrontID:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) FCWidgetConfig *widgetConfig; // @synthesize widgetConfig=_widgetConfig;
 @property(readonly, nonatomic) NSDictionary *analyticsContentTypeConfigsByContentTypeByEnvironment; // @synthesize analyticsContentTypeConfigsByContentTypeByEnvironment=_analyticsContentTypeConfigsByContentTypeByEnvironment;
 @property(retain, nonatomic) NSArray *externalAnalyticsConfigurations; // @synthesize externalAnalyticsConfigurations=_externalAnalyticsConfigurations;
@@ -53,9 +54,9 @@
 @property(readonly, nonatomic) NSDictionary *languageConfigDictionary; // @synthesize languageConfigDictionary=_languageConfigDictionary;
 @property(readonly, copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
 @property(readonly, nonatomic) NSDictionary *configDictionary; // @synthesize configDictionary=_configDictionary;
-- (void).cxx_destruct;
 - (id)localizedStorefrontID;
 - (id)jsonEncodableObject;
+@property(readonly, nonatomic) _Bool enableLocationBasedAutofavorites;
 @property(readonly, nonatomic) long long emailSignupRequiredAppLaunchCount;
 @property(readonly, nonatomic) unsigned long long bestOfBundleFeedGroupKind;
 @property(readonly, nonatomic) unsigned long long likeDislikeBehavior;
@@ -68,7 +69,7 @@
 @property(readonly, nonatomic) NSString *magazinesConfigRecordID;
 @property(readonly, nonatomic) FCPaidBundleConfiguration *paidBundleConfig; // @synthesize paidBundleConfig=_paidBundleConfig;
 @property(readonly, nonatomic) _Bool enableBadgeInSpotlightTabBar;
-@property(readonly, nonatomic) NSString *description;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSString *feedNavigationConfigJSON;
 @property(readonly, nonatomic) _Bool shouldShowAlternateHeadlines;
 @property(readonly, nonatomic) _Bool disableThumbnailsForArticleRecirculation;
@@ -88,6 +89,7 @@
 @property(readonly, nonatomic) long long corryBarMaxArticleCountForSingleArticle;
 @property(readonly, nonatomic) long long corryBarMaxArticleCountForArticleList;
 @property(readonly, nonatomic) NSString *translationMapResourceID;
+@property(readonly, nonatomic) NSString *localAreasMappingResourceId;
 @property(readonly, nonatomic) NSString *personalizationFavorabilityResourceId;
 @property(readonly, nonatomic) NSString *personalizationWhitelistResourceId;
 @property(readonly, nonatomic) NSString *personalizationUrlMappingResourceId;
@@ -113,6 +115,7 @@
 @property(readonly, nonatomic) double prerollLoadingTimeout;
 @property(readonly, nonatomic) double interstitialAdLoadDelay;
 @property(readonly, nonatomic) NSString *anfRenderingConfiguration;
+@property(readonly, nonatomic) NSString *webEmbedContentBlockerOverrides;
 @property(readonly, nonatomic) NSString *webEmbedContentBlockers;
 @property(readonly, nonatomic) long long autoScrollToTopFeedTimeout;
 @property(readonly, nonatomic) NSArray *onboardingFeedIDs;
@@ -124,6 +127,7 @@
 @property(readonly, nonatomic) double delayBeforeRetryingDroppedFeeds;
 @property(readonly, nonatomic) long long maxRetriesForDroppedFeeds;
 @property(readonly, nonatomic) _Bool isSpecialEventsMicaAnimationDisabled;
+- (id)appAnalyticsEndpointUrlForEnvironment:(unsigned long long)arg1;
 - (id)analyticsEnvelopeContentTypeConfigsForEnvironment:(unsigned long long)arg1;
 - (id)todayConfigWithQueueConfigs:(id)arg1 maxSlotCount:(unsigned long long)arg2;
 - (id)personalizationTreatment;
@@ -153,6 +157,8 @@
 @property(readonly, nonatomic) FCForYouGroupsConfiguration *forYouGroupsConfiguration; // @synthesize forYouGroupsConfiguration=_forYouGroupsConfiguration;
 @property(readonly, nonatomic) NSArray *hiddenFeedIDs;
 @property(readonly, nonatomic) long long articleRapidUpdatesTimeout;
+@property(readonly, nonatomic) NSString *todayFeedKnobs;
+@property(readonly, nonatomic) NSArray *aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
 @property(readonly, nonatomic) double feedLineHeightMultiplier;
 @property(readonly, nonatomic) NSString *editorialGemsSectionID;
 @property(readonly, nonatomic) NSString *spotlightChannelID;
@@ -197,6 +203,11 @@
 - (id)initWithConfigDictionary:(id)arg1 storefrontID:(id)arg2 languageConfigDictionary:(id)arg3;
 @property(readonly, nonatomic) _Bool isDefaultConfiguration;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

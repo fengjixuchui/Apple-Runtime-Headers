@@ -8,7 +8,7 @@
 
 #import <ScreenTimeUI/STLockoutPolicyControllerDelegate-Protocol.h>
 
-@class NSString, STBlockingBackdropView, STLockoutPolicyController, UIImageView, UILabel, UIStackView;
+@class NSDictionary, NSString, PUICContentUnavailableView, STLockoutPolicyController, UIResponder;
 @protocol STLockoutViewControllerDelegate;
 
 @interface STLockoutViewController : PUICActionContentController <STLockoutPolicyControllerDelegate>
@@ -17,43 +17,50 @@
     _Bool _mainButtonAlwaysHidden;
     _Bool _forSnapshot;
     _Bool _didFinishDismissing;
+    UIResponder *_customNextResponder;
     STLockoutPolicyController *_policyController;
+    NSString *_applicationName;
+    NSDictionary *_contactNameByHandle;
     int _style;
-    UIStackView *_stackView;
-    UILabel *_titleLabel;
-    UIImageView *_hourglassImageView;
-    UILabel *_messageLabel;
+    PUICContentUnavailableView *_blockingView;
     NSString *_bundleIdentifier;
     int _okButtonAction;
     id <STLockoutViewControllerDelegate> _viewControllerDelegate;
 }
 
++ (id)lockoutViewControllerWithBundleIdentifier:(id)arg1 contactsHandles:(id)arg2 contactNameByHandle:(id)arg3;
++ (id)lockoutViewControllerWithConversationContext:(id)arg1 bundleIdentifier:(id)arg2 contactStore:(id)arg3 applicationName:(id)arg4 contactNameByHandle:(id)arg5;
 + (id)lockoutViewControllerWithBundleIdentifier:(id)arg1 conversationContext:(id)arg2 contactStore:(id)arg3;
 + (id)lockoutViewControllerWithBundleIdentifier:(id)arg1 contactsHandles:(id)arg2;
++ (id)lockoutViewControllerWithConversationContext:(id)arg1 bundleIdentifier:(id)arg2 contactStore:(id)arg3 applicationName:(id)arg4;
 + (id)lockoutViewControllerWithWebsiteURL:(id)arg1;
 + (id)lockoutViewControllerWithBundleIdentifier:(id)arg1;
 + (id)lockoutViewControllerWithCategoryIdentifier:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) __weak id <STLockoutViewControllerDelegate> viewControllerDelegate; // @synthesize viewControllerDelegate=_viewControllerDelegate;
 @property int okButtonAction; // @synthesize okButtonAction=_okButtonAction;
 @property(readonly, nonatomic) _Bool didFinishDismissing; // @synthesize didFinishDismissing=_didFinishDismissing;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(nonatomic, getter=isForSnapshot) _Bool forSnapshot; // @synthesize forSnapshot=_forSnapshot;
-@property(retain) UILabel *messageLabel; // @synthesize messageLabel=_messageLabel;
-@property(retain) UIImageView *hourglassImageView; // @synthesize hourglassImageView=_hourglassImageView;
-@property(retain) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain) UIStackView *stackView; // @synthesize stackView=_stackView;
+@property(retain) PUICContentUnavailableView *blockingView; // @synthesize blockingView=_blockingView;
 @property(readonly) int style; // @synthesize style=_style;
+@property(readonly, copy) NSDictionary *contactNameByHandle; // @synthesize contactNameByHandle=_contactNameByHandle;
+@property(readonly) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property(readonly) STLockoutPolicyController *policyController; // @synthesize policyController=_policyController;
+@property(nonatomic) __weak UIResponder *customNextResponder; // @synthesize customNextResponder=_customNextResponder;
 @property(nonatomic) _Bool mainButtonAlwaysHidden; // @synthesize mainButtonAlwaysHidden=_mainButtonAlwaysHidden;
 @property(nonatomic) _Bool okButtonAlwaysHidden; // @synthesize okButtonAlwaysHidden=_okButtonAlwaysHidden;
-- (void).cxx_destruct;
+- (void)_updateMessageLabelWithPhoneNumberFormat:(id)arg1 emailAddressFormat:(id)arg2 contactNameFormat:(id)arg3;
 - (void)stateDidChange:(unsigned int)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
-@property(retain, nonatomic) STBlockingBackdropView *contentView;
 - (void)viewDidLoad;
-- (id)nextResponder;
+@property(nonatomic) __weak UIResponder *nextResponder;
 - (id)initWithBundleIdentifier:(id)arg1 conversationContext:(id)arg2 contactStore:(id)arg3;
 - (id)initWithBundleIdentifier:(id)arg1 contactsHandles:(id)arg2;
+- (id)initWithBundleIdentifier:(id)arg1 contactsHandles:(id)arg2 contactNameByHandle:(id)arg3;
+- (id)initWithConversationContext:(id)arg1 bundleIdentifier:(id)arg2 contactStore:(id)arg3 applicationName:(id)arg4;
+- (id)initWithConversationContext:(id)arg1 bundleIdentifier:(id)arg2 contactStore:(id)arg3 applicationName:(id)arg4 contactNameByHandle:(id)arg5;
 - (id)initWithWebsiteURL:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithCategoryIdentifier:(id)arg1;

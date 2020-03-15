@@ -29,13 +29,14 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isPushTriggerFired; // @synthesize isPushTriggerFired=_isPushTriggerFired;
 @property(nonatomic) _Bool isCKInternalMetric; // @synthesize isCKInternalMetric=_isCKInternalMetric;
 @property(readonly, nonatomic) NSMutableDictionary *associatedOperationGroups; // @synthesize associatedOperationGroups=_associatedOperationGroups;
 @property(readonly, nonatomic) NSMutableDictionary *associatedOperations; // @synthesize associatedOperations=_associatedOperations;
 @property(readonly, nonatomic) NSMutableDictionary *attributes; // @synthesize attributes=_attributes;
-@property(nonatomic) NSString *inferredSourceApplicationSecondaryIdentifier; // @synthesize inferredSourceApplicationSecondaryIdentifier=_inferredSourceApplicationSecondaryIdentifier;
-@property(nonatomic) NSString *inferredSourceApplicationBundleIdentifier; // @synthesize inferredSourceApplicationBundleIdentifier=_inferredSourceApplicationBundleIdentifier;
+@property(retain, nonatomic) NSString *inferredSourceApplicationSecondaryIdentifier; // @synthesize inferredSourceApplicationSecondaryIdentifier=_inferredSourceApplicationSecondaryIdentifier;
+@property(retain, nonatomic) NSString *inferredSourceApplicationBundleIdentifier; // @synthesize inferredSourceApplicationBundleIdentifier=_inferredSourceApplicationBundleIdentifier;
 @property(nonatomic) _Bool inferredPreferAnonymousRequests; // @synthesize inferredPreferAnonymousRequests=_inferredPreferAnonymousRequests;
 @property(nonatomic) _Bool inferredAllowsCellular; // @synthesize inferredAllowsCellular=_inferredAllowsCellular;
 @property(readonly, nonatomic) NSUUID *metricUUID; // @synthesize metricUUID=_metricUUID;
@@ -43,7 +44,6 @@
 @property(retain) NSDate *endTime; // @synthesize endTime=_endTime;
 @property(retain) NSDate *startTime; // @synthesize startTime=_startTime;
 @property(readonly, nonatomic) NSString *eventName; // @synthesize eventName=_eventName;
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)generateEventMetricInfo;

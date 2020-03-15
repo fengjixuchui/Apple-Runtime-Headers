@@ -19,16 +19,16 @@
 }
 
 + (id)log;
+- (void).cxx_destruct;
 @property(retain, nonatomic) EDDaemonInterfaceFactory *daemonInterfaceFactory; // @synthesize daemonInterfaceFactory=_daemonInterfaceFactory;
 @property(retain, nonatomic) NSMutableArray *connectedClients; // @synthesize connectedClients=_connectedClients;
 @property(retain, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSXPCListenerEndpoint *serverXPCEndpoint;
 - (void)removeRemoteClient:(id)arg1;
 - (void)addRemoteClient:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)start;
-- (void)tearDown;
+- (void)test_tearDown;
 - (id)initWithDaemonInterfaceFactory:(id)arg1 listener:(id)arg2;
 - (id)initWithDaemonInterfaceFactory:(id)arg1;
 

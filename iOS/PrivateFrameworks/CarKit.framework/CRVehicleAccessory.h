@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class EAAccessory, NSArray, NSData, NSNumber, NSString;
+@class EAAccessory, NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 @interface CRVehicleAccessory : NSObject
 {
@@ -22,8 +22,13 @@
     NSString *_PPID;
     NSNumber *_connectionID;
     EAAccessory *_accessory;
+    NSDictionary *_vehicleInfoDataCache;
+    NSDictionary *_vehicleAccessoryInfoKeysCache;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *vehicleAccessoryInfoKeysCache; // @synthesize vehicleAccessoryInfoKeysCache=_vehicleAccessoryInfoKeysCache;
+@property(copy, nonatomic) NSDictionary *vehicleInfoDataCache; // @synthesize vehicleInfoDataCache=_vehicleInfoDataCache;
 @property(nonatomic) __weak EAAccessory *accessory; // @synthesize accessory=_accessory;
 @property(retain, nonatomic) NSNumber *connectionID; // @synthesize connectionID=_connectionID;
 @property(retain, nonatomic) NSString *PPID; // @synthesize PPID=_PPID;
@@ -36,7 +41,6 @@
 @property(retain, nonatomic) NSData *certificateSerialNumber; // @synthesize certificateSerialNumber=_certificateSerialNumber;
 @property(retain, nonatomic) NSString *vehicleModelName; // @synthesize vehicleModelName=_vehicleModelName;
 @property(retain, nonatomic) NSString *vehicleName; // @synthesize vehicleName=_vehicleName;
-- (void).cxx_destruct;
 - (void)sendDeviceTransportIdentifiers;
 - (void)requestWiFiCredentials;
 - (void)beginWiredBluetoothPairing:(CDUnknownBlockType)arg1;

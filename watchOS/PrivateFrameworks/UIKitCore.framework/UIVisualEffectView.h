@@ -37,6 +37,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (Class)_contentViewClass;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool allowsBlurring; // @synthesize allowsBlurring=_allowsBlurring;
 @property(nonatomic) _Bool allowsDithering; // @synthesize allowsDithering=_allowsDithering;
 @property(nonatomic, getter=_useLiveMasking, setter=_setUseLiveMasking:) _Bool useLiveMasking; // @synthesize useLiveMasking=_useLiveMasking;
@@ -47,7 +48,6 @@
 @property(retain, nonatomic, setter=_setCornerMask:) _UIVisualEffectViewCornerMask *_cornerMask; // @synthesize _cornerMask=__cornerMask;
 @property(copy, nonatomic) UIVisualEffect *effect; // @synthesize effect=_effect;
 @property(readonly, nonatomic) _UIVisualEffectViewBackdropCaptureGroup *_captureGroup; // @synthesize _captureGroup;
-- (void).cxx_destruct;
 - (id)_backgroundHost;
 - (id)_contentHost;
 - (void)_setTintOpacity:(float)arg1;
@@ -94,8 +94,6 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)didMoveToWindow;
 - (void)didMoveToSuperview;
-- (void)willMoveToWindow:(id)arg1;
-- (void)willMoveToSuperview:(id)arg1;
 - (void)setContentView:(id)arg1;
 @property(readonly, nonatomic) UIView *contentView;
 - (void)_populateArchivedSubviews:(id)arg1;

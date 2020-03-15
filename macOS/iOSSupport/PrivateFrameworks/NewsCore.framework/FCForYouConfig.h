@@ -9,6 +9,7 @@
 #import <NewsCore/NSCopying-Protocol.h>
 
 @class FCGroupConfig, FCInterestToken, FCSpecialEventGroupConfig, FCSpotlightGroupConfig, FCTopStoriesGroupConfig, FCVideoGroupConfig, NSArray, NSDate, NSString, NTPBForYouConfigRecord;
+@protocol FCForYouBridgedConfiguration;
 
 @interface FCForYouConfig : NSObject <NSCopying>
 {
@@ -22,12 +23,15 @@
     FCVideoGroupConfig *_topVideosGroupConfig;
     FCVideoGroupConfig *_moreVideosGroupConfig;
     NSArray *_demoGroupConfigs;
+    id <FCForYouBridgedConfiguration> _bridgedConfiguration;
     NTPBForYouConfigRecord *_forYouConfigRecord;
     FCInterestToken *_interestToken;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) FCInterestToken *interestToken; // @synthesize interestToken=_interestToken;
 @property(retain, nonatomic) NTPBForYouConfigRecord *forYouConfigRecord; // @synthesize forYouConfigRecord=_forYouConfigRecord;
+@property(copy, nonatomic) id <FCForYouBridgedConfiguration> bridgedConfiguration; // @synthesize bridgedConfiguration=_bridgedConfiguration;
 @property(readonly, nonatomic) NSArray *demoGroupConfigs; // @synthesize demoGroupConfigs=_demoGroupConfigs;
 @property(retain, nonatomic) FCVideoGroupConfig *moreVideosGroupConfig; // @synthesize moreVideosGroupConfig=_moreVideosGroupConfig;
 @property(retain, nonatomic) FCVideoGroupConfig *topVideosGroupConfig; // @synthesize topVideosGroupConfig=_topVideosGroupConfig;
@@ -38,7 +42,6 @@
 @property(retain, nonatomic) FCTopStoriesGroupConfig *topStoriesGroupConfig; // @synthesize topStoriesGroupConfig=_topStoriesGroupConfig;
 @property(retain, nonatomic) FCSpecialEventGroupConfig *specialEventGroupConfig; // @synthesize specialEventGroupConfig=_specialEventGroupConfig;
 @property(retain, nonatomic) FCSpecialEventGroupConfig *breakingNewsGroupConfig; // @synthesize breakingNewsGroupConfig=_breakingNewsGroupConfig;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSDate *fetchedDate;
 @property(readonly, nonatomic) NSString *moreVideosArticleListID;
@@ -48,10 +51,11 @@
 @property(readonly, nonatomic) NSArray *editorialArticleListIDs;
 @property(readonly, nonatomic) NSString *coverArticlesArticleListID;
 @property(readonly, nonatomic) NSString *trendingArticleListID;
+@property(readonly, nonatomic) NSArray *todayFeedTopStoriesArticleIDs;
 @property(readonly, nonatomic) NSArray *topStoriesCombinedArticleIDs;
 @property(readonly, nonatomic) NSArray *specialEventArticleIDs;
 @property(readonly, nonatomic) NSArray *breakingNewsArticleIDs;
-- (id)initWithRecord:(id)arg1 interestToken:(id)arg2;
+- (id)initWithRecord:(id)arg1 interestToken:(id)arg2 bridgedConfiguration:(id)arg3;
 
 @end
 

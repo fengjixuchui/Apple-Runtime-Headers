@@ -33,6 +33,7 @@
 + (_Bool)isEventKitSyncEnabledForReminderKit;
 + (_Bool)dataaccessDaemonStopSyncingReminders;
 + (_Bool)notificationsEnabled;
+- (void).cxx_destruct;
 @property(retain, nonatomic) REMStore *nonUserInteractiveStore; // @synthesize nonUserInteractiveStore=_nonUserInteractiveStore;
 @property(nonatomic) _Bool assertOnMainThreadFetches; // @synthesize assertOnMainThreadFetches=_assertOnMainThreadFetches;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
@@ -40,13 +41,13 @@
 @property(readonly, nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
 @property(readonly, nonatomic) _REMInProgressSaveRequestsContainer *l_inProgressSaveRequestsContainer; // @synthesize l_inProgressSaveRequestsContainer=_l_inProgressSaveRequestsContainer;
 @property(readonly, nonatomic) REMStoreContainerToken *storeContainerToken; // @synthesize storeContainerToken=_storeContainerToken;
-- (void).cxx_destruct;
 - (_Bool)_isUserInteractiveStore;
 - (void)_incrementStoreGeneration;
 - (id)_withInProgressSaveRequestContainer:(CDUnknownBlockType)arg1;
 - (id)fetchDefaultAccountWithError:(id *)arg1;
 - (id)fetchDefaultListWithError:(id *)arg1;
 - (id)fetchEligibleDefaultListsWithError:(id *)arg1;
+- (id)compressedDistributedEvaluationDataWithOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)everConnectedToCar;
 - (void)acceptShareWithMetadata:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)stopShare:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;

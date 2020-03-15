@@ -43,10 +43,10 @@
 + (void)initialize;
 + (void)_registerComponentClass:(Class)arg1 withKey:(id)arg2 predicate:(id)arg3;
 + (id)_canvasForScene:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool _isKeyWindowScene; // @synthesize _isKeyWindowScene=__isKeyWindowScene;
 @property(nonatomic, getter=_avkitRequestedOverscanCompensation, setter=_setAVKitRequestedOverscanCompensation:) long long _avkitRequestedOverscanCompensation; // @synthesize _avkitRequestedOverscanCompensation;
 @property(readonly, nonatomic) _Bool _isPerformingSystemSnapshot; // @synthesize _isPerformingSystemSnapshot;
-- (void).cxx_destruct;
 - (void)_showProgressWhenFetchingUserActivityForTypes:(id)arg1;
 - (id)_inheritingWindowsIncludingInvisible:(_Bool)arg1;
 - (id)_windowSceneDelegate;
@@ -71,6 +71,7 @@
 @property(readonly, nonatomic) struct UIEdgeInsets _peripheryInsets;
 - (struct CGRect)_referenceBoundsForOrientation:(long long)arg1;
 - (struct CGRect)_referenceBounds;
+- (void)_updateTraitCollection;
 - (void)_computeMetricsForWindows:(id)arg1 animated:(_Bool)arg2;
 - (void)_computeMetrics:(_Bool)arg1;
 - (void)_prepareForSuspend;

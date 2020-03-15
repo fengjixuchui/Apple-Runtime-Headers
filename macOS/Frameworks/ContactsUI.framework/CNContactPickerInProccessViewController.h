@@ -10,7 +10,7 @@
 #import <ContactsUI/CNContactPickerViewController-Protocol.h>
 #import <ContactsUI/CNContactPickerViewControllerSearch-Protocol.h>
 
-@class ABAddressBook, ABBookSearchField, ABGroupEntriesList, ABPersonEntriesList, ABPersonListSearchController, CNContact, CNContactCardViewController, CNContactListController, CNContactListView, CNContactPickerFamilyMemberScope, CNContactPickerNotificationWatcher, CNContactPickerSearchController, CNContactStore, CNGroupListController, CNGroupListEntriesFactory, CNGroupListView, FAFamilyMember, NSArray, NSString;
+@class ABAddressBook, ABBookSearchField, ABGroupEntriesList, ABPersonEntriesList, ABPersonListSearchController, CNContactCardViewController, CNContactListController, CNContactListView, CNContactPickerFamilyMemberScope, CNContactPickerNotificationWatcher, CNContactPickerSearchController, CNContactStore, CNGroupListController, CNGroupListEntriesFactory, CNGroupListView, FAFamilyMember, NSArray, NSString;
 @protocol CNContactPickerInternalResponseDelegate;
 
 @interface CNContactPickerInProccessViewController : NSViewController <CNContactPickerViewController, CNContactPickerInternalSetup, CNContactPickerViewControllerSearch>
@@ -28,8 +28,9 @@
     NSArray *_prohibitedPropertykeys;
     id <CNContactPickerInternalResponseDelegate> _responseDelegate;
     BOOL _editingSelectedContact;
-    BOOL _highlightSelectedContact;
     BOOL _showSelectedContact;
+    BOOL _highlightSelectedContact;
+    BOOL _allowMultipleSelection;
     ABPersonListSearchController *_searchController;
     CNGroupListView *_groupListView;
     CNContactListView *_contactListView;
@@ -37,19 +38,20 @@
     CNContactPickerFamilyMemberScope *_familyMemberScope;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic, getter=shouldAllowMultipleSelection) BOOL allowMultipleSelection; // @synthesize allowMultipleSelection=_allowMultipleSelection;
+@property(readonly, nonatomic, getter=shouldHighlightSelectedContact) BOOL highlightSelectedContact; // @synthesize highlightSelectedContact=_highlightSelectedContact;
 @property(readonly, nonatomic, getter=shouldShowSelectedContact) BOOL showSelectedContact; // @synthesize showSelectedContact=_showSelectedContact;
 @property(retain) CNContactPickerFamilyMemberScope *familyMemberScope; // @synthesize familyMemberScope=_familyMemberScope;
 @property(retain) CNContactCardViewController *contactCardViewController; // @synthesize contactCardViewController=_contactCardViewController;
 @property __weak ABBookSearchField *searchField; // @synthesize searchField=_searchField;
 @property __weak CNContactListView *contactListView; // @synthesize contactListView=_contactListView;
 @property __weak CNGroupListView *groupListView; // @synthesize groupListView=_groupListView;
-@property(nonatomic, getter=shouldHighlightSelectedContact) BOOL highlightSelectedContact; // @synthesize highlightSelectedContact=_highlightSelectedContact;
 @property(readonly, nonatomic) NSArray *prohibitedPropertykeys; // @synthesize prohibitedPropertykeys=_prohibitedPropertykeys;
 @property(nonatomic, getter=isEditingSelectedContact) BOOL editingSelectedContact; // @synthesize editingSelectedContact=_editingSelectedContact;
 @property(retain) CNGroupListController *groupListController; // @synthesize groupListController=_groupListController;
 @property(readonly) ABPersonListSearchController *searchController; // @synthesize searchController=_searchController;
 @property(retain) CNContactListController *contactListController; // @synthesize contactListController=_contactListController;
-- (void).cxx_destruct;
 - (void)resetUsageStatistics;
 - (unsigned long long)countOfServerSearchesPerformed;
 - (unsigned long long)countOfLocalSearchesPerformed;
@@ -67,8 +69,8 @@
 - (id)browsingHeadliner;
 @property __weak id <CNContactPickerInternalResponseDelegate> responseDelegate; // @synthesize responseDelegate=_responseDelegate;
 - (void)prepareForDisplay;
-@property(readonly, nonatomic) CNContact *refetchedSelectedContact;
-@property(readonly, nonatomic) CNContact *selectedContact;
+@property(readonly, nonatomic) NSArray *selectedContacts;
+- (void)setDelegate:(id)arg1;
 @property(readonly, nonatomic) FAFamilyMember *familyMember;
 - (void)pickerDidCreate;
 - (void)finalizePickerCreation;
@@ -81,10 +83,12 @@
 - (void)setupGroupListController;
 - (void)setupContactListController;
 - (void)setupContactCardViewController;
+- (void)ensureSearchControllerHasSearchConfigurationIfGroupsPaneNotVisible;
 - (void)performInitialSelection;
 - (void)commonInitWithAddressBook:(id)arg1 contactStore:(id)arg2 prohibitedPropertykeys:(id)arg3;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithFAFamilyMember:(id)arg1 prohibitedPropertyKeys:(id)arg2;
+- (id)initWithShowSelectedContact:(BOOL)arg1 highlightSelectedContact:(BOOL)arg2;
 - (id)init;
 
 // Remaining properties

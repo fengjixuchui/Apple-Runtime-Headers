@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface SGQuickResponsesPredictionParameters : NSObject
 {
     _Bool _isPersonalizationDisabled;
@@ -13,6 +15,10 @@
     _Bool _isPerCategory;
     unsigned int _defaultResponsesToReturn;
     unsigned int _responsesToShowAtTopForDiversity;
+    unsigned int _maxPromptLength;
+    NSString *_promptJoiningString;
+    NSString *_modelTypeName;
+    NSString *_subModelKeyString;
     double _weightForCategoryAverage;
     double _weightForCategoryMax;
     double _weightForIndividualModel;
@@ -22,8 +28,15 @@
     double _personalizationExplorationFactor;
     double _personalizationDisplayedPseudocount;
     double _personalizationSelectedPseudocountPerSemanticClass;
+    double _maxPromptWindowSeconds;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *subModelKeyString; // @synthesize subModelKeyString=_subModelKeyString;
+@property(readonly, nonatomic) NSString *modelTypeName; // @synthesize modelTypeName=_modelTypeName;
+@property(readonly, nonatomic) NSString *promptJoiningString; // @synthesize promptJoiningString=_promptJoiningString;
+@property(readonly, nonatomic) double maxPromptWindowSeconds; // @synthesize maxPromptWindowSeconds=_maxPromptWindowSeconds;
+@property(readonly, nonatomic) unsigned int maxPromptLength; // @synthesize maxPromptLength=_maxPromptLength;
 @property(readonly, nonatomic) double personalizationSelectedPseudocountPerSemanticClass; // @synthesize personalizationSelectedPseudocountPerSemanticClass=_personalizationSelectedPseudocountPerSemanticClass;
 @property(readonly, nonatomic) double personalizationDisplayedPseudocount; // @synthesize personalizationDisplayedPseudocount=_personalizationDisplayedPseudocount;
 @property(readonly, nonatomic) double personalizationExplorationFactor; // @synthesize personalizationExplorationFactor=_personalizationExplorationFactor;

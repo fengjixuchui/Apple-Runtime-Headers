@@ -27,14 +27,15 @@
 + (id)storeWithEnvironment:(id)arg1 options:(unsigned long long)arg2;
 + (id)storeWithOptions:(unsigned long long)arg1;
 + (void)initialize;
++ (id)storeWithDelegateInfo:(id)arg1;
 + (id)storeForFamilyMember:(id)arg1;
 + (_Bool)eraseAllDataAtURL:(id)arg1 error:(id *)arg2;
 + (_Bool)eraseAllDataAtLocationWithName:(id)arg1 error:(id *)arg2;
 + (_Bool)isXPCDataMapperStore:(id)arg1;
 + (id)contactStoreForPublicAddressBook:(void *)arg1;
 + (id)_contactStoreForPublicAddressBook:(void *)arg1;
-@property(retain, nonatomic) CNContainerCache *containerCache; // @synthesize containerCache=_containerCache;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CNContainerCache *containerCache; // @synthesize containerCache=_containerCache;
 - (_Bool)hasAccountFirstSyncCompleted;
 - (id)authorizedKeysForContactKeys:(id)arg1;
 - (void)requestAuthorization:(long long)arg1 entityType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;

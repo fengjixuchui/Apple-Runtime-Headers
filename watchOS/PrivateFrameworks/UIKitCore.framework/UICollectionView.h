@@ -231,6 +231,7 @@
 }
 
 + (id)_reuseKeyForSupplementaryViewOfKind:(id)arg1 withReuseIdentifier:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic, getter=_currentPromiseFulfillmentCell, setter=_setCurrentPromiseFulfillmentCell:) UICollectionViewCell *currentPromiseFulfillmentCell; // @synthesize currentPromiseFulfillmentCell=_currentPromiseFulfillmentCell;
 @property(readonly, nonatomic, getter=_endOfContentFocusContainerGuide) UIFocusContainerGuide *endOfContentFocusContainerGuide; // @synthesize endOfContentFocusContainerGuide=_endOfContentFocusContainerGuide;
 @property(copy, nonatomic, getter=_navigationCompletion, setter=_setNavigationCompletion:) CDUnknownBlockType navigationCompletion; // @synthesize navigationCompletion=_navigationCompletion;
@@ -255,9 +256,9 @@
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(nonatomic) __weak id <UICollectionViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) UICollectionViewLayout *collectionViewLayout; // @synthesize collectionViewLayout=_layout;
-- (void).cxx_destruct;
 - (id)_orthogonalScrollerController;
 - (id)_updateTranslator;
+- (_Bool)_isConnectedToDiffableDataSource;
 - (void)_performDiffableUpdate:(CDUnknownBlockType)arg1;
 - (void)_managedSubviewAdded:(id)arg1;
 - (id)_prefetchDataSourceActual;
@@ -358,6 +359,7 @@
 - (void)_updateContentFocusContainerGuides;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)_orthogonalScrollingSection:(int)arg1 didScrollToOffset:(struct CGPoint)arg2;
+- (_Bool)_indexPathIsValid:(id)arg1 allowSectionItemSentinel:(_Bool)arg2;
 - (_Bool)_indexPathIsValid:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (id)_dynamicAnimationsForTrackValues;
@@ -637,8 +639,8 @@
 @property(readonly, nonatomic, getter=_collectionViewData) UICollectionViewData *collectionViewData;
 - (id)_indexPathsForSelectedItems;
 @property(readonly, nonatomic) NSArray *indexPathsForSelectedItems;
-- (void)_decrementSuspendLayoutCount;
-- (void)_incrementSuspendLayoutCount;
+- (void)_decrementUpdateAnimationCount;
+- (void)_incrementUpdateAnimationCount;
 - (int)_dataSourceNumberOfItemsInSection:(int)arg1;
 - (int)_dataSourceNumberOfSections;
 - (int)_numberOfItemsInSection:(int)arg1;

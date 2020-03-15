@@ -16,11 +16,13 @@
 }
 
 + (id)standardInstance;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSUserDefaults *internalDefaults; // @synthesize internalDefaults=_internalDefaults;
 @property(nonatomic) _Bool isInternalBuild; // @synthesize isInternalBuild=_isInternalBuild;
 @property(readonly, nonatomic) _Bool internalBuild; // @synthesize internalBuild=_internalBuild;
-- (void).cxx_destruct;
-@property(retain, nonatomic) NSString *ospreyEndpointURL;
+@property(nonatomic) _Bool disableDeviceNeuralTTS;
+@property(nonatomic) _Bool simulateNetworkStall;
+@property(copy, nonatomic) NSString *ospreyEndpointURL;
 @property(nonatomic) _Bool useBetaVoice;
 @property(nonatomic) float streamBufferDuration;
 @property(nonatomic) _Bool disableOspreyStreaming;
@@ -35,6 +37,7 @@
 @property(nonatomic) _Bool enableLocalVoices;
 @property(nonatomic) _Bool disableAssetCleaning;
 @property(nonatomic) _Bool disableCache;
+@property(nonatomic) _Bool logSensitiveText;
 @property(nonatomic) _Bool enableAudioDump;
 - (id)init;
 

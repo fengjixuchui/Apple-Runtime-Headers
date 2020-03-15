@@ -10,7 +10,7 @@
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMSaveRequestTrackedValue-Protocol.h>
 
-@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, REMAccountCapabilities, REMCRMergeableStringDocument, REMChangedKeysObserver, REMContactRepresentation, REMDisplayDate, REMListChangeItem, REMObjectID, REMReminderAttachmentContextChangeItem, REMReminderFlaggedContextChangeItem, REMReminderStorage, REMReminderSubtaskContextChangeItem, REMResolutionTokenMap, REMSaveRequest, REMUserActivity;
+@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMAccountCapabilities, REMCRMergeableStringDocument, REMChangedKeysObserver, REMContactRepresentation, REMDisplayDate, REMListChangeItem, REMObjectID, REMReminderAttachmentContextChangeItem, REMReminderFlaggedContextChangeItem, REMReminderStorage, REMReminderSubtaskContextChangeItem, REMResolutionTokenMap, REMSaveRequest, REMUserActivity;
 
 @interface REMReminderChangeItem : NSObject <REMConflictResolving, REMSaveRequestTrackedValue, REMExternalSyncMetadataWritableProviding>
 {
@@ -22,10 +22,10 @@
 + (id)_deduplicateAlarms:(id)arg1;
 + (void)initialize;
 + (long long)hourForNextThirdsFromHour:(long long)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) REMChangedKeysObserver *changedKeysObserver; // @synthesize changedKeysObserver=_changedKeysObserver;
 @property(retain, nonatomic) REMReminderStorage *storage; // @synthesize storage=_storage;
 @property(readonly, nonatomic) REMSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
-- (void).cxx_destruct;
 - (id)resolutionTokenKeyForChangedKey:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (_Bool)respondsToSelector:(SEL)arg1;
@@ -47,7 +47,7 @@
 - (void)addAlarm:(id)arg1;
 - (id)addAlarmWithTrigger:(id)arg1;
 - (id)nextRecurrentDueDateComponentsAfter:(id)arg1;
-- (double)nextRecurrentAdvanceAmountAfter:(id)arg1;
+- (double)nextRecurrentAdvanceAmountForDateComponents:(id)arg1 afterDate:(id)arg2;
 - (void)removeAllRecurrenceRules;
 - (void)removeRecurrenceRule:(id)arg1;
 - (void)insertRecurrenceRule:(id)arg1 afterRecurrenceRule:(id)arg2;
@@ -107,6 +107,7 @@
 @property(copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property(nonatomic) long long flagged; // @dynamic flagged;
 @property(readonly) unsigned long long hash;
+@property(copy, nonatomic) NSURL *icsUrl; // @dynamic icsUrl;
 @property(retain, nonatomic) NSData *importedICSData; // @dynamic importedICSData;
 @property(readonly, nonatomic) _Bool isOverdue; // @dynamic isOverdue;
 @property(readonly, nonatomic) _Bool isRecurrent; // @dynamic isRecurrent;

@@ -37,6 +37,7 @@
 + (BOOL)shouldDelayPhaticForMyriadDecision;
 + (BOOL)supportPhatic;
 + (BOOL)supportPremiumModel;
++ (BOOL)isIOSDeviceSupportingBargeIn;
 + (BOOL)supportPremiumWatchAssets;
 + (BOOL)supportCompactPlus;
 + (BOOL)supportRaiseToSpeak;
@@ -82,7 +83,7 @@
 + (id)spIdSiriDebugTrainedUsersFilePathForLocale:(id)arg1;
 + (id)spIdSiriDebugVoiceProfileStoreRootDirectoryForLocale:(id)arg1;
 + (id)spIdSiriDebugVoiceProfileStoreRootDirectory;
-+ (id)spIdSiriDebugGradingDataRootDirectory;
++ (id)spIdDataRootDirectory;
 + (id)spIdSiriDebugVTDataDirectory;
 + (void)getHomeUserIdForVoiceProfile:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (id)getContentsOfDirectory:(id)arg1;
@@ -111,7 +112,7 @@
 + (id)spidAudioTrainUtterancesDir;
 + (void)cleanupOrphanedVoiceIdGradingFiles;
 + (BOOL)spIdAudioLogsCountLimitReached;
-+ (id)spIdAudioLogsGradingDir;
++ (id)spIdAudioLogsDir2;
 + (id)spIdAudioLogsDir;
 + (void)createDirectoryIfDoesNotExist:(id)arg1;
 + (id)spIdVoiceProfileImportRootDir;
@@ -132,7 +133,6 @@
 + (id)stringForInvocationStyle:(unsigned long long)arg1;
 + (BOOL)_gibraltarHasBuiltInMic;
 + (BOOL)hasRemoteBuiltInMic;
-+ (BOOL)supportIOSBargeIn;
 + (id)speexRecordSettings;
 + (id)opusRecordSettings;
 + (id)lpcmRecordSettings;

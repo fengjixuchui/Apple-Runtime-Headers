@@ -31,7 +31,7 @@
 + (id)_cachedMetadataTableSchema;
 + (id)_messageReferencesTableSchema;
 + (id)recipientsTableSchemaAndForeignKeysToResolve:(id *)arg1 associationsToResolve:(id *)arg2;
-+ (id)partialMessagesTableSchemaAndAssociationsToResolve:(id *)arg1;
++ (id)partialMessagesTableSchemaAndForeignKeysToResolve:(id *)arg1 associationsToResolve:(id *)arg2;
 + (id)tablesAndForeignKeysToResolve:(id *)arg1 associationsToResolve:(id *)arg2;
 + (id)bitExpressionForAttachments;
 + (id)bitExpressionForConversationFlag:(unsigned long long)arg1;
@@ -40,16 +40,17 @@
 + (id)attachmentsTableName;
 + (id)messagesTableName;
 + (id)log;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) EDPersistenceDatabase *database; // @synthesize database=_database;
 @property(nonatomic) int cachedMetadataUpdatesSinceLastCheck; // @synthesize cachedMetadataUpdatesSinceLastCheck=_cachedMetadataUpdatesSinceLastCheck;
 @property(retain, nonatomic) NSNumber *cachedMetadataEstimatedRowCount; // @synthesize cachedMetadataEstimatedRowCount=_cachedMetadataEstimatedRowCount;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *cachedMetadataIsolation; // @synthesize cachedMetadataIsolation=_cachedMetadataIsolation;
 @property(readonly, nonatomic) __weak EDMailboxPersistence *mailboxPersistence; // @synthesize mailboxPersistence=_mailboxPersistence;
-- (void).cxx_destruct;
 - (id)requestSummaryForMessageObjectID:(id)arg1;
 - (id)requestContentForMessageObjectID:(id)arg1 requestID:(unsigned long long)arg2 options:(id)arg3 delegate:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)groupedMessagesCountByMailboxMatchingQuery:(unsigned int)arg1 variable:(id)arg2;
 - (id)validMailboxesForPrediction;
+- (id)cachedDatabaseIDsDictionaryForMessageIDHashes:(id)arg1;
 - (void)_checkCachedMetadataRowLimitWithConnection:(id)arg1;
 - (void)_setCachedMetadataJSON:(id)arg1 forKey:(id)arg2 messageIDHash:(id)arg3;
 - (void)setCachedMetadataJSON:(id)arg1 forKey:(id)arg2 messageID:(id)arg3;

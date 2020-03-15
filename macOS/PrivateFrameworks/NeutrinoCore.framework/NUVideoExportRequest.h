@@ -10,6 +10,7 @@
 
 @interface NUVideoExportRequest : NUExportRequest
 {
+    BOOL _bypassOutputSettingsIfNoComposition;
     BOOL _requiresVideoComposition;
     NSDictionary *_outputSettings;
     NSArray *_metadata;
@@ -18,13 +19,14 @@
     NUColorSpace *_cachedColorSpace;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) BOOL requiresVideoComposition; // @synthesize requiresVideoComposition=_requiresVideoComposition;
 @property(retain) NUColorSpace *cachedColorSpace; // @synthesize cachedColorSpace=_cachedColorSpace;
+@property(nonatomic) BOOL bypassOutputSettingsIfNoComposition; // @synthesize bypassOutputSettingsIfNoComposition=_bypassOutputSettingsIfNoComposition;
 @property(nonatomic) double bitRateMultiplicationFactor; // @synthesize bitRateMultiplicationFactor=_bitRateMultiplicationFactor;
 @property(retain) NSProgress *progress; // @synthesize progress=_progress;
 @property(copy) NSArray *metadata; // @synthesize metadata=_metadata;
 @property(copy) NSDictionary *outputSettings; // @synthesize outputSettings=_outputSettings;
-- (void).cxx_destruct;
 - (void)submitWithProgress:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)submit:(CDUnknownBlockType)arg1;
 - (long long)mediaComponentType;

@@ -41,6 +41,7 @@
     long long _storageByteCount;
     EMMailDropMetadata *_mailDropMetadata;
     CDUnknownBlockType _loaderBlock;
+    long long __internalID;
     id <ECEmailAddressConvertible> _senderAddress;
     NSArray *_bccList;
     NSUUID *_documentID;
@@ -58,11 +59,14 @@
 + (id)predicateForExcludingMessagesWithObjectIDs:(id)arg1;
 + (id)predicateForExcludingMessageWithObjectID:(id)arg1;
 + (id)predicateForMessagesWithObjectIDs:(id)arg1;
++ (id)predicateForMessageWithInternalID:(long long)arg1;
 + (id)predicateForMessageWithObjectID:(id)arg1;
 + (id)predicateForMessageWithItemID:(id)arg1 mailboxPredicate:(id)arg2 mailboxTypeResolver:(id)arg3;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSUUID *documentID; // @synthesize documentID=_documentID;
 @property(copy, nonatomic) NSArray *bccList; // @synthesize bccList=_bccList;
 @property(retain, nonatomic) id <ECEmailAddressConvertible> senderAddress; // @synthesize senderAddress=_senderAddress;
+@property long long _internalID; // @synthesize _internalID=__internalID;
 @property(copy, nonatomic) CDUnknownBlockType loaderBlock; // @synthesize loaderBlock=_loaderBlock;
 - (void)setExchangeEventUID:(int)arg1;
 @property(readonly, nonatomic) int exchangeEventUID;
@@ -100,7 +104,6 @@
 @property(readonly) ECSubject *subject;
 - (void)setDate:(id)arg1;
 @property(readonly) NSDate *date;
-- (void).cxx_destruct;
 - (id)requestRepresentationWithOptions:(id)arg1 delegate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)requestRepresentationWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setDisplayName:(id)arg1;

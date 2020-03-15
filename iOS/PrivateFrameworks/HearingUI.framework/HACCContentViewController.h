@@ -22,10 +22,10 @@
     struct CGRect _collapsedFrame;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 @property(retain, nonatomic) UIViewController<CCUIContentModuleContentViewController> *expandedViewController; // @synthesize expandedViewController=_expandedViewController;
 @property(nonatomic) struct CGRect collapsedFrame; // @synthesize collapsedFrame=_collapsedFrame;
-- (void).cxx_destruct;
 - (_Bool)supportsExpanding;
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (id)viewControllerForExpandedView;
@@ -40,6 +40,7 @@
 - (void)updateViewConstraints;
 - (id)value;
 - (void)updateValue;
+- (_Bool)_canShowWhileLocked;
 - (id)initWithContentModule:(unsigned long long)arg1 andDelegate:(id)arg2;
 
 // Remaining properties

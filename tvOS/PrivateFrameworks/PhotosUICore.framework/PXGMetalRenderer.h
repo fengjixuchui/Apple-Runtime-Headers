@@ -47,13 +47,13 @@
     CDStruct_93894d6c _interactionState;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isInvertColorsEnabled; // @synthesize isInvertColorsEnabled=_isInvertColorsEnabled;
 @property(readonly, nonatomic) MTKView *metalView; // @synthesize metalView=_metalView;
 @property(nonatomic) CDStruct_93894d6c interactionState; // @synthesize interactionState=_interactionState;
 @property(nonatomic) __weak id <PXGRendererDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) CDUnknownBlockType test_renderSnapshotHandler; // @synthesize test_renderSnapshotHandler=_test_renderSnapshotHandler;
 @property(nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
-- (void).cxx_destruct;
 - (void)metalTextureConverter:(id)arg1 didCreateTexture:(id)arg2;
 - (long long)_drawRenderTexture:(CDStruct_dcc83465 *)arg1 withCommandEncoder:(id)arg2;
 - (void)_drawSpriteTextures:(id)arg1 renderState:(id)arg2 withCommandEncoder:(id)arg3 passingTest:(CDUnknownBlockType)arg4;
@@ -67,7 +67,7 @@
 - (void)updateWithChangeDetails:(id)arg1;
 - (void)setNeedsRender;
 @property(readonly, nonatomic) id <PXGTextureConverter> textureConverter;
-- (struct NSObject *)view;
+- (id)view;
 @property(readonly, nonatomic) int presentationType;
 - (double)_screenScale;
 -     // Error parsing type: v24@0:8^{?={?=[4]}{?=[4]}{?=[4]}{?=[4]}f}16, name: _configureMatricesInUniforms:
@@ -76,7 +76,7 @@
 - (void)_clearPipelines;
 - (void)_pipelinesLock_resizePipelinesStorageIfNeeded;
 - (id)_createPipelineStateForColorProgram:(id)arg1 shaderFlags:(int)arg2 colorPixelFormat:(unsigned long long)arg3;
-- (_Bool)_handleCompiledRenderPipelineSate:(id)arg1 forColorProgram:(id)arg2 shaderFlags:(int)arg3 colorPixelFormat:(unsigned long long)arg4 pipelineIndex:(long long)arg5;
+- (CDStruct_39b4dbd3)_handleCompiledRenderPipelineState:(id)arg1 forColorProgram:(id)arg2 shaderFlags:(int)arg3 colorPixelFormat:(unsigned long long)arg4 pipelineIndex:(long long)arg5;
 - (CDStruct_39b4dbd3)_pipelineForRenderTexture:(const CDStruct_dcc83465 *)arg1 waitForCompilation:(_Bool)arg2;
 - (void)_checkinRenderState:(id)arg1;
 - (id)_checkoutRenderState;

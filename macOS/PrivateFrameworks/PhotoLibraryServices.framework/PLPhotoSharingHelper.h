@@ -27,7 +27,8 @@
 + (unsigned long long)purgeableSpace;
 + (void)countOfAssetsInMstreamdSharingDownloadQueueWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (void)isMstreamdBusyPerformingSharingActivityWithCompletionBlock:(CDUnknownBlockType)arg1;
-+ (void)pruneNonRecentlyViewedCloudSharingAssetsInLibrary:(id)arg1;
++ (void)_markStreamVideosAsPurgeable;
++ (void)pruneCloudSharingContentIfNecessaryInLibrary:(id)arg1;
 + (void)applicationIsInForeground:(BOOL)arg1 photoLibraryURL:(id)arg2;
 + (double)intervalBetweenAlbumPolls;
 + (double)intervalBetweenPolls;
@@ -60,8 +61,6 @@
 + (void)savePhoneInvitationFailuresForPhoneNumber:(id)arg1 inAlbum:(id)arg2;
 + (id)_phoneInvitationFailureFile;
 + (BOOL)hasPhoneInvitationForAlbum:(id)arg1;
-+ (void)refreshSubscriberListForAlbumGUID:(id)arg1 info:(id)arg2;
-+ (void)forceRefreshSubscriberListForAlbumGUID:(id)arg1;
 + (void)refreshSubscriberListForAlbumGUID:(id)arg1;
 + (void)markPendingInvitationAsSpamForAlbum:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)declinePendingInvitationForAlbum:(id)arg1;
@@ -87,7 +86,6 @@
 + (void)deleteLocalAlbumsForMSASAlbumsWithGUIDs:(id)arg1;
 + (void)resetAllLocalState;
 + (void)updateLocalAlbumMetadataForMSASAlbum:(id)arg1 info:(id)arg2;
-+ (id)_checkedUserInfoStringValue:(id)arg1;
 + (void)trackUploadBatchSize:(unsigned long long)arg1;
 + (id)_localizationKeyForAssets:(id)arg1;
 + (BOOL)canSetUserCloudSharedLiked:(BOOL)arg1 forAssets:(id)arg2 error:(id *)arg3;

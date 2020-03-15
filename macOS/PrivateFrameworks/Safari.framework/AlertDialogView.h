@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     NSTextField *_dialogTitleView;
 }
 
+- (void).cxx_destruct;
 @property __weak NSTextField *dialogTitleView; // @synthesize dialogTitleView=_dialogTitleView;
 @property __weak NSLayoutConstraint *widthConstraint; // @synthesize widthConstraint=_widthConstraint;
 @property __weak NSLayoutConstraint *userResponsePromptFieldHeightConstraint; // @synthesize userResponsePromptFieldHeightConstraint=_userResponsePromptFieldHeightConstraint;
@@ -44,11 +45,11 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *originStringForAccessibility; // @synthesize originStringForAccessibility=_originStringForAccessibility;
 @property __weak NSTextField *promptUserResponseTextField; // @synthesize promptUserResponseTextField=_promptUserResponseTextField;
 @property(retain, nonatomic) id <AlertDialogViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (id)accessibilityChildren;
 - (BOOL)isAccessibilityElement;
 - (id)accessibilityIdentifier;
 - (id)accessibilityRole;
+- (void)updateWithNewConfiguration:(id)arg1;
 - (void)fadeOutWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fadeInWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)performKeyEquivalent:(id)arg1;

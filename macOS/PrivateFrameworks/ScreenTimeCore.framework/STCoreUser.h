@@ -23,6 +23,7 @@
 + (id)keyPathsForValuesAffectingCommunicationPolicy;
 + (id)keyPathsForValuesAffectingShareWebUsage;
 + (id)keyPathsForValuesAffectingNeedsToSetPasscode;
++ (id)keyPathsForValuesAffectingEffectiveRecoveryAltDSID;
 + (id)keyPathsForValuesAffectingEffectivePasscode;
 + (id)keyPathsForValuesAffectingManaging;
 + (id)keyPathsForValuesAffectingManaged;
@@ -43,6 +44,7 @@
 @property(readonly) NSString *organizationIdentifier;
 @property BOOL shareWebUsage;
 @property(readonly) BOOL needsToSetPasscode;
+@property(copy) NSString *effectiveRecoveryAltDSID;
 @property(copy) NSString *effectivePasscode;
 @property(readonly, getter=isManaging) BOOL managing;
 @property(readonly, getter=isManaged) BOOL managed;
@@ -77,6 +79,7 @@
 @property(retain, nonatomic) STUserDeviceState *localUserDeviceState; // @dynamic localUserDeviceState;
 @property(nonatomic) long long passcodeEntryAttemptCount; // @dynamic passcodeEntryAttemptCount;
 @property(copy, nonatomic) NSDate *passcodeEntryTimeoutEndDate; // @dynamic passcodeEntryTimeoutEndDate;
+@property(nonatomic) long long passcodeRecoveryAttemptCount; // @dynamic passcodeRecoveryAttemptCount;
 @property(readonly, copy, nonatomic) NSString *phoneticFamilyName; // @dynamic phoneticFamilyName;
 @property(readonly, copy, nonatomic) NSString *phoneticGivenName; // @dynamic phoneticGivenName;
 @property(nonatomic) BOOL supportsEncryption; // @dynamic supportsEncryption;

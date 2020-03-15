@@ -21,10 +21,10 @@
 
 + (id)_emptyListIDsOrderingWithAccountID:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) REMChangedKeysObserver *changedKeysObserver; // @synthesize changedKeysObserver=_changedKeysObserver;
 @property(readonly, copy, nonatomic) REMAccountStorage *storage; // @synthesize storage=_storage;
 @property(readonly, nonatomic) REMSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
-- (void).cxx_destruct;
 - (void)_editListIDsOrderingUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_lowLevelApplyUndoToOrdering:(id)arg1;
 - (void)_lowLevelAddListChangeItemToOrdering:(id)arg1 atIndexOfSibling:(id)arg2 isAfter:(BOOL)arg3 withParentListChangeItem:(id)arg4;
@@ -61,6 +61,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) BOOL didChooseToMigrate; // @dynamic didChooseToMigrate;
+@property(nonatomic) BOOL didChooseToMigrateLocally; // @dynamic didChooseToMigrateLocally;
 @property(nonatomic) BOOL didFinishMigration; // @dynamic didFinishMigration;
 @property(copy, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;
 @property(copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;

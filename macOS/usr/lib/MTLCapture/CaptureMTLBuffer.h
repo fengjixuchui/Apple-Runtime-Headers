@@ -49,9 +49,11 @@
 @property(readonly) struct __IOSurface *iosurface;
 @property(readonly) unsigned long long heapOffset;
 @property(readonly) unsigned long long hazardTrackingMode;
+@property(readonly, nonatomic) unsigned long long gpuAddress;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) unsigned long long cpuCacheMode;
 @property(readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
+@property(readonly) unsigned long long allocationID;
 @property(readonly) unsigned long long allocatedSize;
 - (BOOL)conformsToProtocol:(id)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
@@ -63,6 +65,7 @@
 - (void)touch;
 - (void)didModifyRange:(struct _NSRange)arg1;
 - (void)makeAliasable;
+- (id)newRemoteBufferViewForDevice:(id)arg1;
 @property(readonly) id <MTLBuffer> remoteStorageBuffer;
 - (void *)contents;
 @property(readonly) id <MTLHeap> heap;

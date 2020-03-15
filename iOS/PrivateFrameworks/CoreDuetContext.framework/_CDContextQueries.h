@@ -91,6 +91,11 @@
 + (id)senderKey;
 + (id)keyPathForRecentMessages;
 + (id)keyPathForRecentEmails;
++ (id)timestampKey;
++ (id)altitudeKey;
++ (id)longitudeKey;
++ (id)latitudeKey;
++ (id)keyPathForLocationCoordinates;
 + (id)appUsageType;
 + (id)appUsageStartDate;
 + (id)appUsageBundleID;
@@ -146,6 +151,7 @@
 + (id)calleeContactIDKey;
 + (id)keyPathForActiveCall;
 + (id)nowPlayingCreationDateKey;
++ (id)nowPlayingMediaTypeKey;
 + (id)nowPlayingOutputDeviceIDsKey;
 + (id)nowPlayingTrackKey;
 + (id)nowPlayingBundleIdKey;

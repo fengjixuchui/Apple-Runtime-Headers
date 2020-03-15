@@ -47,17 +47,17 @@
 + (id)sharedModelForMainQueue;
 + (id)startStoreServers:(CDUnknownBlockType)arg1;
 + (id)currentLocationBasedName;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) RCSavedRecordingsController *deletedRecordingsController; // @synthesize deletedRecordingsController=_deletedRecordingsController;
 @property(readonly, nonatomic) RCSavedRecordingsController *availableRecordingsController; // @synthesize availableRecordingsController=_availableRecordingsController;
 @property(readonly, nonatomic) RCSavedRecordingsController *recordingsController; // @synthesize recordingsController=_recordingsController;
 @property(nonatomic) BOOL disableSaveNotifications; // @synthesize disableSaveNotifications=_disableSaveNotifications;
 @property(nonatomic) long long isSavingDisabledCount; // @synthesize isSavingDisabledCount=_isSavingDisabledCount;
 @property BOOL valid; // @synthesize valid=_valid;
-- (void).cxx_destruct;
 - (id)insertRecordingWithAudioFile:(id)arg1 duration:(double)arg2 date:(id)arg3;
 - (id)nextRecordingDefaultLabelWithCustomLabelBase:(id)arg1;
 - (BOOL)fetchExportProgress:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)fetchObjectsFromCloud:(id)arg1 entityToAttributesToFetch:(struct NSDictionary *)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)fetchObjectsFromCloud:(id)arg1 entityToAttributesToFetch:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)importFromCloud:(CDUnknownBlockType)arg1;
 - (BOOL)exportToCloud:(CDUnknownBlockType)arg1;
 - (BOOL)resetCloud:(CDUnknownBlockType)arg1;
@@ -110,6 +110,7 @@
 - (id)recordingWithUniqueID:(id)arg1;
 - (id)mostRecentRecording;
 - (id)_recordingsWithUniqueID:(id)arg1 templateName:(id)arg2;
+- (id)recordingWithPath:(id)arg1;
 - (id)recordingWithITunesPersistentID:(long long)arg1;
 - (id)recordingWithURIRepresentation:(id)arg1;
 - (id)recordingWithID:(id)arg1;

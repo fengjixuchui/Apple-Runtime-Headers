@@ -16,13 +16,13 @@
     unsigned long long _coalitionID;
 }
 
+- (void).cxx_destruct;
 @property unsigned long long coalitionID; // @synthesize coalitionID=_coalitionID;
 @property(retain) NSValue *coalStruct; // @synthesize coalStruct=_coalStruct;
-@property(retain) NSString *launchdName; // @synthesize launchdName=_launchdName;
-@property(retain) NSString *bundleID; // @synthesize bundleID=_bundleID;
-- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
+@property(retain) NSString *launchdName; // @synthesize launchdName=_launchdName;
+@property(retain) NSString *bundleID; // @synthesize bundleID=_bundleID;
 
 @end
 

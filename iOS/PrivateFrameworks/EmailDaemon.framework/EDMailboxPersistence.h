@@ -19,9 +19,9 @@
     id <EDMailboxProvider> _mailboxProvider;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <EDMailboxProvider> mailboxProvider; // @synthesize mailboxProvider=_mailboxProvider;
 @property(retain, nonatomic) NSMutableDictionary *changeObserversByIdentifier; // @synthesize changeObserversByIdentifier=_changeObserversByIdentifier;
-- (void).cxx_destruct;
 - (_Bool)renameMailbox:(id)arg1 newName:(id)arg2;
 - (_Bool)moveMailbox:(id)arg1 newParentMailboxID:(id)arg2;
 - (_Bool)deleteMailbox:(id)arg1;
@@ -31,7 +31,7 @@
 - (long long)mailboxTypeForMailboxObjectID:(id)arg1;
 - (id)mailboxObjectIDsForMailboxType:(long long)arg1;
 - (void)serverCountsForMailboxScope:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (id)mailboxDatabaseIDsForMailboxObjectIDs:(id)arg1;
+- (id)mailboxDatabaseIDsForMailboxObjectIDs:(id)arg1 createIfNecessary:(_Bool)arg2;
 - (id)legacyMailboxForObjectID:(id)arg1;
 - (id)legacyMailboxForMailboxURL:(id)arg1;
 - (void)fetchMailboxLists;

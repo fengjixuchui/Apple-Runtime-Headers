@@ -31,14 +31,17 @@
     unsigned long long _sendProgressSendCount;
     unsigned long long _sendProgressTotalCount;
     CKFullScreenBalloonViewController *_fullScreenBalloonViewController;
+    long long _acknowledgmentToSend;
     CDUnknownBlockType _overrideScrollBlock;
     STLockoutViewController *_lockoutViewController;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isShowingLockoutView; // @synthesize isShowingLockoutView=_isShowingLockoutView;
 @property(retain, nonatomic) STLockoutViewController *lockoutViewController; // @synthesize lockoutViewController=_lockoutViewController;
 @property(copy, nonatomic) CDUnknownBlockType overrideScrollBlock; // @synthesize overrideScrollBlock=_overrideScrollBlock;
 @property(nonatomic) _Bool disableAnimationsUnderTest; // @synthesize disableAnimationsUnderTest=_disableAnimationsUnderTest;
+@property(nonatomic) long long acknowledgmentToSend; // @synthesize acknowledgmentToSend=_acknowledgmentToSend;
 @property(retain, nonatomic) CKFullScreenBalloonViewController *fullScreenBalloonViewController; // @synthesize fullScreenBalloonViewController=_fullScreenBalloonViewController;
 @property(nonatomic) unsigned long long sendProgressTotalCount; // @synthesize sendProgressTotalCount=_sendProgressTotalCount;
 @property(nonatomic) unsigned long long sendProgressSendCount; // @synthesize sendProgressSendCount=_sendProgressSendCount;
@@ -54,7 +57,6 @@
 @property(retain, nonatomic) CKTranscriptCollectionViewController *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(nonatomic) __weak id <CKCoreChatControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (void)systemApplicationDidResume;
 - (void)fullScreenBalloonViewControllerHandleDismissTap:(id)arg1;
 - (struct CGRect)fullScreenBalloonViewController:(id)arg1 balloonFrameForChatItem:(id)arg2;
@@ -133,6 +135,11 @@
 - (void)transcriptCollectionViewController:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)_setConversationDeferredSetup;
 - (void)_removeExistingCollectionViewController;
+- (_Bool)conversationAllowedByScreenTime;
+- (_Bool)_deviceIsPasscodeLocked;
+- (_Bool)_shouldAllowReplyFromLockScreen;
+- (_Bool)_shouldAllowReply;
+- (_Bool)_conversationHasReplyEnabled;
 - (id)_handleIDsForCurrentConversation;
 @property(readonly, nonatomic) double gradientBottomPlaceholderHeight;
 @property(readonly, nonatomic) double balloonMaxWidth;

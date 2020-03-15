@@ -27,6 +27,7 @@
 }
 
 + (_Bool)isDefaultPackage:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool secondaryInteractionEnabled; // @synthesize secondaryInteractionEnabled=_secondaryInteractionEnabled;
 @property(nonatomic) _Bool primaryInteractionEnabled; // @synthesize primaryInteractionEnabled=_primaryInteractionEnabled;
 @property(retain, nonatomic) MPAVOutputDeviceRoute *secondaryOutputDeviceRoute; // @synthesize secondaryOutputDeviceRoute=_secondaryOutputDeviceRoute;
@@ -39,9 +40,8 @@
 @property(retain, nonatomic) MPAVEndpointRoute *systemRoute; // @synthesize systemRoute=_systemRoute;
 @property(copy, nonatomic) NSString *volumeAudioCategory; // @synthesize volumeAudioCategory=_volumeAudioCategory;
 @property(readonly, nonatomic) _Bool isSplitRoute; // @synthesize isSplitRoute=_isSplitRoute;
-- (void).cxx_destruct;
 - (id)_volumePackageNameForRTL:(_Bool)arg1;
-- (id)_packageNameForRoute:(id)arg1 isRTL:(_Bool)arg2;
+- (id)_packageNameForRoute:(id)arg1 isRTL:(_Bool)arg2 isSlider:(_Bool)arg3;
 - (_Bool)_setupOutputDevicesAndVolumeControllersIfNeeded;
 - (unsigned long long)_routeForVolumeController:(id)arg1;
 - (void)_notifyUserInteractionEnabledChanged:(_Bool)arg1 routeType:(unsigned long long)arg2;
@@ -54,11 +54,12 @@
 - (void)setVolume:(float)arg1 forRouteType:(unsigned long long)arg2;
 - (_Bool)volumeControlAvailableForRouteType:(unsigned long long)arg1;
 - (float)volumeForRouteType:(unsigned long long)arg1;
+- (void)logFailedSetBluetoothListeningMode:(id)arg1 forRouteType:(unsigned long long)arg2;
 - (id)availableBluetoothListeningModeForRouteType:(unsigned long long)arg1;
 - (id)setCurrentBluetoothListeningModeForRouteType:(unsigned long long)arg1 bluetoothListeningMode:(id)arg2;
 - (id)currentBluetoothListeningModeForRouteType:(unsigned long long)arg1;
 - (id)glyphStateForVolumeLevel:(double)arg1 packageName:(id)arg2;
-- (id)packageNameForRouteType:(unsigned long long)arg1 isRTL:(_Bool)arg2;
+- (id)packageNameForRouteType:(unsigned long long)arg1 isRTL:(_Bool)arg2 isSlider:(_Bool)arg3;
 - (id)routeNameForRouteType:(unsigned long long)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;

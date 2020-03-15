@@ -6,9 +6,8 @@
 
 #import <ConversationKit/CNKStagingAreaViewController.h>
 
-#import <ConversationKit/CNKFaceTimeInCallControlsViewControllerDelegate-Protocol.h>
-
-@interface CNKStagingAreaViewController (ConversationKit) <CNKFaceTimeInCallControlsViewControllerDelegate>
+@interface CNKStagingAreaViewController (ConversationKit)
+- (void)resetEffectsState;
 - (void)inCallControlsViewController:(id)arg1 didAdd:(id)arg2;
 - (void)didCreateTableViewForInCallControlsViewController:(id)arg1;
 - (void)inCallControlsViewController:(id)arg1 didTap:(long long)arg2;

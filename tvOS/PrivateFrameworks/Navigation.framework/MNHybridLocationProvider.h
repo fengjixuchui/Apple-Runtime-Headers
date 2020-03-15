@@ -17,13 +17,11 @@
     unsigned long long _mode;
     double _desiredAccuracy;
     MNCoreLocationProvider *_coreLocationProvider;
-    unsigned long long _activeServices;
-    _Bool _shouldNotifyDelegate;
     id <MNLocationProviderDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)locationProvider:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
 - (void)locationProvider:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
 - (void)locationProviderDidResumeLocationUpdates:(id)arg1;
@@ -62,9 +60,7 @@
 - (void)startUpdatingLocation;
 - (id)leechedLocationProvider;
 - (id)coreLocationProvider;
-- (void)_unsubscribeFromService:(unsigned long long)arg1;
-- (void)_subscribeToService:(unsigned long long)arg1;
-- (_Bool)_isSubscribedToService:(unsigned long long)arg1;
+- (void)_setEffectiveAccuracy:(double)arg1;
 - (void)_sharedInit;
 @property(nonatomic) unsigned long long mode;
 - (id)initWithEffectiveBundleIdentifier:(id)arg1;

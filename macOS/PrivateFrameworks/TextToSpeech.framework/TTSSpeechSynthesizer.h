@@ -59,7 +59,8 @@
 + (void)setSpeechJobStartedUnitTestBlock:(CDUnknownBlockType)arg1;
 + (void)setSpeechJobFinishedUnitTestBlock:(CDUnknownBlockType)arg1;
 + (id)availableLanguageCodes;
-+ (id)availableVoicesForLanguageCode:(id)arg1;
++ (id)availableVoicesForLanguageCode:(id)arg1 queryingMobileAssets:(BOOL)arg2;
++ (void)setTestingAvailableVoicesForLanguageCode:(id)arg1;
 + (id)voiceAccessQueue;
 + (id)allAvailableVoices;
 + (id)refreshAllAvailableVoices:(BOOL)arg1;
@@ -74,6 +75,7 @@
 + (id)availableVoices;
 + (void)_initializeServers;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) BOOL synthesizeSilently; // @synthesize synthesizeSilently=_synthesizeSilently;
 @property(nonatomic) BOOL ignoreSubstitutions; // @synthesize ignoreSubstitutions=_ignoreSubstitutions;
 @property(copy, nonatomic) CDUnknownBlockType audioBufferCallback; // @synthesize audioBufferCallback=_audioBufferCallback;
@@ -88,7 +90,6 @@
 @property(nonatomic) float volume; // @synthesize volume=_volume;
 @property(nonatomic) float pitch; // @synthesize pitch=_pitch;
 @property(nonatomic) float rate; // @synthesize rate=_rate;
-- (void).cxx_destruct;
 - (void)connection:(id)arg1 speechRequest:(id)arg2 willSpeakMark:(long long)arg3 inRange:(struct _NSRange)arg4;
 - (void)connection:(id)arg1 speechRequest:(id)arg2 didSynthesizeSilentlyToURL:(id)arg3;
 - (void)connection:(id)arg1 speechRequest:(id)arg2 didStopAtEnd:(BOOL)arg3 phonemesSpoken:(id)arg4 error:(id)arg5;

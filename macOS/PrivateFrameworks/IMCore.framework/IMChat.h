@@ -71,7 +71,6 @@
     BOOL _isCurrentlyDownloadingPurgedAssets;
     BOOL _allowedByScreenTime;
     BOOL _hasSurfRequest;
-    NSString *_participantIDsHash;
     NSString *_personCentricID;
     NSDictionary *_bizIntent;
     NSString *_groupChatIdentifierUppercase;
@@ -92,6 +91,7 @@
 + (BOOL)isGUIDInAttemptingListInScrutinyMode:(id)arg1;
 + (void)storeGUIDInAttemptingListInScrutinyMode:(id)arg1;
 + (id)__im_adjustMessageSummaryInfoForSending:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *lastAddressedSIMID; // @synthesize lastAddressedSIMID=_lastAddressedSIMID;
 @property(retain, nonatomic) NSString *currentLocationGUID; // @synthesize currentLocationGUID=_currentLocationGUID;
 @property(retain, nonatomic) IMOrderingTools *orderingTools; // @synthesize orderingTools=_orderingTools;
@@ -118,7 +118,6 @@
 @property(retain, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property(retain, nonatomic) NSString *lastAddressedHandleID; // @synthesize lastAddressedHandleID=_lastAddressedHandleID;
 @property(retain, nonatomic) NSArray *frequentReplies; // @synthesize frequentReplies=_frequentReplies;
-- (void).cxx_destruct;
 - (void)downloadPurgedAttachments;
 - (void)sendProgress:(id)arg1 progressDidChange:(float)arg2 sendingMessages:(id)arg3 sendCount:(unsigned long long)arg4 totalCount:(unsigned long long)arg5 finished:(BOOL)arg6;
 - (id)sendProgressDelegate;
@@ -243,7 +242,6 @@
 - (void)_watchHandleStatusChangedForHandle:(id)arg1;
 - (void)_handleHandleStatusChanged:(id)arg1;
 @property(nonatomic) BOOL allowedByScreenTime; // @synthesize allowedByScreenTime=_allowedByScreenTime;
-@property(readonly, copy, nonatomic) NSString *participantIDsHash; // @synthesize participantIDsHash=_participantIDsHash;
 - (void)_recomputeOverallChatStatusQuietly:(BOOL)arg1;
 - (void)didUnregisterFromRegistry:(id)arg1;
 - (void)clear;
@@ -252,10 +250,8 @@
 - (BOOL)containsMessageFromContactOrMe;
 - (void)_updateLastSeenMessageGuid:(id)arg1;
 @property(readonly, nonatomic) NSString *lastSeenMessageGuid;
-- (void)verifyChatShouldBeSpamWithService:(id)arg1;
 - (void)_updateChatItemsAsNotSpamEnumeratingItems:(CDUnknownBlockType)arg1;
 - (void)_updateChatItemsAsNotSpam;
-- (void)updateWasDetectedAsiMessageSpam:(BOOL)arg1;
 - (void)updateWasDetectedAsSMSSpam:(BOOL)arg1;
 - (void)updateShouldForceToSMS:(BOOL)arg1;
 - (BOOL)shouldForceToSMS;
@@ -311,6 +307,7 @@
 @property(readonly) NSString *vocabularyIdentifier;
 @property(readonly) NSString *pronunciationHint;
 @property(readonly) NSString *spokenPhrase;
+- (id)participantHandleIDs;
 - (id)conversationContext;
 - (BOOL)allowedToShowConversationSync;
 - (BOOL)allowedToShowConversation;

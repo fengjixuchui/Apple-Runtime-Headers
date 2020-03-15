@@ -33,6 +33,7 @@
 + (id)sharedInstanceWithQueue:(id)arg1 server:(id)arg2 shouldRegister:(BOOL)arg3;
 + (id)sharedInstance;
 + (id)sharedContactStore;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(copy, nonatomic) CDUnknownBlockType disconnectCallPreflight; // @synthesize disconnectCallPreflight=_disconnectCallPreflight;
 @property(nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
@@ -46,7 +47,6 @@
 @property(retain, nonatomic) TUVideoDeviceController *videoDeviceController; // @synthesize videoDeviceController=_videoDeviceController;
 @property(retain, nonatomic) TUAudioDeviceController *audioDeviceController; // @synthesize audioDeviceController=_audioDeviceController;
 @property(retain, nonatomic) TUCallServicesInterface *callServicesInterface; // @synthesize callServicesInterface=_callServicesInterface;
-- (void).cxx_destruct;
 - (unsigned long long)_callGroupCountForCall:(id)arg1 withCall:(id)arg2;
 - (BOOL)canGroupCall:(id)arg1 withCall:(id)arg2;
 @property(readonly, nonatomic, getter=isHoldAndAnswerAllowed) BOOL holdAndAnswerAllowed;
@@ -102,6 +102,7 @@
 - (void)answerCall:(id)arg1;
 - (void)sendFieldModeDigits:(id)arg1 forProvider:(id)arg2;
 - (void)launchAppForDialRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)applicationWillLaunchForStartCallInteraction:(id)arg1;
 - (id)_dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)dialWithRequest:(id)arg1;

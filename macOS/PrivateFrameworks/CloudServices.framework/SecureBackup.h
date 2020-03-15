@@ -63,8 +63,10 @@
 
 + (unsigned int)daemonPasscodeRequestOpinion:(id *)arg1;
 + (unsigned int)needPasscodeForHSA2EscrowRecordUpdate:(id *)arg1;
++ (void)asyncRequestEscrowRecordUpdate;
 + (BOOL)supportsSecureCoding;
 + (id)_ClassCreateSecureBackupConcurrentConnection;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SESWrapper *ses; // @synthesize ses=_ses;
 @property(retain, nonatomic) EscrowPrerecord *prerecord; // @synthesize prerecord=_prerecord;
 @property(copy, nonatomic) NSString *hsa2CachedPrerecordUUID; // @synthesize hsa2CachedPrerecordUUID=_hsa2CachedPrerecordUUID;
@@ -111,7 +113,7 @@
 @property(retain, nonatomic) NSDate *backOffDate; // @synthesize backOffDate=_backOffDate;
 @property(copy, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;
 @property(copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
-- (void).cxx_destruct;
+- (void)getCertificates:(CDUnknownBlockType)arg1;
 - (id)beginHSA2PasscodeRequest:(_Bool)arg1 uuid:(id)arg2 error:(id *)arg3;
 - (id)beginHSA2PasscodeRequest:(_Bool)arg1 error:(id *)arg2;
 - (void)prepareHSA2EscrowRecordContents:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;

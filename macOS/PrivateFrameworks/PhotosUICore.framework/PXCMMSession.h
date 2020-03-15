@@ -14,7 +14,6 @@
 @interface PXCMMSession : NSObject <PXTapToRadar>
 {
     BOOL _hideActionMenu;
-    BOOL _publishOriginals;
     BOOL _ppt_presentComposeRecipientView;
     BOOL _ppt_scrollComposeRecipientsView;
     PXAssetsDataSourceManager *_dataSourceManager;
@@ -26,16 +25,18 @@
     PXCMMActionManager *_actionManager;
     unsigned long long _activityType;
     unsigned long long _sourceType;
+    NSDictionary *_preparationOptionsPerAsset;
     PXCMMViewModel *_viewModel;
     double _ppt_delay;
 }
 
 + (id)new;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) BOOL ppt_scrollComposeRecipientsView; // @synthesize ppt_scrollComposeRecipientsView=_ppt_scrollComposeRecipientsView;
 @property(readonly, nonatomic) BOOL ppt_presentComposeRecipientView; // @synthesize ppt_presentComposeRecipientView=_ppt_presentComposeRecipientView;
 @property(nonatomic) double ppt_delay; // @synthesize ppt_delay=_ppt_delay;
 @property(readonly, nonatomic) PXCMMViewModel *viewModel; // @synthesize viewModel=_viewModel;
-@property(readonly, nonatomic) BOOL publishOriginals; // @synthesize publishOriginals=_publishOriginals;
+@property(readonly, nonatomic) NSDictionary *preparationOptionsPerAsset; // @synthesize preparationOptionsPerAsset=_preparationOptionsPerAsset;
 @property(readonly, nonatomic) BOOL hideActionMenu; // @synthesize hideActionMenu=_hideActionMenu;
 @property(readonly, nonatomic) unsigned long long sourceType; // @synthesize sourceType=_sourceType;
 @property(readonly, nonatomic) unsigned long long activityType; // @synthesize activityType=_activityType;
@@ -46,7 +47,6 @@
 @property(readonly, nonatomic) PXCMMPeopleSuggestionsDataSourceManager *peopleSuggestionsPreviewDataSourceManager; // @synthesize peopleSuggestionsPreviewDataSourceManager=_peopleSuggestionsPreviewDataSourceManager;
 @property(readonly, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(readonly, nonatomic) PXAssetsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) id <PXAssetImportStatusManager> importStatusManager;
 @property(readonly, nonatomic) NSSet *notificationSuppressionContexts;
 - (id)momentShareStatusPresentationWithPresentationStyle:(long long)arg1;

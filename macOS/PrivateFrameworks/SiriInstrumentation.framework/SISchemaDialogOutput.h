@@ -6,35 +6,27 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaDialogOutput-Protocol.h>
-
 @class NSData, NSString, SISchemaRedactableString;
 
-@interface SISchemaDialogOutput : PBCodable <SISchemaDialogOutput, NSSecureCoding>
+@interface SISchemaDialogOutput : PBCodable
 {
     NSString *_viewID;
     SISchemaRedactableString *_spokenDialogOutput;
     SISchemaRedactableString *_displayedDialogOutput;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) SISchemaRedactableString *displayedDialogOutput; // @synthesize displayedDialogOutput=_displayedDialogOutput;
 @property(retain, nonatomic) SISchemaRedactableString *spokenDialogOutput; // @synthesize spokenDialogOutput=_spokenDialogOutput;
 @property(copy, nonatomic) NSString *viewID; // @synthesize viewID=_viewID;
-- (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 - (id)dictionaryRepresentation;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) Class superclass;
 
 @end
 

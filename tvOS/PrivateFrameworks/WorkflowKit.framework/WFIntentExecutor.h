@@ -19,12 +19,12 @@
     CDUnknownBlockType _completionHandler;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool skipResolveAndConfirm; // @synthesize skipResolveAndConfirm=_skipResolveAndConfirm;
 @property(nonatomic) _Bool forceExecutionOnPhone; // @synthesize forceExecutionOnPhone=_forceExecutionOnPhone;
 @property(readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(nonatomic) __weak id <WFIntentExecutorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) INCExtensionConnection *connection; // @synthesize connection=_connection;
-- (void).cxx_destruct;
 - (void)autoreleaseSelf;
 - (void)retainSelf;
 - (void)showConfirmationForInteraction:(id)arg1 confirmationRequired:(_Bool)arg2 authenticationRequired:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -38,6 +38,7 @@
 - (id)errorFromConfirmResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromExtensionError:(id)arg1;
 - (void)cancel;
+- (void)updateIntentWithItemToConfirm:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
 - (void)handleIntent:(id)arg1 withExtensionProxy:(id)arg2;
 - (void)confirmIntent:(id)arg1 withExtensionProxy:(id)arg2;
 - (void)resolveIntent:(id)arg1 withExtensionProxy:(id)arg2;

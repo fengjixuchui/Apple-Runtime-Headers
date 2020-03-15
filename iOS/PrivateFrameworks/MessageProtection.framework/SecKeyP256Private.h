@@ -13,15 +13,18 @@
 __attribute__((visibility("hidden")))
 @interface SecKeyP256Private : NSObject <P256PrivateKeyProtocol>
 {
+    id _privateKey;
     NSData *_privateKeyBlob;
     SecKeyP256Public *_publicKey;
 }
 
 + (id)generateWithAccessControl:(struct __CFString *)arg1;
 + (id)generate;
++ (const struct __CFString *)defaultProtectionClassForPlatform;
+- (void).cxx_destruct;
 @property(retain, nonatomic) SecKeyP256Public *publicKey; // @synthesize publicKey=_publicKey;
 @property(readonly, nonatomic) NSData *privateKeyBlob; // @synthesize privateKeyBlob=_privateKeyBlob;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) id privateKey; // @synthesize privateKey=_privateKey;
 - (id)initWithData:(id)arg1 error:(id *)arg2;
 - (id)keychainData;
 - (id)signData:(id)arg1 error:(id *)arg2;

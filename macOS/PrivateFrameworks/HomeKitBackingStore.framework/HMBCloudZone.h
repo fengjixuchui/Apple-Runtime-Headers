@@ -40,6 +40,7 @@
 }
 
 + (id)logCategory;
+- (void).cxx_destruct;
 @property(retain, nonatomic) HMBModelContainer *modelContainer; // @synthesize modelContainer=_modelContainer;
 @property(readonly, nonatomic) NSMutableDictionary *shareParticipantModelsByClientIdentifier; // @synthesize shareParticipantModelsByClientIdentifier=_shareParticipantModelsByClientIdentifier;
 @property(readonly, nonatomic) NSOperationQueue *shareOperationQueue; // @synthesize shareOperationQueue=_shareOperationQueue;
@@ -63,7 +64,6 @@
 @property(nonatomic) __weak id <HMBCloudZoneDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak HMBCloudDatabase *cloudDatabase; // @synthesize cloudDatabase=_cloudDatabase;
 @property(readonly, nonatomic) NAFuture *startUp; // @synthesize startUp=_startUp;
-- (void).cxx_destruct;
 - (id)attributeDescriptions;
 - (id)logIdentifier;
 - (void)handleDeletion;
@@ -116,7 +116,7 @@
 - (id)_addShareOperationAfterStartupWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)_addShareOperationWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)_handleLeaveCloudShareErrorUsingCloudZoneRecordPushResult:(id)arg1;
-- (id)_leaveCloudShareRequestingNewInvitationToken:(BOOL)arg1;
+- (id)_leaveCloudShareRequestingNewInvitationToken:(BOOL)arg1 allowCloudPull:(BOOL)arg2;
 - (id)leaveCloudShareRequestingNewInvitationToken:(BOOL)arg1;
 - (id)_createShareModel;
 - (id)createShareModel;

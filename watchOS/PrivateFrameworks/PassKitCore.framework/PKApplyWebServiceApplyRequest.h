@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PKApplyWebServiceRequest.h>
 
-@class NSArray, NSString, NSURL;
+@class NSArray, NSDecimalNumber, NSString, NSURL;
 
 @interface PKApplyWebServiceApplyRequest : PKApplyWebServiceRequest
 {
@@ -18,9 +18,14 @@
     NSString *_coreIDVNextStepToken;
     NSString *_previousContextIdentifier;
     NSString *_actionIdentifier;
+    NSDecimalNumber *_installmentAmount;
+    NSString *_installmentCurrencyCode;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *installmentCurrencyCode; // @synthesize installmentCurrencyCode=_installmentCurrencyCode;
+@property(retain, nonatomic) NSDecimalNumber *installmentAmount; // @synthesize installmentAmount=_installmentAmount;
 @property(nonatomic) _Bool isInstallment; // @synthesize isInstallment=_isInstallment;
 @property(copy, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
 @property(copy, nonatomic) NSString *previousContextIdentifier; // @synthesize previousContextIdentifier=_previousContextIdentifier;
@@ -29,7 +34,6 @@
 @property(copy, nonatomic) NSArray *certificates; // @synthesize certificates=_certificates;
 @property(nonatomic) unsigned int featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
 @property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
-- (void).cxx_destruct;
 - (id)_urlRequestWithAppleAccountInformation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

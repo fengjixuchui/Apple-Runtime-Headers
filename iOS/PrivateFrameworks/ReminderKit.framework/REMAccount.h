@@ -25,11 +25,11 @@
 + (id)newObjectID;
 + (id)localAccountID;
 + (id)localInternalAccountID;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool markedForRemoval; // @synthesize markedForRemoval=_markedForRemoval;
 @property(retain, nonatomic) REMAccountCapabilities *capabilities; // @synthesize capabilities=_capabilities;
 @property(readonly, copy, nonatomic) REMAccountStorage *storage; // @synthesize storage=_storage;
 @property(retain, nonatomic) REMStore *store; // @synthesize store=_store;
-- (void).cxx_destruct;
 - (id)externalIdentifierForMarkedForDeletionObject;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 @property(readonly, nonatomic) _Bool daSupportsPhoneNumbers;
@@ -59,6 +59,7 @@
 @property(readonly, nonatomic) NSString *daSyncToken; // @dynamic daSyncToken;
 @property(readonly, nonatomic) _Bool daWasMigrated; // @dynamic daWasMigrated;
 @property(readonly, nonatomic) _Bool didChooseToMigrate; // @dynamic didChooseToMigrate;
+@property(readonly, nonatomic) _Bool didChooseToMigrateLocally; // @dynamic didChooseToMigrateLocally;
 @property(readonly, nonatomic) _Bool didFinishMigration; // @dynamic didFinishMigration;
 @property(retain, nonatomic) NSString *displayName; // @dynamic displayName;
 @property(readonly, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;

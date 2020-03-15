@@ -17,15 +17,36 @@
     NSString *_clientZoneIdentifier;
 }
 
++ (int)rampNumber;
 + (void)saveServerConfigToDB:(id)arg1;
 + (void)loadCachedServerConfigFromDB:(id)arg1;
 + (void)reset;
 + (void)setServerConfigurationURL:(id)arg1 whenLoaded:(CDUnknownBlockType)arg2;
++ (id)defaultsForSideCar;
 + (id)defaultsForSharedZone;
 + (id)defaultsForMetadataContainer;
 + (id)defaultsForMangledID:(id)arg1;
 + (id)_userDefaultsManager;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) BOOL changeItemIDOnUnknownItem;
+@property(readonly, nonatomic) BOOL forceFailIfExistOnRevival;
+@property(readonly, nonatomic) long long delayForStuckThrottle;
+@property(readonly, nonatomic) BOOL pcsChainShareAliases;
+@property(readonly, nonatomic) unsigned long long maxBackoffToRetryUserInitiated;
+@property(readonly, nonatomic) NSArray *carryPartitions;
+@property(readonly, nonatomic) BOOL shouldMigrateFetchShareAliases;
+@property(readonly, nonatomic) BOOL useShareReferenceOnSideCar;
+@property(readonly, nonatomic) NSString *fakeEtagForFailIfOutdated;
+@property(readonly, nonatomic) BOOL useFailIfOutdatedForResets;
+@property(readonly, nonatomic) NSObject<OS_xpc_object> *analyticsReportXPCActivity;
+@property(readonly, nonatomic) unsigned long long applyRetryCountForFailure;
+@property(readonly, nonatomic) unsigned long long downloadRetryCountForFailure;
+@property(readonly, nonatomic) unsigned long long uploadRetryCountForFailure;
+@property(readonly, nonatomic) double syncDownDelayForFailure;
+@property(readonly, nonatomic) double syncUpDelayForFailure;
+@property(readonly, nonatomic) BOOL canSaveRecordsDirectlyForDeltaSync;
+@property(readonly, nonatomic) BOOL isBlacklistedFromFolderSharing;
+@property(readonly, nonatomic) BOOL should2PhasePCSChain;
 @property(readonly, nonatomic) BOOL shouldReportAllPerItemFailures;
 @property(readonly, nonatomic) double eventMetricTimeout;
 @property(readonly, nonatomic) unsigned long long computeEvictableBatchSize;
@@ -41,8 +62,10 @@
 @property(readonly, nonatomic) unsigned long long maxFolderEnumerationCount;
 @property(readonly, nonatomic) unsigned long long deleteShareIDBatchCount;
 @property(readonly, nonatomic) BOOL shouldFixupTargetCZMAliases;
-@property(readonly, nonatomic) unsigned long long optimisticallyFillChainBatchSpace;
+@property(readonly, nonatomic) NSObject<OS_xpc_object> *aggressivePCSChainActivity;
+@property(readonly, nonatomic) BOOL aggressivelyPCSChain;
 @property(readonly, nonatomic) BOOL optimisticallyPCSChain;
+- (BOOL)_shouldRampForKey:(id)arg1;
 @property(readonly, nonatomic) BOOL shouldAutoMigrateToCloudDocs;
 @property(readonly, nonatomic) unsigned int ignoredQuarantineMask;
 @property(readonly, nonatomic) NSSet *excludedExtensionsWorthPreserving;
@@ -119,6 +142,7 @@
 @property(readonly, nonatomic) unsigned long long fseventQueueBufferSize;
 @property(readonly, nonatomic) double fseventsResetBackoff;
 @property(readonly, nonatomic) double fseventsLatency;
+@property(readonly, nonatomic) double markChildLostBackoff;
 @property(readonly, nonatomic) double readerLostItemBackoff;
 @property(readonly, nonatomic) int writerApplyBatchSize;
 @property(readonly, nonatomic) double readerPackageProcessingDelay;
@@ -229,6 +253,8 @@
 - (BOOL)boolForKey:(id)arg1 inheritFromGlobal:(BOOL)arg2 byDefault:(BOOL)arg3;
 - (BOOL)boolForKey:(id)arg1 byDefault:(BOOL)arg2;
 - (double)doubleForKey:(id)arg1 min:(double)arg2 max:(double)arg3 byDefault:(double)arg4;
+- (id)stringForKey:(id)arg1 byDefault:(id)arg2;
+- (id)stringForKey:(id)arg1 inheritFromGlobal:(BOOL)arg2 byDefault:(id)arg3;
 - (float)floatForKey:(id)arg1 min:(float)arg2 max:(float)arg3 byDefault:(float)arg4;
 - (float)floatForKey:(id)arg1 inheritFromGlobal:(BOOL)arg2 min:(float)arg3 max:(float)arg4 byDefault:(float)arg5;
 - (unsigned long long)unsignedLongLongForKey:(id)arg1 min:(unsigned long long)arg2 max:(unsigned long long)arg3 byDefault:(unsigned long long)arg4;

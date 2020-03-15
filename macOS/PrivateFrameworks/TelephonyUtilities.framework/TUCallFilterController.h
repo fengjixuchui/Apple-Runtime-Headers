@@ -14,16 +14,21 @@
     id <TUCallFilterControllerActions> _actionsDelegate;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id <TUCallFilterControllerActions> actionsDelegate; // @synthesize actionsDelegate=_actionsDelegate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void).cxx_destruct;
 - (id)bundleIdentifierForDialRequest:(id)arg1;
 - (BOOL)isUnknownAddress:(id)arg1 normalizedAddress:(id)arg2 forBundleIdentifier:(id)arg3;
 - (BOOL)willRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
 - (BOOL)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
-- (BOOL)shouldRestrictJoinConversationRequest:(id)arg1;
+- (BOOL)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2 performSynchronously:(BOOL)arg3;
+- (BOOL)shouldRestrictJoinConversationRequest:(id)arg1 performSynchronously:(BOOL)arg2;
+- (BOOL)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2 performSynchronously:(BOOL)arg3;
+- (BOOL)shouldRestrictConversation:(id)arg1 performSynchronously:(BOOL)arg2;
 - (BOOL)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)policyForAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
+- (unsigned long long)callFilterStatusForDialRequest:(id)arg1;
+- (BOOL)shouldRestrictDialRequest:(id)arg1 performSynchronously:(BOOL)arg2;
 - (BOOL)shouldRestrictDialRequest:(id)arg1;
 - (BOOL)isUnknownHandle:(id)arg1;
 @property(readonly, nonatomic) BOOL silenceUnknownCallersEnabled;

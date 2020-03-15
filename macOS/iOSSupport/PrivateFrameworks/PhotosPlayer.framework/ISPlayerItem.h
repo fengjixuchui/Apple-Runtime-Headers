@@ -22,8 +22,6 @@
     BOOL _ivarQueue_reversesMoreVideoFramesInMemory;
     BOOL _ivarQueue_decodesAllFramesDuringOrdinaryPlayback;
     BOOL _ivarQueue_contentSupportsVitality;
-    CDStruct_1b6d18a9 _ivarQueue_prePhotoTime;
-    CDStruct_1b6d18a9 _ivarQueue_postPhotoTime;
     CDStruct_1b6d18a9 _ivarQueue_playerItemPhotoTime;
     CDStruct_1b6d18a9 _ivarQueue_playerItemDuration;
     ISPlayerContent *_ivarQueue_playerContent;
@@ -49,10 +47,10 @@
 
 + (id)playerItemWithAsset:(id)arg1 targetSize:(struct CGSize)arg2;
 + (long long)currentClientVersion;
+- (void).cxx_destruct;
 @property(nonatomic, getter=_isLoadingCancelled, setter=_setLoadingCancelled:) BOOL _loadingCancelled; // @synthesize _loadingCancelled=__loadingCancelled;
 @property(readonly, nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property(readonly, nonatomic) ISAsset *asset; // @synthesize asset=_asset;
-- (void).cxx_destruct;
 - (void)_assertOnIvarQueue;
 - (void)_assertOnWorkQueue;
 - (BOOL)_isOnWorkQueue;
@@ -68,8 +66,8 @@
 - (BOOL)_isPlayerContentValid;
 - (void)_invalidatePlayerContent;
 - (id)_videoPlayerItem;
-- (void)_setVideoPlayerItem:(id)arg1 prePhotoTime:(CDStruct_1b6d18a9)arg2 postPhotoTime:(CDStruct_1b6d18a9)arg3 videoDuration:(CDStruct_1b6d18a9)arg4;
-- (void)_handleVideoPlayerItemLoadResultWithSuccess:(BOOL)arg1 playerItem:(id)arg2 prePhotoTime:(CDStruct_1b6d18a9)arg3 postPhotoTime:(CDStruct_1b6d18a9)arg4 videoDuration:(CDStruct_1b6d18a9)arg5 error:(id)arg6;
+- (void)_setVideoPlayerItem:(id)arg1 videoDuration:(CDStruct_1b6d18a9)arg2;
+- (void)_handleVideoPlayerItemLoadResultWithSuccess:(BOOL)arg1 playerItem:(id)arg2 videoDuration:(CDStruct_1b6d18a9)arg3 error:(id)arg4;
 - (void)_updateVideoPlayerItemIfNeeded;
 - (BOOL)_isVideoPlayerItemValid;
 - (void)_invalidateVideoPlayerItem;

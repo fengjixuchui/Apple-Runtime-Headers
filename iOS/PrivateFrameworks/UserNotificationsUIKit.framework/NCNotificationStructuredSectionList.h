@@ -41,6 +41,7 @@
     NSMutableSet *_groupListsToSort;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *groupListsToSort; // @synthesize groupListsToSort=_groupListsToSort;
 @property(nonatomic, getter=isDynamicGroupingActive) _Bool dynamicGroupingActive; // @synthesize dynamicGroupingActive=_dynamicGroupingActive;
 @property(nonatomic, getter=isPerformingDynamicGrouping) _Bool performingDynamicGrouping; // @synthesize performingDynamicGrouping=_performingDynamicGrouping;
@@ -64,7 +65,6 @@
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 @property(nonatomic, getter=isDeviceAuthenticated) _Bool deviceAuthenticated; // @synthesize deviceAuthenticated=_deviceAuthenticated;
 @property(copy, nonatomic) NSString *logDescription; // @synthesize logDescription=_logDescription;
-- (void).cxx_destruct;
 - (void)_toggleHiddenNotificationsOnAuthenticationChange:(_Bool)arg1;
 - (void)_toggleDynamicGroupingIfNecessary;
 - (void)_unfilterNotificationRequestsForSectionIdentifier:(id)arg1;
@@ -103,6 +103,7 @@
 - (void)sectionHeaderViewDidReceiveClearAllAction:(id)arg1;
 - (void)sectionHeaderView:(id)arg1 didReceiveClearActionForSectionIdentifier:(id)arg2;
 - (void)sectionHeaderViewDidTransitionToClearState:(id)arg1;
+- (_Bool)isViewVisibleForNotificationGroupList:(id)arg1;
 - (_Bool)notificationGroupListShouldScrollToTop:(id)arg1;
 - (void)notificationGroupList:(id)arg1 requestsScrollToTopOfGroupWithCompletion:(CDUnknownBlockType)arg2;
 - (id)notificationGroupList:(id)arg1 requestsAuxiliaryOptionsContentProviderForNotificationRequest:(id)arg2 isLongLook:(_Bool)arg3;
@@ -131,7 +132,7 @@
 - (void)toggleFilteringForSectionIdentifier:(id)arg1 shouldFilter:(_Bool)arg2;
 - (void)regroupNotificationGroups;
 - (void)mergeNotificationGroups:(id)arg1;
-- (id)notificationGroupListsForMigrationPassingTest:(CDUnknownBlockType)arg1;
+- (id)notificationGroupListsForMigrationPassingTest:(CDUnknownBlockType)arg1 filterPersistentRequests:(_Bool)arg2;
 @property(readonly, nonatomic) NSArray *allNotificationRequests;
 @property(readonly, nonatomic) NSArray *allNotificationGroups;
 - (id)initWithTitle:(id)arg1;

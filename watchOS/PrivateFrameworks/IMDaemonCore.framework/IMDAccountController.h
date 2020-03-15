@@ -61,6 +61,9 @@
 - (void)_daemonWillShutdown:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (_Bool)hasActivePhoneAccount;
+- (_Bool)receiverIsCandidateForSpamFiltering:(id)arg1;
+- (_Bool)activeAccountsAreEligibleForSpamFilter;
 @property(readonly, nonatomic) NSDictionary *loadOldStatusStore;
 - (id)_superFormatFromAIML:(id)arg1;
 

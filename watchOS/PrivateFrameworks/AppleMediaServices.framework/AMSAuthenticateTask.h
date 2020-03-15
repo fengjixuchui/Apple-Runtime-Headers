@@ -21,6 +21,7 @@
     ACAccount *_authenticatedAccount;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) ACAccount *authenticatedAccount; // @synthesize authenticatedAccount=_authenticatedAccount;
 @property(retain, nonatomic) NSString *username; // @synthesize username=_username;
 @property(retain, nonatomic) NSUUID *homeIdentifier; // @synthesize homeIdentifier=_homeIdentifier;
@@ -30,7 +31,6 @@
 @property(retain, nonatomic) NSString *multiUserToken; // @synthesize multiUserToken=_multiUserToken;
 @property(retain, nonatomic) NSString *password; // @synthesize password=_password;
 @property(readonly, nonatomic) AMSAuthenticateOptions *options; // @synthesize options=_options;
-- (void).cxx_destruct;
 - (void)setHomeUserID:(id)arg1;
 - (void)setHomeID:(id)arg1;
 - (id)homeUserID;
@@ -40,6 +40,8 @@
 - (id)_createVerifyCredentialOptionsWithCredentialSource:(unsigned int)arg1;
 - (id)_accountStoreForAuthentication;
 - (id)_updateAccountWithAuthKit:(id)arg1 error:(id *)arg2;
+- (id)_attemptPasswordReuseAuthenticationForAccount:(id)arg1;
+- (id)_attemptMultiUserTokenAuthenticationForAccount:(id)arg1;
 - (id)_accountForAuthentication;
 - (id)performAuthentication;
 - (id)initWithRequest:(id)arg1;

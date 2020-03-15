@@ -113,6 +113,7 @@
 
 + (id)emptyHeadlineWithIdentifier:(id)arg1;
 + (id)emptyHeadline;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *excerpt; // @synthesize excerpt=_excerpt;
 @property(nonatomic, getter=isBundlePaid) _Bool bundlePaid; // @synthesize bundlePaid=_bundlePaid;
 @property(copy, nonatomic) NSString *titleCompact; // @synthesize titleCompact=_titleCompact;
@@ -208,7 +209,6 @@
 @property(retain, nonatomic) FCHeadlineThumbnail *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property(retain, nonatomic) FCHeadlineThumbnail *thumbnailLQ; // @synthesize thumbnailLQ=_thumbnailLQ;
 @property(nonatomic) _Bool hasThumbnail; // @synthesize hasThumbnail=_hasThumbnail;
-- (void).cxx_destruct;
 - (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic, getter=isExplicitContent) _Bool explicitContent;
 @property(readonly, nonatomic, getter=isFromBlockedStorefront) _Bool fromBlockedStorefront;
@@ -224,6 +224,7 @@
 @property(readonly, nonatomic) _Bool isTopStory;
 - (void)applyHeadlineMetadata:(id)arg1 configuration:(id)arg2;
 - (void)assignStoryType:(unsigned long long)arg1 withConfiguration:(id)arg2;
+- (void)overrideShortExcerpt:(id)arg1;
 - (void)overrideDisplayDate:(id)arg1;
 - (void)overrideTitle:(id)arg1;
 @property(readonly, copy) NSString *description;

@@ -88,10 +88,10 @@
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 + (BOOL)shouldPropagateAppearanceCustomizations;
+- (void).cxx_destruct;
 @property(nonatomic) BOOL serviceViewShouldShareTouchesWithHost; // @synthesize serviceViewShouldShareTouchesWithHost=_serviceViewShouldShareTouchesWithHost;
 @property(nonatomic, setter=_setIsUpdatingSizeInHost:) BOOL _isUpdatingSizeInHost; // @synthesize _isUpdatingSizeInHost;
 @property(nonatomic, setter=_setIsUpdatingSize:) BOOL _isUpdatingSize; // @synthesize _isUpdatingSize;
-- (void).cxx_destruct;
 - (void)__handleFocusMovementAction:(id)arg1;
 - (void)__trampolineButtonPressData:(id)arg1 canceled:(BOOL)arg2;
 - (id)_cancelTouchesForCurrentEventInHostedContent;
@@ -197,12 +197,16 @@
 - (id)textEffectsWindowForServiceScreen;
 - (void)_applicationDidFinishSuspendSnapshot:(id)arg1;
 - (void)_windowDidDetachContext:(id)arg1;
+- (void)_hostSceneDidEnterBackground:(id)arg1;
 - (void)_hostDidEnterBackground:(id)arg1;
 - (void)_configureFocusDeferralForEnteringBackground;
+- (void)_sceneDidEnterBackground:(id)arg1;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_windowDidAttachContext:(id)arg1;
+- (void)_hostSceneWillEnterForeground:(id)arg1;
 - (void)_hostWillEnterForeground:(id)arg1;
 - (void)_configureFocusDeferralForEnteringForeground;
+- (void)_sceneWillEnterForeground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_statusBarHeightDidChange:(id)arg1;
 - (void)_statusBarOrientationDidChange:(id)arg1;

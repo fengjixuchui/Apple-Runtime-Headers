@@ -34,7 +34,7 @@
     NSMutableDictionary *_retryCountsByOperationType;
     NSMutableSet *_objectIDsToProcess;
     ICSelectorDelayer *_processingSelectorDelayer;
-    ICSelectorDelayer *_pollingSelectorDelayer;
+    ICSelectorDelayer *_syncSelectorDelayer;
     NSDictionary *_containersByAccountID;
     NSMutableDictionary *_accountZoneIDsNeedingFetchChanges;
     NSMutableDictionary *_accountZoneIDsFetchingChanges;
@@ -66,6 +66,7 @@
 + (id)newNotesContainerForAccountID:(id)arg1;
 + (id)newNotesContainer;
 + (id)sharedContext;
+- (void).cxx_destruct;
 @property(nonatomic) BOOL didCheckForLongLivedOperations; // @synthesize didCheckForLongLivedOperations=_didCheckForLongLivedOperations;
 @property(retain) NSMutableSet *subscribedSubscriptionIDs; // @synthesize subscribedSubscriptionIDs=_subscribedSubscriptionIDs;
 @property(retain, nonatomic) NSMutableDictionary *accountZoneIDsNeedingToBeSaved; // @synthesize accountZoneIDsNeedingToBeSaved=_accountZoneIDsNeedingToBeSaved;
@@ -75,7 +76,7 @@
 @property(nonatomic) BOOL syncDisabledByServer; // @synthesize syncDisabledByServer=_syncDisabledByServer;
 @property(nonatomic, getter=isFetchingEnabled) BOOL fetchingEnabled; // @synthesize fetchingEnabled=_fetchingEnabled;
 @property(nonatomic) BOOL didAddObservers; // @synthesize didAddObservers=_didAddObservers;
-@property(retain) ICSelectorDelayer *pollingSelectorDelayer; // @synthesize pollingSelectorDelayer=_pollingSelectorDelayer;
+@property(retain) ICSelectorDelayer *syncSelectorDelayer; // @synthesize syncSelectorDelayer=_syncSelectorDelayer;
 @property(retain) ICSelectorDelayer *processingSelectorDelayer; // @synthesize processingSelectorDelayer=_processingSelectorDelayer;
 @property(retain, nonatomic) NSMutableSet *objectIDsToProcess; // @synthesize objectIDsToProcess=_objectIDsToProcess;
 @property(nonatomic) BOOL needsToProcessAllObjects; // @synthesize needsToProcessAllObjects=_needsToProcessAllObjects;
@@ -95,7 +96,6 @@
 @property BOOL needsToUpdateSubscriptions; // @synthesize needsToUpdateSubscriptions=_needsToUpdateSubscriptions;
 @property(readonly, nonatomic) BOOL fetchOperationsPending; // @synthesize fetchOperationsPending=_fetchOperationsPending;
 @property(nonatomic) __weak id <ICCloudContextDelegate> cloudContextDelegate; // @synthesize cloudContextDelegate=_cloudContextDelegate;
-- (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)serverChangeTokenForChangedZonesInDatabase:(id)arg1 accountID:(id)arg2;
 - (void)deleteServerChangeTokenForChangedZonesInDatabase:(id)arg1 accountID:(id)arg2;
@@ -127,8 +127,8 @@
 - (id)operationToFetchDatabaseChangesForDatabase:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchDatabaseChangesForDatabases:(id)arg1 reason:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchDatabaseChangesWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)firePollingSyncRequest;
-- (void)pollIfNecessary;
+- (void)fireSyncRequest;
+- (void)syncIfNeeded;
 - (void)fetchRecordZoneChangesOperation:(id)arg1 zoneID:(id)arg2 accountID:(id)arg3 changeTokenUpdated:(id)arg4;
 - (void)fetchRecordZoneChangesOperation:(id)arg1 recordWasDeletedWithRecordID:(id)arg2 recordType:(id)arg3 context:(id)arg4;
 - (void)fetchRecordZoneChangesOperation:(id)arg1 recordChanged:(id)arg2 context:(id)arg3;

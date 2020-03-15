@@ -4,7 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2015 by Steve Nygard.
 //
 
-#import <UIKitCore/NSCollectionLayoutSection.h>
+#import <UIFoundation/NSCollectionLayoutSection.h>
 
 #import <UIKitCore/_UICollectionLayoutSectionCallback-Protocol.h>
 
@@ -17,8 +17,8 @@
     id <NSCollectionLayoutEnvironment_Private> _layoutEnvironment;
 }
 
-@property(readonly, nonatomic, getter=_layoutEnvironment) id <NSCollectionLayoutEnvironment_Private> layoutEnvironment; // @synthesize layoutEnvironment=_layoutEnvironment;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=_layoutEnvironment) id <NSCollectionLayoutEnvironment_Private> layoutEnvironment; // @synthesize layoutEnvironment=_layoutEnvironment;
 - (void)_enrichLayoutAttributes:(id)arg1;
 - (id)_callback;
 - (BOOL)__insetTopAndBottomSeparator;

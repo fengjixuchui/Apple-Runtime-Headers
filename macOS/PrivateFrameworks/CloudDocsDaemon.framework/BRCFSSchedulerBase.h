@@ -26,19 +26,19 @@ __attribute__((visibility("hidden")))
     PQLNameInjection *_tableName;
 }
 
+- (void).cxx_destruct;
 @property(readonly) NSString *name; // @synthesize name=_name;
 @property(readonly) PQLNameInjection *tableName; // @synthesize tableName=_tableName;
 @property(readonly, nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
 @property(nonatomic) BOOL hasWork; // @synthesize hasWork=_hasWork;
 @property(nonatomic) BOOL hasActiveWork; // @synthesize hasActiveWork=_hasActiveWork;
 @property(retain) NSObject<OS_dispatch_group> *hasWorkGroup; // @synthesize hasWorkGroup=_hasWorkGroup;
-- (void).cxx_destruct;
 - (void)close;
 - (void)_close;
 - (void)cancel;
 - (void)suspend;
 - (void)resume;
-- (void)scheduleWithBatchSize:(int)arg1 whereSQLClause:(struct NSObject *)arg2 columns:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
+- (void)scheduleWithBatchSize:(int)arg1 whereSQLClause:(id)arg2 columns:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)canScheduleMoreJobs;
 - (void)performFirstSchedulingAfterStartupInDB:(id)arg1;
 - (void)schedule;
@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (long long)updateStamps:(struct throttle_stamps *)arg1 throttle:(id)arg2 now:(long long)arg3;
 - (void)rescheduleSuspendedJobsMatching:(id)arg1 inState:(int)arg2;
 - (struct brc_job_update)insertOrUpdateJobID:(id)arg1 throttle:(id)arg2 withState:(int)arg3 insertedSQLColumn:(id)arg4 insertedSQLValues:(id)arg5 updatedSQLValues:(id)arg6;
-- (void)postponeJobID:(id)arg1 withThrottle:(id)arg2;
+- (unsigned long long)postponeJobID:(id)arg1 withThrottle:(id)arg2;
 - (id)aggregateDescriptionForJobsMatching:(id)arg1 context:(id)arg2;
 - (void)describeInBuffer:(id)arg1 aggregateOfJobsMatching:(id)arg2 context:(id)arg3;
 - (id)descriptionForJobsMatching:(id)arg1 context:(id)arg2;

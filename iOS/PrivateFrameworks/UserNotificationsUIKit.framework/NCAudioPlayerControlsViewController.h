@@ -19,10 +19,10 @@
     NCAudioPlayerControlsView *_playerControlsView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NCAudioPlayerControlsView *playerControlsView; // @synthesize playerControlsView=_playerControlsView;
 @property(retain, nonatomic) NCAudioPlayerController *playerController; // @synthesize playerController=_playerController;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-- (void).cxx_destruct;
 - (void)playbackControls:(id)arg1 didRequestState:(long long)arg2;
 - (void)playerController:(id)arg1 didSeekToTime:(float)arg2;
 - (void)playerController:(id)arg1 didChangeToStatus:(long long)arg2;
@@ -33,6 +33,7 @@
 - (void)detailSliderTrackingDidCancel:(id)arg1;
 - (void)detailSliderTrackingDidEnd:(id)arg1;
 - (void)detailSliderTrackingDidBegin:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

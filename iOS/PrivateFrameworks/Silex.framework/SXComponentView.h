@@ -6,16 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-#import <Silex/STTextCanvasRenderSource-Protocol.h>
 #import <Silex/SXAXAssistiveTechStatusChangeListener-Protocol.h>
 #import <Silex/SXComponentInteractable-Protocol.h>
+#import <Silex/SXTextCanvasRenderSource-Protocol.h>
 #import <Silex/SXTransitionableComponentView-Protocol.h>
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSString, SXColumnLayout, SXFillView, SXUnitConverter, SXViewport;
 @protocol SXComponent, SXComponentHosting, SXComponentLayout, SXComponentStyle, SXComponentStyleRenderer, SXComponentStyleRendererFactory, SXDOMObjectProviding, SXPresentationDelegate;
 
-@interface SXComponentView : UIView <UIGestureRecognizerDelegate, STTextCanvasRenderSource, SXAXAssistiveTechStatusChangeListener, SXTransitionableComponentView, SXComponentInteractable>
+@interface SXComponentView : UIView <UIGestureRecognizerDelegate, SXTextCanvasRenderSource, SXAXAssistiveTechStatusChangeListener, SXTransitionableComponentView, SXComponentInteractable>
 {
     _Bool _hasRenderedContents;
     _Bool _requiresThoroughFrameCalculations;
@@ -54,6 +54,7 @@
     struct CGRect _presentationFrame;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) CDStruct_1cc9d0d0 presentationChanges; // @synthesize presentationChanges=_presentationChanges;
 @property(nonatomic) struct CGRect presentationFrame; // @synthesize presentationFrame=_presentationFrame;
 @property(nonatomic) unsigned long long componentIndex; // @synthesize componentIndex=_componentIndex;
@@ -88,7 +89,7 @@
 @property(readonly, nonatomic) id <SXDOMObjectProviding> DOMObjectProvider; // @synthesize DOMObjectProvider=_DOMObjectProvider;
 @property(readonly, nonatomic) id <SXComponent> component; // @synthesize component=_component;
 @property(readonly, nonatomic) id <SXComponentLayout> componentLayout; // @synthesize componentLayout=_componentLayout;
-- (void).cxx_destruct;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)assistiveTechnologyStatusDidChange;
 - (_Bool)userInteractable;
 @property(readonly, copy) NSString *description;

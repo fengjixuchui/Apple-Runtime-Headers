@@ -158,6 +158,8 @@
 + (id)MoveToPreviousParagraph;
 + (id)MoveToNextSentence;
 + (id)MoveToPreviousSentence;
++ (id)MoveToNextWord;
++ (id)MoveToPreviousWord;
 + (id)MoveToNextCharacter;
 + (id)MoveToPreviousCharacter;
 + (id)MoveToBottomOfCurrentDocument;
@@ -180,9 +182,9 @@
 + (id)SecondaryActivate;
 + (id)PrimaryActivate;
 + (id)commandWithSiriShortcut:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long commandType; // @synthesize commandType=_commandType;
 @property(retain, nonatomic) NSString *votEventCommandName; // @synthesize votEventCommandName=_votEventCommandName;
-- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *localizedName;
 @property(readonly, nonatomic) AXSiriShortcut *siriShortcut;
 @property(readonly, nonatomic) NSString *rawValue;

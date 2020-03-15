@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, GEOClientRankingModel, GEOMapServiceTraits, GEORetainedSearchMetadata, GEOSearchCategory, GEOSortPriorityMapping, MKLocalSearchCompletion, MKPointOfInterestFilter, NSArray, NSMutableArray, NSString, NSTimer;
+@class CLLocation, GEOAutocompleteSessionData, GEOClientRankingModel, GEOMapServiceTraits, GEORetainedSearchMetadata, GEOSearchCategory, GEOSortPriorityMapping, MKLocalSearchCompletion, MKPointOfInterestFilter, NSArray, NSMutableArray, NSString, NSTimer;
 @protocol MKAutocompleteAnalyticsProvider, MKLocalSearchCompleterDelegate, MKLocationManagerOperation;
 
 @interface MKLocalSearchCompleter : NSObject
@@ -37,6 +37,8 @@
     unsigned int _maxNumberOfConcurrentRequests;
     NSMutableArray *_inFlightTickets;
     NSMutableArray *_pendingTickets;
+    _Bool _statefulQueriesEnabled;
+    GEOAutocompleteSessionData *_autocompleteSessionData;
     _Bool _shouldDisplayNoResults;
     _Bool _shouldEnableRAPForNoResults;
     _Bool _autocompleteTopSectionIsQuerySuggestions;
@@ -50,6 +52,7 @@
     int _privateFilterType;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic, getter=_privateFilterType, setter=_setPrivateFilterType:) int privateFilterType; // @synthesize privateFilterType=_privateFilterType;
 @property(readonly, nonatomic, getter=_sections) NSArray *sections; // @synthesize sections=_sections;
 @property(nonatomic, getter=_shouldPreloadTransitInfo, setter=_setShouldPreloadTransitInfo:) _Bool shouldPreloadTransitInfo; // @synthesize shouldPreloadTransitInfo=_shouldPreloadTransitInfo;
@@ -75,10 +78,11 @@
 @property(retain, nonatomic) GEOSearchCategory *categoryFilter; // @synthesize categoryFilter=_categoryFilter;
 @property(nonatomic) CDStruct_b7cb895d region; // @synthesize region=_region;
 @property(copy, nonatomic) NSString *queryFragment; // @synthesize queryFragment=_queryFragment;
-- (void).cxx_destruct;
 @property(nonatomic) int entriesType;
 @property(copy, nonatomic) NSString *fragment;
 @property(nonatomic) CDStruct_b7cb895d boundingRegion;
+@property(nonatomic) _Bool statefulQueriesEnabled;
+- (void)clearQueryState;
 @property(readonly, nonatomic) NSArray *results;
 - (void)retry;
 - (void)cancel;

@@ -11,7 +11,7 @@
 #import <Silex/SXViewportChangeListener-Protocol.h>
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, NSString, STScrollView, SXDataTableBlueprint, SXDataTableComponentController, SXDataTableDictionary, SXDataTableView, SXTangierController;
+@class CALayer, NSString, SXDataTableBlueprint, SXDataTableComponentController, SXDataTableDictionary, SXDataTableView, SXScrollView, SXTangierController;
 @protocol SXComponentActionHandler, SXComponentController, SXImageViewFactory, SXTextComponentLayoutHosting;
 
 @interface SXDataTableComponentView : SXComponentView <SXDataTableViewDataSource, SXTangierControllerDelegate, SXViewportChangeListener, UIGestureRecognizerDelegate>
@@ -25,16 +25,17 @@
     SXDataTableBlueprint *_blueprint;
     SXDataTableDictionary *_textViews;
     SXDataTableDictionary *_imageViews;
-    STScrollView *_scrollView;
+    SXScrollView *_scrollView;
     SXTangierController *_tangierController;
     CALayer *_rightShadow;
     CALayer *_leftShadow;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) CALayer *leftShadow; // @synthesize leftShadow=_leftShadow;
 @property(retain, nonatomic) CALayer *rightShadow; // @synthesize rightShadow=_rightShadow;
 @property(retain, nonatomic) SXTangierController *tangierController; // @synthesize tangierController=_tangierController;
-@property(retain, nonatomic) STScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property(retain, nonatomic) SXScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) SXDataTableDictionary *imageViews; // @synthesize imageViews=_imageViews;
 @property(retain, nonatomic) SXDataTableDictionary *textViews; // @synthesize textViews=_textViews;
 @property(retain, nonatomic) SXDataTableBlueprint *blueprint; // @synthesize blueprint=_blueprint;
@@ -44,7 +45,6 @@
 @property(readonly, nonatomic) __weak id <SXTextComponentLayoutHosting> textComponentLayoutHosting; // @synthesize textComponentLayoutHosting=_textComponentLayoutHosting;
 @property(readonly, nonatomic) id <SXComponentActionHandler> componentActionHandler; // @synthesize componentActionHandler=_componentActionHandler;
 @property(readonly, nonatomic) id <SXImageViewFactory> imageViewFactory; // @synthesize imageViewFactory=_imageViewFactory;
-- (void).cxx_destruct;
 - (id)descriptorForIndexPath:(CDStruct_2fea82da)arg1;
 - (id)contentViewForBehavior:(id)arg1;
 - (void)updateShadowOpacity;

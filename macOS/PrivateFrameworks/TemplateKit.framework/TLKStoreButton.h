@@ -17,11 +17,11 @@
 }
 
 + (Class)cellClass;
+- (void).cxx_destruct;
 @property BOOL isEmphasized; // @synthesize isEmphasized=_isEmphasized;
 @property(retain) TLKProminenceView *highlightView; // @synthesize highlightView=_highlightView;
 @property(retain) NSView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain) TLKLabel *label; // @synthesize label=_label;
-- (void).cxx_destruct;
 - (id)accessibilityTitle;
 - (id)hitTest:(struct CGPoint)arg1;
 - (BOOL)allowsVibrancy;
@@ -31,8 +31,7 @@
 - (void)viewDidChangeEffectiveAppearance;
 - (void)setTitle:(id)arg1;
 - (id)title;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct CGSize)intrinsicContentSize;
+- (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
 - (void)layout;
 - (void)setHighlighted:(BOOL)arg1;
 - (id)init;

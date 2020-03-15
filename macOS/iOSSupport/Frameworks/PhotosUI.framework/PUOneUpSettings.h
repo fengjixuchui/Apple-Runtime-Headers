@@ -95,6 +95,8 @@
     double _livePhotoMinimumOverlappingDuration;
     unsigned long long _overlappingLivePhotosCountLimit;
     double _vitalityMaskBlur;
+    double _vitalityFeatherScale;
+    double _vitalityMaxAllowedInset;
     unsigned long long _viewModelCacheCountLimit;
     double _visibilityDurationForEnteringQuickPagingRegime;
     double _visibilityDurationForExitingQuickPagingRegime;
@@ -115,6 +117,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(nonatomic) BOOL simulateAssetContentDownloadFailure; // @synthesize simulateAssetContentDownloadFailure=_simulateAssetContentDownloadFailure;
 @property(nonatomic) BOOL simulateAssetContentDownload; // @synthesize simulateAssetContentDownload=_simulateAssetContentDownload;
 @property(nonatomic) BOOL alwaysShowAirPlayButton; // @synthesize alwaysShowAirPlayButton=_alwaysShowAirPlayButton;
@@ -142,6 +145,8 @@
 @property(nonatomic) double visibilityDurationForEnteringQuickPagingRegime; // @synthesize visibilityDurationForEnteringQuickPagingRegime=_visibilityDurationForEnteringQuickPagingRegime;
 @property(nonatomic) unsigned long long viewModelCacheCountLimit; // @synthesize viewModelCacheCountLimit=_viewModelCacheCountLimit;
 @property(nonatomic) BOOL showReframedBadge; // @synthesize showReframedBadge=_showReframedBadge;
+@property(nonatomic) double vitalityMaxAllowedInset; // @synthesize vitalityMaxAllowedInset=_vitalityMaxAllowedInset;
+@property(nonatomic) double vitalityFeatherScale; // @synthesize vitalityFeatherScale=_vitalityFeatherScale;
 @property(nonatomic) double vitalityMaskBlur; // @synthesize vitalityMaskBlur=_vitalityMaskBlur;
 @property(nonatomic) BOOL showOffBadgeForDisabledLivePhotos; // @synthesize showOffBadgeForDisabledLivePhotos=_showOffBadgeForDisabledLivePhotos;
 @property(nonatomic) unsigned long long overlappingLivePhotosCountLimit; // @synthesize overlappingLivePhotosCountLimit=_overlappingLivePhotosCountLimit;
@@ -214,7 +219,6 @@
 @property(nonatomic) BOOL initialDetailsIndicatorShouldSlideIn; // @synthesize initialDetailsIndicatorShouldSlideIn=_initialDetailsIndicatorShouldSlideIn;
 @property(nonatomic) BOOL enableSuggestionsAnalysis; // @synthesize enableSuggestionsAnalysis=_enableSuggestionsAnalysis;
 @property(nonatomic) BOOL showInitialDetailsIndicator; // @synthesize showInitialDetailsIndicator=_showInitialDetailsIndicator;
-- (void).cxx_destruct;
 - (void)preferencesDidChange;
 - (BOOL)allowAutoplayVideoForAsset:(id)arg1;
 - (void)setDefaultValues;

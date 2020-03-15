@@ -43,6 +43,7 @@
     PKCurrencyAmount *_peerPaymentAmount;
 }
 
+- (void).cxx_destruct;
 @property _Bool hasDataDetectedResults; // @synthesize hasDataDetectedResults=_hasDataDetectedResults;
 @property(retain) PKCurrencyAmount *peerPaymentAmount; // @synthesize peerPaymentAmount=_peerPaymentAmount;
 @property(retain) LPLinkMetadata *richLinkMetadata; // @synthesize richLinkMetadata=_richLinkMetadata;
@@ -74,7 +75,7 @@
 @property(retain) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property long long messageID; // @synthesize messageID=_messageID;
 @property(retain) NSString *guid; // @synthesize guid=_guid;
-- (void).cxx_destruct;
+- (id)spiChatWithQOS:(unsigned int)arg1;
 @property(readonly) NSDate *lastReadDate;
 @property(readonly) NSURL *url;
 - (id)description;

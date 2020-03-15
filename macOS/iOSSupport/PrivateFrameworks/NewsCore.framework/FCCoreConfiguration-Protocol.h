@@ -5,10 +5,11 @@
 //
 
 #import <NewsCore/NFCopying-Protocol.h>
+#import <NewsCore/NSObject-Protocol.h>
 
-@class FCForYouGroupsConfiguration, FCNotificationsConfiguration, FCPaidBundleConfiguration, FCPersonalizationTreatment, FCTopStoriesConfiguration, FCVideoGroupsConfig, NSArray, NSDictionary, NSNumber, NSString, NTPBTodayConfig;
+@class FCForYouGroupsConfiguration, FCNotificationsConfiguration, FCPaidBundleConfiguration, FCPersonalizationTreatment, FCTopStoriesConfiguration, FCVideoGroupsConfig, NSArray, NSDictionary, NSNumber, NSString, NSURL, NTPBTodayConfig;
 
-@protocol FCCoreConfiguration <NFCopying>
+@protocol FCCoreConfiguration <NSObject, NFCopying>
 @property(readonly, nonatomic) long long expirePinnedArticlesAfter;
 @property(readonly, nonatomic) NSNumber *currentTreatment;
 @property(readonly, nonatomic) NSString *experimentalizableFieldPostfix;
@@ -64,6 +65,8 @@
 - (FCPersonalizationTreatment *)personalizationTreatmentForFeldsparID:(NSString *)arg1;
 
 @optional
+@property(readonly, nonatomic) NSString *todayFeedKnobs;
+@property(readonly, nonatomic) NSArray *aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
 @property(readonly, nonatomic) double feedLineHeightMultiplier;
 @property(readonly, nonatomic) NSString *spotlightChannelID;
 @property(readonly, nonatomic) long long entitlementsCacheRecoveryAttemptDurationInSeconds;
@@ -79,5 +82,6 @@
 @property(readonly, nonatomic) long long singleTopicFeedMinFeedItemsPerRequest;
 @property(readonly, nonatomic) BOOL shouldShowAlternateHeadlines;
 - (FCPersonalizationTreatment *)personalizationTreatment;
+- (NSURL *)appAnalyticsEndpointUrlForEnvironment:(unsigned long long)arg1;
 @end
 

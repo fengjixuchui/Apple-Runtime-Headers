@@ -17,6 +17,7 @@
     int _kTCCPhotosAuthorized;
     int _kTCCPhotosAddAuthorized;
     BOOL _libraryUpgradeAuthorized;
+    BOOL _directDatabaseAccessAuthorized;
     BOOL _directDatabaseWriteAuthorized;
     BOOL _photoKitEntitled;
     int _clientProcessIdentifier;
@@ -24,17 +25,20 @@
     NSString *_trustedCallerDisplayName;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) BOOL photoKitEntitled; // @synthesize photoKitEntitled=_photoKitEntitled;
 @property(readonly, nonatomic) NSString *trustedCallerBundleID; // @synthesize trustedCallerBundleID=_trustedCallerBundleID;
 @property(readonly, nonatomic) int clientProcessIdentifier; // @synthesize clientProcessIdentifier=_clientProcessIdentifier;
-- (void).cxx_destruct;
 - (void)handleInvalidation;
 - (BOOL)photoKitEntitledFor:(id)arg1;
 @property(readonly, nonatomic) NSString *trustedCallerDisplayName; // @synthesize trustedCallerDisplayName=_trustedCallerDisplayName;
+- (BOOL)_shouldTrackEventForBundle:(id)arg1;
+- (void)_trackCAConnectionEvent;
 - (void)setupFromConnection:(id)arg1;
 @property(readonly, nonatomic) CDStruct_4c969caf clientAuditToken;
 - (BOOL)isPhotosClient;
 @property(readonly, nonatomic) BOOL directDatabaseWriteAuthorized;
+@property(readonly, nonatomic) BOOL directDatabaseAccessAuthorized;
 - (BOOL)isClientAuthorizedForLibraryUpgrade;
 - (BOOL)isClientAuthorizedForTCCServicePhotosAdd;
 - (BOOL)isClientAuthorizedForTCCServicePhotos;

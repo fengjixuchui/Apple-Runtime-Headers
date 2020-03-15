@@ -52,6 +52,8 @@
 @property(nonatomic, readonly) NSArray *onboardingFeedIDs;
 
 @optional
+@property(nonatomic, readonly) NSString *localAreasMappingResourceId;
+@property(nonatomic, readonly) BOOL enableLocationBasedAutofavorites;
 @property(nonatomic, readonly) long long emailSignupRequiredAppLaunchCount;
 @property(nonatomic, readonly) unsigned long long bestOfBundleFeedGroupKind;
 @property(nonatomic, readonly) unsigned long long likeDislikeBehavior;
@@ -64,8 +66,8 @@
 @property(nonatomic, readonly) NSString *issueArticleRecirculationConfigJSON;
 @property(nonatomic, readonly) NSString *translationMapResourceID;
 @property(nonatomic, readonly) BOOL enableBadgeInSpotlightTabBar;
-@property(nonatomic, readonly) NSString *description;
 @property(nonatomic, readonly) NSString *anfRenderingConfiguration;
+@property(nonatomic, readonly) NSString *webEmbedContentBlockerOverrides;
 @property(nonatomic, readonly) NSString *webEmbedContentBlockers;
 @property(nonatomic, readonly) NSString *feedNavigationConfigJSON;
 @property(nonatomic, readonly) BOOL disableThumbnailsForArticleRecirculation;

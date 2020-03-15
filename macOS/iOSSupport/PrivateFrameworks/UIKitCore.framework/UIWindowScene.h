@@ -50,10 +50,10 @@
 + (void)initialize;
 + (void)_registerComponentClass:(Class)arg1 withKey:(id)arg2 predicate:(id)arg3;
 + (id)_canvasForScene:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) BOOL _isKeyWindowScene; // @synthesize _isKeyWindowScene=__isKeyWindowScene;
 @property(nonatomic, getter=_avkitRequestedOverscanCompensation, setter=_setAVKitRequestedOverscanCompensation:) long long _avkitRequestedOverscanCompensation; // @synthesize _avkitRequestedOverscanCompensation;
 @property(readonly, nonatomic) BOOL _isPerformingSystemSnapshot; // @synthesize _isPerformingSystemSnapshot;
-- (void).cxx_destruct;
 - (void)_showProgressWhenFetchingUserActivityForTypes:(id)arg1;
 @property(readonly, nonatomic) NSArray *_overrideTraitCollectionForWindows;
 - (id)_inheritingWindowsIncludingInvisible:(BOOL)arg1;
@@ -82,6 +82,7 @@
 - (void)_setExplicitSize:(struct CGSize)arg1 contentInsets:(struct UIEdgeInsets)arg2;
 - (struct CGRect)_referenceBoundsForOrientation:(long long)arg1;
 - (struct CGRect)_referenceBounds;
+- (void)_updateTraitCollection;
 - (void)_computeMetricsForWindows:(id)arg1 animated:(BOOL)arg2;
 - (void)_computeMetrics:(BOOL)arg1;
 - (void)_prepareForSuspend;

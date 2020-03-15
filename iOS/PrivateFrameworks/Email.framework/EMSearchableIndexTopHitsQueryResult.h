@@ -15,13 +15,12 @@
     EFMutableInt64Set *_libraryIdentifiers;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) EFMutableInt64Set *libraryIdentifiers; // @synthesize libraryIdentifiers=_libraryIdentifiers;
 @property(copy, nonatomic) NSArray *foundItems; // @synthesize foundItems=_foundItems;
 @property(retain, nonatomic) CSTopHitSearchQuery *topHitSearchQuery; // @synthesize topHitSearchQuery=_topHitSearchQuery;
-- (void).cxx_destruct;
 - (long long)rankingIndexForConversationID:(id)arg1;
 - (void)userDidInteractWithConversationID:(id)arg1;
-- (id)conversationIDForLibraryIndex:(long long)arg1;
 - (long long)rankingIndexForMessageLibraryID:(id)arg1;
 - (void)userDidInteractWithLibraryIdentifier:(id)arg1;
 - (id)initWithTopHitSearchQuery:(id)arg1 foundItems:(id)arg2;

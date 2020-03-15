@@ -53,13 +53,14 @@
     NSString *_cardDAVUID;
     NSString *_uid;
     NSString *_phonemeData;
-    NSString *_downtimeWhitelist;
+    int _downtimeWhitelistAuthorization;
     NSArray *_unknownProperties;
     NSString *_preferredLikenessSource;
     NSString *_preferredApplePersonaIdentifier;
 }
 
-@property(retain) NSString *downtimeWhitelist; // @synthesize downtimeWhitelist=_downtimeWhitelist;
+- (void).cxx_destruct;
+@property int downtimeWhitelistAuthorization; // @synthesize downtimeWhitelistAuthorization=_downtimeWhitelistAuthorization;
 @property(retain) NSArray *unknownProperties; // @synthesize unknownProperties=_unknownProperties;
 @property(retain) NSString *preferredApplePersonaIdentifier; // @synthesize preferredApplePersonaIdentifier=_preferredApplePersonaIdentifier;
 @property(retain) NSString *preferredLikenessSource; // @synthesize preferredLikenessSource=_preferredLikenessSource;
@@ -104,7 +105,6 @@
 @property(retain) NSString *middleName; // @synthesize middleName=_middleName;
 @property(retain) NSString *lastName; // @synthesize lastName=_lastName;
 @property(retain) NSString *firstName; // @synthesize firstName=_firstName;
-- (void).cxx_destruct;
 - (id)largeImageHashOfType:(id)arg1;
 @property(readonly) NSString *companyName;
 

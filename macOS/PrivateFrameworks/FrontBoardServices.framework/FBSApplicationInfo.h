@@ -28,6 +28,7 @@
     NSArray *_customMachServices;
     BOOL _hasViewServicesEntitlement;
     NSString *_appIDEntitlement;
+    NSString *_shortVersionString;
     unsigned long long _type;
     NSArray *_requiredCapabilities;
     NSArray *_tags;
@@ -61,6 +62,7 @@
 
 + (id)_configureEnvironment:(id)arg1 withInfo:(id)arg2 isPreApex:(BOOL)arg3;
 + (unsigned long long)_applicationTypeForProxy:(id)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *fallbackFolderName; // @synthesize fallbackFolderName=_fallbackFolderName;
 @property(readonly, nonatomic) NSArray *folderNames; // @synthesize folderNames=_folderNames;
 @property(readonly, nonatomic, getter=isBlockedForScreenTimeExpiration) BOOL blockedForScreenTimeExpiration; // @synthesize blockedForScreenTimeExpiration=_blockedForScreenTimeExpiration;
@@ -78,6 +80,7 @@
 @property(readonly, nonatomic) float minimumBrightnessLevel; // @synthesize minimumBrightnessLevel=_minimumBrightnessLevel;
 @property(readonly, nonatomic) BOOL requiresPersistentWiFi; // @synthesize requiresPersistentWiFi=_requiresPersistentWiFi;
 @property(nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
+@property(readonly, copy, nonatomic) NSString *shortVersionString; // @synthesize shortVersionString=_shortVersionString;
 @property(readonly, nonatomic, getter=isBeta) BOOL beta; // @synthesize beta=_beta;
 @property(readonly, nonatomic, getter=isBlocked) BOOL blocked; // @synthesize blocked=_blocked;
 @property(readonly, nonatomic, getter=isRestricted) BOOL restricted; // @synthesize restricted=_restricted;
@@ -99,7 +102,6 @@
 @property(readonly, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
 @property(readonly, nonatomic) NSURL *bundleContainerURL; // @synthesize bundleContainerURL=_bundleContainerURL;
 @property(readonly, nonatomic) NSURL *executableURL; // @synthesize executableURL=_executableURL;
-- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (void)_loadFromProxy:(id)arg1;

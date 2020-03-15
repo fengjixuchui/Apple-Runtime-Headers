@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRCItem-Protocol.h>
 
-@class BRCAccountSession, BRCClientZone, BRCItemID, BRCPQLConnection, BRCServerStatInfo, BRCServerZone, BRCSharedServerItem, BRCVersion, NSNumber, NSString;
+@class BRCAccountSession, BRCClientZone, BRCItemID, BRCPQLConnection, BRCServerMetrics, BRCServerStatInfo, BRCServerZone, BRCSharedServerItem, BRCUserRowID, BRCVersion, BRFieldCKInfo, NSString;
 
 @interface BRCServerItem : NSObject <BRCItem>
 {
@@ -16,34 +16,37 @@
     BRCServerZone *_zone;
     unsigned long long _sharingOptions;
     BRCPQLConnection *_db;
+    BRFieldCKInfo *_sideCarCKInfo;
     _Bool _needsInsert;
     unsigned int _pcsChainState;
     NSString *_symlinkTarget;
-    NSNumber *_ownerKey;
+    BRCUserRowID *_ownerKey;
     BRCItemID *_itemID;
     NSString *_originalName;
     long long _rank;
     BRCServerStatInfo *_st;
     BRCVersion *_latestVersion;
+    BRCServerMetrics *_serverMetrics;
     BRCServerZone *_serverZone;
     BRCClientZone *_clientZone;
     long long _directoryMtime;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) long long directoryMtime; // @synthesize directoryMtime=_directoryMtime;
 @property(readonly, nonatomic) NSString *symlinkTarget; // @synthesize symlinkTarget=_symlinkTarget;
 @property(nonatomic) unsigned long long sharingOptions; // @synthesize sharingOptions=_sharingOptions;
 @property(readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 @property(readonly, nonatomic) BRCClientZone *clientZone; // @synthesize clientZone=_clientZone;
 @property(readonly, nonatomic) BRCServerZone *serverZone; // @synthesize serverZone=_serverZone;
+@property(readonly, nonatomic) BRCServerMetrics *serverMetrics; // @synthesize serverMetrics=_serverMetrics;
 @property(readonly, nonatomic) BRCVersion *latestVersion; // @synthesize latestVersion=_latestVersion;
 @property(readonly, nonatomic) BRCServerStatInfo *st; // @synthesize st=_st;
 @property(readonly, nonatomic) long long rank; // @synthesize rank=_rank;
 @property(readonly, nonatomic) NSString *originalName; // @synthesize originalName=_originalName;
 @property(readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
-@property(readonly, nonatomic) NSNumber *ownerKey; // @synthesize ownerKey=_ownerKey;
-- (void).cxx_destruct;
+@property(readonly, nonatomic) BRCUserRowID *ownerKey; // @synthesize ownerKey=_ownerKey;
 - (id)aliasTargetItemID;
 - (id)aliasTargetAppLibrary;
 - (id)aliasTargetClientZone;
@@ -78,6 +81,7 @@
 @property(readonly, nonatomic) _Bool isBRAlias;
 @property(readonly, nonatomic) _Bool isDead;
 @property(readonly, nonatomic) _Bool isLive;
+- (id)sideCarInfo;
 
 @end
 

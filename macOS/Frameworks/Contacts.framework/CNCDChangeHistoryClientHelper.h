@@ -14,8 +14,9 @@ __attribute__((visibility("hidden")))
     NSManagedObjectContext *_context;
 }
 
-@property(readonly, nonatomic) NSManagedObjectContext *context; // @synthesize context=_context;
++ (BOOL)contextHasPersistentStores:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSManagedObjectContext *context; // @synthesize context=_context;
 - (id)save;
 - (id)updateClientWithIdentifier:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)insertNewClientWithIdentifier:(id)arg1;

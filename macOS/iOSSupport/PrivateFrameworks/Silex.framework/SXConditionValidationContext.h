@@ -15,11 +15,12 @@
     SXLayoutOptions *_layoutOptions;
 }
 
-@property(readonly, nonatomic) SXLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SXLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property(readonly, nonatomic) double contentScaleFactor;
 @property(readonly, nonatomic) long long userInterfaceStyle;
 @property(readonly, nonatomic, getter=isChannelSubscriber) BOOL channelSubscriber;
+@property(readonly, nonatomic, getter=isBundleTrialEligible) BOOL bundleTrialEligible;
 @property(readonly, nonatomic, getter=isBundleSubscriber) BOOL bundleSubscriber;
 @property(readonly, nonatomic) unsigned long long viewingLocation;
 @property(readonly, nonatomic) BOOL testing;

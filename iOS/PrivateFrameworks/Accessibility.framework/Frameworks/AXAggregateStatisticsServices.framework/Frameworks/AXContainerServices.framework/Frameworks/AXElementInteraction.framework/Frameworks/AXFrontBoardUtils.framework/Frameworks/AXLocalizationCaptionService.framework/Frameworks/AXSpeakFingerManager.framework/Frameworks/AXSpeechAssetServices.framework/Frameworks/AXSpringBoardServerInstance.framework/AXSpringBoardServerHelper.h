@@ -21,7 +21,7 @@
     NSMutableArray *_notificationObservers;
     AXSpringBoardServerAlertManager *_alertManager;
     UIWindow *_presentationWindow;
-    id <BSInvalidatable> _dimTimerAssertion;
+    id <BSInvalidatable> _presentationWindowFocusAssertion;
     AXAssertion *_disableSystemGesturesAssertionForAlert;
 }
 
@@ -37,11 +37,11 @@
 + (id)_uiController;
 + (id)sharedServerHelper;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) AXAssertion *disableSystemGesturesAssertionForAlert; // @synthesize disableSystemGesturesAssertionForAlert=_disableSystemGesturesAssertionForAlert;
-@property(retain, nonatomic) id <BSInvalidatable> dimTimerAssertion; // @synthesize dimTimerAssertion=_dimTimerAssertion;
+@property(retain, nonatomic) id <BSInvalidatable> presentationWindowFocusAssertion; // @synthesize presentationWindowFocusAssertion=_presentationWindowFocusAssertion;
 @property(retain, nonatomic) UIWindow *presentationWindow; // @synthesize presentationWindow=_presentationWindow;
 @property(retain, nonatomic) AXSpringBoardServerAlertManager *alertManager; // @synthesize alertManager=_alertManager;
-- (void).cxx_destruct;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
 - (void)didFailToPinAppForSideAppManager:(id)arg1;
@@ -54,6 +54,8 @@
 - (void)_handleDisableFKAConfirmation;
 - (void)_handleDisableSwitchControlConfirmation;
 - (void)_handleSwitchUsageConfirmed;
+- (void)_handleASTMenuCustomizeAddDwell:(_Bool)arg1 addScroll:(_Bool)arg2;
+- (void)_handleASTMenuFullForInstance:(id)arg1;
 - (void)_handleDisallowUSBRestrictedModeSCInformativeOnly:(_Bool)arg1;
 - (void)_handleDisallowUSBRestrictedModeVOInformativeOnly:(_Bool)arg1;
 - (void)_handleVONoHomeButtonGestureAlert;
@@ -118,14 +120,13 @@
 - (void)serverInstance:(id)arg1 performVoiceShortcutWithIdentifier:(id)arg2 bundleID:(id)arg3;
 - (void)activateSOSModeWithServerInstance:(id)arg1;
 - (void)setDashBoardSystemGesturesEnabled:(_Bool)arg1 withServerInstance:(id)arg2;
-- (void)setLockScreenDimTimerEnabled:(_Bool)arg1 withServerInstance:(id)arg2;
-- (void)userEventOccurredWithServerInstance:(id)arg1;
 - (id)coverSheetViewController;
 - (void)updateFrontMostApplicationWithServerInstance:(id)arg1;
 - (_Bool)isMagnifierVisibleWithServerInstance:(id)arg1;
 - (void)launchMagnifierAppWithServerInstance:(id)arg1;
 - (void)reactivateInCallServiceWithServerInstance:(id)arg1;
 - (void)forceLoadGAXBundleWithServerInstance:(id)arg1;
+- (_Bool)isPIPWindowVisibleWithServerInstance:(id)arg1;
 - (_Bool)isSpotlightVisibleWithServerInstance:(id)arg1;
 - (_Bool)isDarkModeActiveWithServiceInstance:(id)arg1;
 - (_Bool)_isDarkModeActive;
@@ -191,6 +192,7 @@
 - (void)openCommandAndControlCommandsWithServerInstance:(id)arg1;
 - (void)openCommandAndControlSettingsWithServerInstance:(id)arg1;
 - (void)openCustomGestureCreationForSCATWithServerInstance:(id)arg1;
+- (void)openMenuCustomizationForASTWithServerInstance:(id)arg1;
 - (void)openCustomGestureCreationForASTWithServerInstance:(id)arg1;
 - (void)serverInstance:(id)arg1 setOrientationLocked:(_Bool)arg2;
 - (_Bool)isOrientationLockedWithServerInstance:(id)arg1;

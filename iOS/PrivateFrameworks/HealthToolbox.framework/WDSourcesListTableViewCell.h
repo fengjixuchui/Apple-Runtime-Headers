@@ -17,13 +17,14 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)defaultReuseIdentifier;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIImageView *iconImage; // @synthesize iconImage=_iconImage;
 @property(retain, nonatomic) HKSourceDataModel *sourceModel; // @synthesize sourceModel=_sourceModel;
-- (void).cxx_destruct;
-- (void)prepareForReuse;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 fetchError:(id)arg3;
 - (void)setupConstraints;
 - (void)setUpSubviews;
+- (void)prepareForReuse;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

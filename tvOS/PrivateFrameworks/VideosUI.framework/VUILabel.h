@@ -20,9 +20,9 @@
 
 + (id)labelWithAttributedString:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3;
 + (id)labelWithString:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *labelName; // @synthesize labelName=_labelName;
 @property(retain, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
-- (void).cxx_destruct;
 - (void)_updateCompositingFilter;
 - (void)_updateTextColor:(_Bool)arg1;
 - (void)_updateTextColor;
@@ -33,6 +33,7 @@
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (double)topMarginWithBaselineMargin:(double)arg1 maximumContentSizeCategory:(id)arg2;
 - (double)topMarginWithBaselineMargin:(double)arg1;
+- (unsigned long long)numberOfLinesRequiredForTextWidth:(double)arg1;
 - (_Bool)requiresMoreThanOneLineForTextWidth:(double)arg1;
 - (double)topMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (double)baselineHeight;

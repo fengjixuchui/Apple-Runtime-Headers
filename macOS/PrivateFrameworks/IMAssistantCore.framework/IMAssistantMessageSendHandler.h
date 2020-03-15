@@ -17,8 +17,8 @@
     id <IMAssistantMessageSendHandlerDelegate> _messageSendHandlerDelegate;
 }
 
-@property(retain, nonatomic) id <IMAssistantMessageSendHandlerDelegate> messageSendHandlerDelegate; // @synthesize messageSendHandlerDelegate=_messageSendHandlerDelegate;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <IMAssistantMessageSendHandlerDelegate> messageSendHandlerDelegate; // @synthesize messageSendHandlerDelegate=_messageSendHandlerDelegate;
 - (id)recipientsResolutionFailureResultWithResult:(id)arg1 forRecipient:(id)arg2 amongRecipients:(id)arg3;
 - (id)handleResolutionResultForHandles:(id)arg1 resolvedContactForAlternatives:(id)arg2 recipient:(id)arg3;
 - (id)contactResolutionResultForContacts:(id)arg1 matchingRecipient:(id)arg2;
@@ -27,6 +27,7 @@
 - (id)resolveRecipientsByFindingExistingRelevantChatsForRecipients:(id)arg1 withMatchingHandlesByRecipient:(id)arg2 fromChats:(id)arg3;
 - (id)contactsWithDuplicateNamesAmongContacts:(id)arg1;
 - (id)resolvedRecipientsFromChat:(id)arg1;
+- (BOOL)recipientHandleResolutionResultsAllowedByScreentime:(id)arg1;
 - (void)resolveRecipients:(id)arg1 forIntent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)recipientDisambiguationResultsFromMultipleRelevantChats:(id)arg1;
 - (id)resolveMessageContentWithString:(id)arg1;

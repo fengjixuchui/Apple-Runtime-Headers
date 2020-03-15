@@ -24,6 +24,7 @@
     id <REMReplicaManagerProviding> _replicaManagerProvider;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <REMReplicaManagerProviding> replicaManagerProvider; // @synthesize replicaManagerProvider=_replicaManagerProvider;
 @property(nonatomic) BOOL applyCRDTsWithoutMerging; // @synthesize applyCRDTsWithoutMerging=_applyCRDTsWithoutMerging;
 @property(nonatomic) BOOL cloneCompletedRecurrentRemindersAtSave; // @synthesize cloneCompletedRecurrentRemindersAtSave=_cloneCompletedRecurrentRemindersAtSave;
@@ -35,7 +36,6 @@
 @property(nonatomic, getter=isSaved) BOOL saved; // @synthesize saved=_saved;
 @property(copy, nonatomic) NSString *author; // @synthesize author=_author;
 @property(readonly, nonatomic) REMStore *store; // @synthesize store=_store;
-- (void).cxx_destruct;
 - (id)_copyReminderChangeItem:(id)arg1 toReminderSubtaskContextChangeItem:(id)arg2;
 - (id)_copyReminderChangeItem:(id)arg1 toListChangeItem:(id)arg2;
 - (id)_copyReminder:(id)arg1 toReminderSubtaskContextChangeItem:(id)arg2;
@@ -54,6 +54,7 @@
 - (id)performRecurrenceClone;
 - (void)performPreSaveActions;
 - (void)_prepareSave:(CDUnknownBlockType)arg1;
+- (BOOL)_changeItemsAreAllEmpty;
 - (BOOL)saveSynchronouslyWithError:(id *)arg1;
 - (void)saveWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_willSaveAccountChangeItems:(id)arg1 listChangeItems:(id)arg2 reminderChangeItems:(id)arg3;

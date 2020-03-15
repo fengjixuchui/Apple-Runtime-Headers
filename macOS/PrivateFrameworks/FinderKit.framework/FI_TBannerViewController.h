@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface FI_TBannerViewController : FI_TViewController <TCoalescingNodeObserverProtocol>
 {
     int _type;
-    int _folderSharingType;
     struct TString _text;
     struct TString _buttonTitle;
     _Bool _isButtonEnabled;
@@ -24,11 +23,10 @@ __attribute__((visibility("hidden")))
     NSButton *_learnMoreButton;
 }
 
-+ (int)folderSharingTypeForTarget:(struct TFENode)arg1 isBackupBrowser:(_Bool)arg2;
-@property(nonatomic) int type; // @synthesize type=_type;
-@property(getter=isButtonEnabled) _Bool buttonEnabled; // @synthesize buttonEnabled=_isButtonEnabled;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) int type; // @synthesize type=_type;
+@property(getter=isButtonEnabled) _Bool buttonEnabled; // @synthesize buttonEnabled=_isButtonEnabled;
 - (void)coalescingNodeObserver:(struct TCoalescingNodeObserver *)arg1 nodesChanged:(const vector_614ab7ad *)arg2 inObservedNode:(const struct TFENode *)arg3;
 - (void)coalescingNodeObserver:(struct TCoalescingNodeObserver *)arg1 openSyncCompleted:(const struct TFENode *)arg2;
 - (void)coalescingNodeObserver:(struct TCoalescingNodeObserver *)arg1 nodesDeleted:(const struct TFENodeVector *)arg2 fromObservedNode:(const struct TFENode *)arg3;
@@ -48,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (struct TFENode)representedNode;
 - (void)viewLoaded;
 - (void)dealloc;
-- (id)initWithBannerType:(int)arg1 folderSharingType:(int)arg2;
+- (id)initWithBannerType:(int)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

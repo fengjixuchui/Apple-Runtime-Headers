@@ -19,6 +19,7 @@
 @interface SXVideoPlayerViewController : UIViewController <SXVideoPlaybackObserver, AVPlayerViewControllerDelegate_WebKitOnly, AVPlayerViewControllerDelegatePrivate, SXAutomaticFullscreenVideoPlaybackBehaviorManagerDelegate, UIGestureRecognizerDelegate, SXVideoAdViewControllerProviding>
 {
     BOOL _fullscreen;
+    BOOL _playButtonTapped;
     id <SXVideoPlayerViewControllerDelegate> _delegate;
     id <SXVideoPlayerViewControllerDataSource> _dataSource;
     unsigned long long _mode;
@@ -38,6 +39,7 @@
     UIGestureRecognizer *_tapGesture;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UIGestureRecognizer *tapGesture; // @synthesize tapGesture=_tapGesture;
 @property(retain, nonatomic) SXVideoVolumeObserver *volumeObserver; // @synthesize volumeObserver=_volumeObserver;
 @property(readonly, nonatomic) id <SVVolumeReporting> volumeReporter; // @synthesize volumeReporter=_volumeReporter;
@@ -48,6 +50,7 @@
 @property(retain, nonatomic) SXVideoAdSkipButton *skipButton; // @synthesize skipButton=_skipButton;
 @property(retain, nonatomic) SVLearnMoreButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
 @property(retain, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
+@property(nonatomic) BOOL playButtonTapped; // @synthesize playButtonTapped=_playButtonTapped;
 @property(retain, nonatomic) id <SXVideoAdProviding> videoAd; // @synthesize videoAd=_videoAd;
 @property(retain, nonatomic) SXPlaybackCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property(retain, nonatomic) SXVideoPlaybackQueue *queue; // @synthesize queue=_queue;
@@ -56,7 +59,6 @@
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(nonatomic) __weak id <SXVideoPlayerViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic) __weak id <SXVideoPlayerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)tapped;
 @property(readonly, nonatomic) UIViewController *viewControllerForModalPresentation;
@@ -88,7 +90,7 @@
 - (void)exitFullscreenWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)enterFullscreenWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)pause;
-- (void)play;
+- (void)playWithButtonTapped:(BOOL)arg1;
 - (void)updateViewConstraints;
 - (void)viewDidLoad;
 - (void)viewDidDisappear:(BOOL)arg1;

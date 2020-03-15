@@ -13,7 +13,7 @@
 #import <ContactsUI/CNContactViewControllerAddContactPresenter-Protocol.h>
 #import <ContactsUI/CNContactViewControllerDelegate-Protocol.h>
 
-@class CNAccountsAndGroupsDataSource, CNAccountsAndGroupsViewController, CNContactListStyleApplier, CNContactListViewController, CNContactStore, CNContactStoreDataSource, CNContactStyle, CNContactViewController, CNUIUserActivityManager, NSArray, NSString, UIAlertController, UIKeyCommand;
+@class CNAccountsAndGroupsDataSource, CNAccountsAndGroupsViewController, CNContactListStyleApplier, CNContactListViewController, CNContactStore, CNContactStoreDataSource, CNContactStyle, CNContactViewController, CNUIUserActivityManager, NSArray, NSString, UIAlertController, UIBarButtonItem, UIKeyCommand;
 @protocol CNContactDataSource, CNContactNavigationControllerDelegate, CNScheduler;
 
 @interface CNContactNavigationController : UINavigationController <CNContactListViewControllerDelegate, CNContactListViewControllerDelegateInternal, CNContactViewControllerDelegate, CNContactContentViewControllerDelegate, CNAccountsAndGroupsViewControllerDelegate, CNContactViewControllerAddContactPresenter>
@@ -43,9 +43,13 @@
     CNUIUserActivityManager *_activityManager;
     CNContactListStyleApplier *_contactListStyleApplier;
     NSArray *_prohibitedPropertyKeys;
+    UIBarButtonItem *_addContactBarButtonItem;
 }
 
++ (id)keyCommandForNewContact;
 + (id)newContactFormatter;
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIBarButtonItem *addContactBarButtonItem; // @synthesize addContactBarButtonItem=_addContactBarButtonItem;
 @property(retain, nonatomic) NSArray *prohibitedPropertyKeys; // @synthesize prohibitedPropertyKeys=_prohibitedPropertyKeys;
 @property(nonatomic) _Bool hideGroupsButton; // @synthesize hideGroupsButton=_hideGroupsButton;
 @property(nonatomic) _Bool ignoresMapsData; // @synthesize ignoresMapsData=_ignoresMapsData;
@@ -70,7 +74,6 @@
 @property(nonatomic) _Bool allowsCardDeletion; // @synthesize allowsCardDeletion=_allowsCardDeletion;
 @property(nonatomic) _Bool allowsCardEditing; // @synthesize allowsCardEditing=_allowsCardEditing;
 @property(retain, nonatomic) CNContactStyle *contactStyle; // @synthesize contactStyle=_contactStyle;
-- (void).cxx_destruct;
 - (id)userActivityRepresentingCurrentlyDisplayedContact;
 - (void)notifyOtherFacebookContactsAlertDidSelectAction;
 - (void)otherFacebookContactsAlertDidSelectActionWithNotification:(id)arg1;
@@ -118,6 +121,7 @@
 - (_Bool)shouldShowRightAddButton;
 - (_Bool)shouldShowRightCancelButton;
 - (_Bool)shouldShowRightAddAndCancelButton;
+- (_Bool)shouldShowLeftDoneAndRightAddButton;
 - (_Bool)shouldShowLeftCancelAndRightAddButton;
 - (_Bool)shouldShowLeftCancelAndRightDoneButton;
 - (_Bool)shouldShowGroupsButton;

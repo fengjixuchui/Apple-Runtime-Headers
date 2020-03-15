@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ABCardViewStyleProvider, ABCollectionRowViewFactory;
+@class ABCardViewStyleProvider, ABCollectionRowViewFactory, CNUIEditingRules;
 @protocol CNUIUserActionListDataSource;
 
 @interface ABCollectionViewItemFactory : NSObject
@@ -17,6 +17,7 @@
     ABCardViewStyleProvider *_styleProvider;
     ABCollectionRowViewFactory *_rowViewFactory;
     ABCollectionRowViewFactory *_rowViewEditModeFactory;
+    CNUIEditingRules *_editingRules;
 }
 
 + (id)actionsForItem:(id)arg1;
@@ -27,11 +28,12 @@
 + (id)itemFromPoolWithKey:(id)arg1;
 + (void)addItemToPool:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
+@property(retain, nonatomic) CNUIEditingRules *editingRules; // @synthesize editingRules=_editingRules;
 @property(retain, nonatomic) ABCardViewStyleProvider *styleProvider; // @synthesize styleProvider=_styleProvider;
 @property(nonatomic) BOOL shouldShowActionMenu; // @synthesize shouldShowActionMenu=_shouldShowActionMenu;
 @property(nonatomic) BOOL shouldFormatURLs; // @synthesize shouldFormatURLs=_shouldFormatURLs;
 @property(readonly, nonatomic) __weak id <CNUIUserActionListDataSource> userActionListDataSource; // @synthesize userActionListDataSource=_userActionListDataSource;
-- (void).cxx_destruct;
 - (id)faceTimeActionsItemForMultiValue:(id)arg1 index:(unsigned long long)arg2 delegate:(id)arg3;
 - (id)alertToneCollectionItemForMultiValue:(id)arg1 key:(id)arg2 index:(unsigned long long)arg3 delegate:(id)arg4;
 - (id)preferredNameCollectionItemForMultiValue:(id)arg1 index:(unsigned long long)arg2 delegate:(id)arg3;

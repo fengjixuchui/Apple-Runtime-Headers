@@ -48,6 +48,7 @@
 + (id)sortedEnabledDelegateSourcesFromStore:(id)arg1;
 + (id)calendarModelWithEventStore:(id)arg1;
 + (id)calendarModelWithDataPath:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool autoStartNotificationMonitor; // @synthesize autoStartNotificationMonitor=_autoStartNotificationMonitor;
 @property(copy, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
 @property(retain, nonatomic) NSArray *sortedEnabledDelegates; // @synthesize sortedEnabledDelegates=_sortedEnabledDelegates;
@@ -57,7 +58,6 @@
 @property(copy, nonatomic) EKCalendarDate *selectedDate; // @synthesize selectedDate=_selectedDate;
 @property(copy, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property(readonly, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
-- (void).cxx_destruct;
 - (_Bool)searchingOccurrences;
 - (id)eventNotificationReferencesForIdentity:(id)arg1;
 - (id)eventNotificationReferencesForCurrentIdentity;
@@ -141,7 +141,7 @@
 - (_Bool)isCalendarVisibleWithID:(id)arg1;
 - (void)ensureCalendarVisibleWithId:(id)arg1;
 @property(readonly, nonatomic) long long readWriteCalendarCount;
-@property(readonly, nonatomic) long long visibleCalendarCount;
+- (void)_loadVisibleCalendarsIfNeeded;
 @property(nonatomic) _Bool allowEventLocationPrediction;
 @property(readonly, nonatomic) _Bool containsDelegateSources;
 - (void)setSourceForSelectedIdentity:(id)arg1;
@@ -150,9 +150,12 @@
 - (void)updateSourceForSelectedIdentity:(id)arg1 selectedCalendars:(id)arg2;
 - (_Bool)_eventBelongsToCurrentIdentity:(id)arg1;
 - (void)setSelectedCalendarsAndRequestPreferenceSave:(id)arg1;
+- (void)postSelectedCalendarsChanged;
+- (_Bool)_setSelectedCalendars:(id)arg1;
 @property(retain, nonatomic) NSSet *selectedCalendars; // @synthesize selectedCalendars=_selectedCalendars;
 - (id)calendarsForCurrentIdentityFromCalendars:(id)arg1;
 - (id)_calendarsForCurrentIdentityFromCalendars:(id)arg1 lock:(_Bool)arg2;
+@property(copy, nonatomic) NSSet *unselectedCalendars;
 - (void)dealloc;
 - (void)_performCommonInitialization;
 - (id)initWithDataPath:(id)arg1;

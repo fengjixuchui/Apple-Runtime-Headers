@@ -14,6 +14,7 @@
     // Error parsing type: , name: rootViewType
     // Error parsing type: , name: makeRootView
     // Error parsing type: , name: delegate
+    // Error parsing type: , name: centersRootView
     // Error parsing type: , name: inputs
     // Error parsing type: , name: rootView
     // Error parsing type: , name: time
@@ -50,7 +51,7 @@
     // Error parsing type: , name: cachedIdealSize
     // Error parsing type: , name: cachedSizeThatFits
     // Error parsing type: , name: sizeThatFitsObserver
-    // Error parsing type: , name: outputs
+    // Error parsing type: , name: requestedOutputs
     // Error parsing type: , name: disabledOutputs
     // Error parsing type: , name: needsFocusUpdate
     // Error parsing type: , name: pendingTransactions

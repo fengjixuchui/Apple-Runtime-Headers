@@ -13,13 +13,14 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)isShareableItem;
 - (id)st;
 - (id)parentItemID;
 - (id)parentItemOnFS;
 - (id)fileID;
 - (BOOL)saveToDB;
 - (BOOL)isZoneRoot;
-- (struct BRCDirectoryItem *)asFSRoot;
+- (id)asFSRoot;
 - (BOOL)isFSRoot;
 - (id)initWithZoneRootItemID:(id)arg1 session:(id)arg2;
 

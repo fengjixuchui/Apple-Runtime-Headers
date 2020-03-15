@@ -17,17 +17,21 @@ __attribute__((visibility("hidden")))
     BRCServerItem *_rootItem;
     BOOL _completed;
     unsigned long long _batchSize;
+    int _tryCount;
+    unsigned long long _chainedRecordsCount;
     BOOL _shouldFillBatch;
     CDUnknownBlockType _pcsChainCompletionBlock;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) BOOL shouldFillBatch; // @synthesize shouldFillBatch=_shouldFillBatch;
 @property(copy, nonatomic) CDUnknownBlockType pcsChainCompletionBlock; // @synthesize pcsChainCompletionBlock=_pcsChainCompletionBlock;
-- (void).cxx_destruct;
 - (void)main;
+- (void)_sendRecordBatch:(id)arg1 recursed:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_sendRecordBatch:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_buildRecordListWithCompletion:(CDUnknownBlockType)arg1;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
+- (id)createActivity;
 - (BOOL)shouldRetryForError:(id)arg1;
 - (id)initWithRootItem:(id)arg1 appLibrary:(id)arg2;
 

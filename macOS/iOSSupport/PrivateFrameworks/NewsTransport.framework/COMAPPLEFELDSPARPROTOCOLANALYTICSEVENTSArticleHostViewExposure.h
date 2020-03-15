@@ -48,6 +48,7 @@
     int _coverArticleDisplayRank;
     int _coverArticleFeatureType;
     NSString *_creativeId;
+    NSString *_curatedBatchId;
     int _curatedContentType;
     int _displayRank;
     NSString *_exposedGroupSourceChannelId;
@@ -67,6 +68,7 @@
     int _groupPresentationReason;
     int _groupType;
     NSData *_groupViewExposureId;
+    int _heroArticleType;
     NSString *_iadNativeAd;
     NSString *_iadNativeCampaign;
     NSString *_iadNativeCampaignAd;
@@ -116,6 +118,7 @@
     int _topStoryType;
     NSString *_userActivityType;
     NSString *_viewFrameInScreen;
+    NSString *_webEmbedId;
     int _widgetArticleRank;
     COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSWidgetEngagement *_widgetEngagement;
     int _widgetSection;
@@ -144,12 +147,15 @@
     BOOL _isVideoInFeed;
     BOOL _subscriptionOnlyArticle;
     BOOL _viewFromNotificationDirectOpen;
-    CDStruct_803929fe _has;
+    CDStruct_c335251c _has;
 }
 
 + (Class)surfacedByTagIdsType;
 + (Class)fractionalCohortMembershipType;
 + (Class)namedEntitiesType;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *curatedBatchId; // @synthesize curatedBatchId=_curatedBatchId;
+@property(retain, nonatomic) NSString *webEmbedId; // @synthesize webEmbedId=_webEmbedId;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSIssueViewContextData *issueViewContextData; // @synthesize issueViewContextData=_issueViewContextData;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSChannelData *channelData; // @synthesize channelData=_channelData;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSIssueViewData *issueViewData; // @synthesize issueViewData=_issueViewData;
@@ -257,7 +263,6 @@
 @property(nonatomic) int publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property(retain, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property(retain, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
-- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
@@ -267,6 +272,12 @@
 - (BOOL)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) BOOL hasCuratedBatchId;
+@property(readonly, nonatomic) BOOL hasWebEmbedId;
+- (int)StringAsHeroArticleType:(id)arg1;
+- (id)heroArticleTypeAsString:(int)arg1;
+@property(nonatomic) BOOL hasHeroArticleType;
+@property(nonatomic) int heroArticleType; // @synthesize heroArticleType=_heroArticleType;
 @property(readonly, nonatomic) BOOL hasIssueViewContextData;
 @property(readonly, nonatomic) BOOL hasChannelData;
 - (int)StringAsRole:(id)arg1;

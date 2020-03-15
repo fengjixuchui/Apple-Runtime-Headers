@@ -12,11 +12,12 @@
 #import <PhotosUICore/PXInfoProvider-Protocol.h>
 #import <PhotosUICore/PXInfoUpdaterObserver-Protocol.h>
 #import <PhotosUICore/PXMutablePhotosLibraryViewModel-Protocol.h>
+#import <PhotosUICore/PXUIKeyCommandNamespace-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableSet, NSObject, NSSet, NSString, PXAssetReference, PXAssetsDataSource, PXCPLServiceUI, PXCuratedLibraryActionManager, PXCuratedLibraryAllPhotosAlphaAnimator, PXCuratedLibraryAnalysisStatus, PXCuratedLibraryAssetCollectionSkimmingInfo, PXCuratedLibraryAssetsDataSourceManager, PXCuratedLibraryLayoutSpecManager, PXCuratedLibraryStyleGuide, PXInfoUpdater, PXNumberAnimator, PXScrollViewSpeedometer, PXSectionedSelectionManager, PXSelectionSnapshot, PXUpdater, UIBarButtonItem;
+@class NSArray, NSHashTable, NSMutableSet, NSObject, NSSet, NSString, PXAssetActionManager, PXAssetReference, PXAssetsDataSource, PXCPLServiceUI, PXCuratedLibraryActionManager, PXCuratedLibraryAllPhotosAlphaAnimator, PXCuratedLibraryAnalysisStatus, PXCuratedLibraryAssetCollectionSkimmingInfo, PXCuratedLibraryAssetsDataSourceManager, PXCuratedLibraryLayoutSpecManager, PXCuratedLibraryStyleGuide, PXInfoUpdater, PXNumberAnimator, PXScrollViewSpeedometer, PXSectionedSelectionManager, PXSelectionSnapshot, PXUpdater, UIBarButtonItem;
 @protocol OS_dispatch_queue, PXCuratedLibraryViewModelPresenter, PXFilterState;
 
-@interface PXCuratedLibraryViewModel : PXObservable <PXMutablePhotosLibraryViewModel, PXCuratedLibraryAssetsDataSourceManagerDelegate, PXChangeObserver, PXAssetsDataSourceManagerObserver, PXInfoProvider, PXInfoUpdaterObserver>
+@interface PXCuratedLibraryViewModel : PXObservable <PXUIKeyCommandNamespace, PXMutablePhotosLibraryViewModel, PXCuratedLibraryAssetsDataSourceManagerDelegate, PXChangeObserver, PXAssetsDataSourceManagerObserver, PXInfoProvider, PXInfoUpdaterObserver>
 {
     NSHashTable *_presenters;
     NSHashTable *_views;
@@ -47,8 +48,6 @@
     _Bool _allPhotosAspectFit;
     _Bool _allPhotosCaptionsVisible;
     _Bool _allPhotosLayoutIsAnimating;
-    _Bool _allPhotosWantsSpaceForHeader;
-    _Bool _allPhotosShowsSpaceForHeader;
     _Bool _isPerformingInitialChanges;
     PXCuratedLibraryLayoutSpecManager *_specManager;
     PXCuratedLibraryStyleGuide *_styleGuide;
@@ -75,9 +74,11 @@
     PXCuratedLibraryAnalysisStatus *_analysisStatus;
     PXUpdater *_updater;
     PXScrollViewSpeedometer *_scrollingSpeedometer;
+    PXAssetActionManager *_assetActionManager;
     long long _chromeVisibilityAnimationCount;
     PXInfoUpdater *_selectedAssetsTypeCountUpdater;
     NSObject<OS_dispatch_queue> *_countUpdateQueue;
+    long long _viewTimeSignpostID;
     struct CGPoint _lastScrollDirection;
     CDStruct_15189878 _selectedAssetsTypedCount;
     CDStruct_7c4e768e _pinchState;
@@ -85,9 +86,12 @@
 }
 
 + (id)_cplServiceUI;
+- (void).cxx_destruct;
+@property(nonatomic) long long viewTimeSignpostID; // @synthesize viewTimeSignpostID=_viewTimeSignpostID;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *countUpdateQueue; // @synthesize countUpdateQueue=_countUpdateQueue;
 @property(readonly, nonatomic) PXInfoUpdater *selectedAssetsTypeCountUpdater; // @synthesize selectedAssetsTypeCountUpdater=_selectedAssetsTypeCountUpdater;
 @property(nonatomic) long long chromeVisibilityAnimationCount; // @synthesize chromeVisibilityAnimationCount=_chromeVisibilityAnimationCount;
+@property(retain, nonatomic) PXAssetActionManager *assetActionManager; // @synthesize assetActionManager=_assetActionManager;
 @property(retain, nonatomic) PXScrollViewSpeedometer *scrollingSpeedometer; // @synthesize scrollingSpeedometer=_scrollingSpeedometer;
 @property(readonly, nonatomic) PXUpdater *updater; // @synthesize updater=_updater;
 @property(readonly, nonatomic) _Bool isPerformingInitialChanges; // @synthesize isPerformingInitialChanges=_isPerformingInitialChanges;
@@ -103,8 +107,6 @@
 @property(readonly, nonatomic) PXCuratedLibraryAssetCollectionSkimmingInfo *skimmingInfo; // @synthesize skimmingInfo=_skimmingInfo;
 @property(nonatomic) struct CGPoint lastScrollDirection; // @synthesize lastScrollDirection=_lastScrollDirection;
 @property(nonatomic) long long scrollRegime; // @synthesize scrollRegime=_scrollRegime;
-@property(nonatomic) _Bool allPhotosShowsSpaceForHeader; // @synthesize allPhotosShowsSpaceForHeader=_allPhotosShowsSpaceForHeader;
-@property(readonly, nonatomic) _Bool allPhotosWantsSpaceForHeader; // @synthesize allPhotosWantsSpaceForHeader=_allPhotosWantsSpaceForHeader;
 @property(readonly, nonatomic) _Bool allPhotosLayoutIsAnimating; // @synthesize allPhotosLayoutIsAnimating=_allPhotosLayoutIsAnimating;
 @property(readonly, nonatomic) _Bool allPhotosCaptionsVisible; // @synthesize allPhotosCaptionsVisible=_allPhotosCaptionsVisible;
 @property(readonly, nonatomic) _Bool allPhotosAspectFit; // @synthesize allPhotosAspectFit=_allPhotosAspectFit;
@@ -132,7 +134,6 @@
 @property(readonly, nonatomic) PXCuratedLibraryAssetsDataSourceManager *assetsDataSourceManager; // @synthesize assetsDataSourceManager=_assetsDataSourceManager;
 @property(readonly, nonatomic) PXCuratedLibraryStyleGuide *styleGuide; // @synthesize styleGuide=_styleGuide;
 @property(readonly, nonatomic) PXCuratedLibraryLayoutSpecManager *specManager; // @synthesize specManager=_specManager;
-- (void).cxx_destruct;
 - (void)_systemPhotoLibraryDidChange;
 - (void)infoUpdaterDidUpdate:(id)arg1;
 - (long long)priorityForInfoRequestOfKind:(id)arg1;
@@ -148,14 +149,15 @@
 - (void)curatedLibraryAssetsDataSourceManager:(id)arg1 willTransitionFromZoomLevel:(long long)arg2 toZoomLevel:(long long)arg3;
 - (id)visibleAssetCollectionsFromCuratedLibraryAssetsDataSourceManager:(id)arg1;
 - (_Bool)isSelectingAssetsFromCuratedLibraryAssetsDataSourceManager:(id)arg1;
+- (id)_cpAnalyticsClassNameWithZoomLevel:(long long)arg1;
+- (void)endCPAnalyticsViewWithZoomLevel:(long long)arg1;
+- (void)startCPAnalyticsViewWithZoomLevel:(long long)arg1;
 - (void)_updateAllPhotosZoomState;
 - (void)_invalidateAllPhotosZoomState;
 - (void)_updateAllPhotosAlphaAnimator;
 - (void)_invalidateAllPhotosAlphaAnimator;
 - (void)_updatePinchVelocity;
 - (void)_invalidatePinchVelocity;
-- (void)_updateAllPhotosShowsSpaceForHeader;
-- (void)_invalidateAllPhotosShowsSpaceForHeader;
 - (void)_updateAllPhotosAllowedColumns;
 - (void)_invalidateAllPhotosAllowedColumns;
 - (void)_updateScrollingProperties;
@@ -182,11 +184,11 @@
 - (void)_invalidateAssetsDataSourceManager;
 - (void)_updateCurrentDataSource;
 - (void)_invalidateCurrentDataSource;
+- (void)_invalidateAssetActionManager;
 - (void)_setNeedsUpdate;
 - (void)didPerformChanges;
 - (void)setCplServiceUI:(id)arg1;
 @property(readonly, nonatomic) PXCPLServiceUI *cplServiceUI;
-- (void)setAllPhotosWantsSpaceForHeader:(_Bool)arg1;
 - (void)setAllPhotosLayoutIsAnimating:(_Bool)arg1;
 - (void)setAllPhotosCaptionsVisible:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool allPhotosPresentingAspectFit;
@@ -243,6 +245,18 @@
 - (id)initWithAssetsDataSourceManagerConfiguration:(id)arg1 zoomLevel:(long long)arg2 specManager:(id)arg3 styleGuide:(id)arg4;
 - (id)initWithPhotoLibrary:(id)arg1 zoomLevel:(long long)arg2 specManager:(id)arg3 styleGuide:(id)arg4;
 - (id)init;
+- (_Bool)_performSelectionKeyCommand:(id)arg1 withDelegate:(id)arg2;
+- (void)_performAssetActionType:(id)arg1;
+- (void)_performActionForActionIdentifier:(id)arg1;
+- (void)_performNavigateToZoomLevel:(long long)arg1;
+- (_Bool)performKeyCommand:(id)arg1 keyCommandDelegate:(id)arg2 directionalSelectionDelegate:(id)arg3;
+@property(readonly, nonatomic) NSString *namespaceIdentifier;
+- (void)_addSelectionShortcutsIntoArray:(id)arg1 usingDelegate:(id)arg2;
+- (void)_addEnterOneUpShortcutIntoArray:(id)arg1;
+- (void)_addAssetActionShortcutsIntoArray:(id)arg1;
+- (void)_addActionShortcutsIntoArray:(id)arg1;
+- (void)_addZoomLevelShortcutsIntoArray:(id)arg1;
+- (id)uiKeyCommandsUsingDelegate:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

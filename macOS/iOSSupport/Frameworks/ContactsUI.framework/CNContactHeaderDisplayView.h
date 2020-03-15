@@ -36,6 +36,7 @@
 + (id)contactHeaderViewWithContact:(id)arg1 monogramOnly:(BOOL)arg2 delegate:(id)arg3;
 + (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 shouldAllowImageDrops:(BOOL)arg3 monogramOnly:(BOOL)arg4;
 + (id)descriptorForRequiredKeysForContactFormatter:(id)arg1;
+- (void).cxx_destruct;
 @property(retain) NSLayoutConstraint *avatarNameSpacingConstraint; // @synthesize avatarNameSpacingConstraint=_avatarNameSpacingConstraint;
 @property(nonatomic) double maxLabelsHeight; // @synthesize maxLabelsHeight=_maxLabelsHeight;
 @property(nonatomic) double minLabelsHeight; // @synthesize minLabelsHeight=_minLabelsHeight;
@@ -50,7 +51,6 @@
 @property(retain, nonatomic) NSString *alternateName; // @synthesize alternateName=_alternateName;
 @property(copy, nonatomic) NSDictionary *importantTextAttributes; // @synthesize importantTextAttributes=_importantTextAttributes;
 @property(retain, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
-- (void).cxx_destruct;
 - (void)menuWillHide:(id)arg1;
 - (void)handleNameLabelLongPress:(id)arg1;
 - (id)_importantString;
@@ -77,6 +77,7 @@
 @property(nonatomic) unsigned long long avatarStyle;
 - (void)setShouldShowGemini:(BOOL)arg1;
 - (void)createGeminiViewIfNeeded;
+- (double)defaultMaxHeight;
 - (double)maxHeight;
 - (double)minHeight;
 - (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowImageDrops:(BOOL)arg4 monogramOnly:(BOOL)arg5 delegate:(id)arg6;

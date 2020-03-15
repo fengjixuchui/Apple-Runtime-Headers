@@ -6,13 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MediaPlayer/MPClientMediaPickerController-Protocol.h>
 #import <MediaPlayer/MPMusicMediaPickerClientController-Protocol.h>
 
 @class MPMediaPickerConfiguration, NSString;
 @protocol MPMediaPickerControllerDelegate, MPMediaPickerRemoteViewLoader;
 
-@interface MPMediaPickerController : UIViewController <MPClientMediaPickerController, MPMusicMediaPickerClientController>
+@interface MPMediaPickerController : UIViewController <MPMusicMediaPickerClientController>
 {
     MPMediaPickerConfiguration *_configuration;
     id <MPMediaPickerControllerDelegate> _delegate;
@@ -21,10 +20,9 @@
 
 + (void)load;
 + (void)preheatMediaPicker;
-+ (_Bool)useNewPicker;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <MPMediaPickerRemoteViewLoader> loader; // @synthesize loader=_loader;
 @property(nonatomic) __weak id <MPMediaPickerControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
 - (int)_keynote_preferredInterfaceOrientationForPresentation;
 - (unsigned int)_keynote_supportedInterfaceOrientations;
 - (int)_mediaPickerController_preferredInterfaceOrientationForPresentation;
@@ -42,6 +40,8 @@
 - (id)playbackArchiveConfiguration;
 - (void)setPickingForExternalPlayer:(_Bool)arg1;
 - (_Bool)pickingForExternalPlayer;
+- (void)setSupportsUnavailableContent:(_Bool)arg1;
+- (_Bool)supportsUnavailableContent;
 - (void)setShowsLibraryContent:(_Bool)arg1;
 - (_Bool)showsLibraryContent;
 - (void)setShowsCatalogContent:(_Bool)arg1;
@@ -65,6 +65,7 @@
 - (int)preferredInterfaceOrientationForPresentation;
 - (unsigned int)supportedInterfaceOrientations;
 - (int)modalPresentationStyle;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;

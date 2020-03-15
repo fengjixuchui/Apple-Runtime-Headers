@@ -45,12 +45,12 @@
 
 + (BOOL)_applicationHasRunningWorkout;
 + (BOOL)isHealthDataAvailable;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(copy, nonatomic) NSString *researchStudyUsageDescriptionOverride; // @synthesize researchStudyUsageDescriptionOverride=_researchStudyUsageDescriptionOverride;
 @property(copy, nonatomic) NSString *clinicalReadAuthorizationUsageDescriptionOverride; // @synthesize clinicalReadAuthorizationUsageDescriptionOverride=_clinicalReadAuthorizationUsageDescriptionOverride;
 @property(copy, nonatomic) NSString *readAuthorizationUsageDescriptionOverride; // @synthesize readAuthorizationUsageDescriptionOverride=_readAuthorizationUsageDescriptionOverride;
 @property(copy, nonatomic) NSString *writeAuthorizationUsageDescriptionOverride; // @synthesize writeAuthorizationUsageDescriptionOverride=_writeAuthorizationUsageDescriptionOverride;
-- (void).cxx_destruct;
 - (void)containerAppExtensionEntitlementsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)generateFakeDataForActivityType:(long long)arg1 minutes:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)invalidateActivityAlertSuppressionForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -173,14 +173,14 @@
 - (void)_throwIfClinicalTypesRequestedToShare:(id)arg1;
 - (void)_throwIfAuthorizationDisallowedForSharing:(BOOL)arg1 types:(id)arg2;
 - (void)handleAuthorizationForExtensionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_validateHealthDataPurposeStringsForSharingTypes:(id)arg1 readingTypes:(id)arg2;
+- (void)_validateHealthDataPurposeStringsForSharingTypes:(id)arg1 readingTypes:(id)arg2 isResearchStudy:(BOOL)arg3;
 - (void)_validateClinicalHealthRecordsPurposeStringsForSharingTypes:(id)arg1 readingTypes:(id)arg2;
 - (id)_researchStudyUsageDescription;
 - (id)_clientClinicalReadAuthorizationUsageDescription;
 - (id)_clientReadAuthorizationUsageDescription;
 - (id)_clientWriteAuthorizationUsageDescription;
 - (void)_validatePurposeStringsForSharingTypes:(id)arg1 readingTypes:(id)arg2;
-- (void)_validateAuthorizationInfoPlist;
+- (void)_validateAuthorizationRequiredTypes;
 - (void)requestAuthorizationToShareTypes:(id)arg1 readTypes:(id)arg2 shouldPrompt:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_validateAuthorizationRequestWithShareTypes:(id)arg1 readTypes:(id)arg2;
 - (void)requestAuthorizationToShareTypes:(id)arg1 readTypes:(id)arg2 completion:(CDUnknownBlockType)arg3;
